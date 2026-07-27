@@ -62,7 +62,7 @@ def rename_links(links: list[str]) -> list[str]:
             continue
         seen.add(base)
         unique.append(base)
-    return [set_link_name(link, f"Fly-{i}") for i, link in enumerate(unique, start=1)]
+    return [set_link_name(link, f"FlyB-{i}") for i, link in enumerate(unique, start=1)]
 
 
 def http_get_json(url: str, extra: dict[str, str] | None = None) -> dict:
