@@ -32,7 +32,7 @@ HEADERS = {
     "X-Content-Type-Options": "nosniff",
 }
 ROOT = Path(__file__).resolve().parent
-OUT = ROOT / "hiddify_export" / "cfg.txt"
+OUT = ROOT / "out" / "cfg.txt"
 
 
 def set_link_name(link: str, name: str) -> str:
