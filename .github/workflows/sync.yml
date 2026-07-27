@@ -37,10 +37,11 @@ jobs:
             echo "no changes"
           else
             git commit -m "chore: refresh"
+            git pull --rebase origin main
             git push
           fi
-      - name: telegram on failure
-        if: failure()
+      - name: telegram on begzar failure
+        if: failure() && steps.sync.conclusion == 'failure'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
