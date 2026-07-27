@@ -7,6 +7,7 @@ import base64
 import hashlib
 import hmac
 import json
+import os
 import re
 import ssl
 import struct
@@ -122,7 +123,41 @@ def extract_links(text: str) -> list[str]:
     return re.findall(r"(?:vless|vmess|trojan|ss)://\S+", text)
 
 
+def notify_telegram(text: str) -> None:
+    """Send a Telegram message when bot token and chat id env vars are set."""
+    token = (os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip()
+    chat_id = (os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
+    if not token or not chat_id:
+        print("telegram skipped: missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID")
+        return
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
+    body = urllib.parse.urlencode(
+        {
+            "chat_id": chat_id,
+            "text": text,
+            "disable_web_page_preview": "true",
+        }
+    ).encode("utf-8")
+    req = urllib.request.Request(
+        url,
+        data=body,
+        headers={"Content-Type": "application/x-www-form-urlencoded"},
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            raw = resp.read().decode("utf-8", errors="replace")
+        data = json.loads(raw)
+        if not data.get("ok"):
+            print(f"telegram api error: {raw[:300]}")
+            return
+        print(f"telegram sent message_id={data.get('result', {}).get('message_id')}")
+    except Exception as exc:
+        print(f"telegram send failed: {exc}")
+
+
 def main() -> int:
+    """Fetch Begzar configs, write subscription file, notify Telegram with count."""
     key = fetch_key()
     payload = fetch_payload(key)
     inner = payload["data"]
@@ -130,7 +165,9 @@ def main() -> int:
     links = rename_links(extract_links(text))
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text("\n\n".join(links) + ("\n" if links else ""), encoding="utf-8")
-    print(f"ok count={len(links)} path={OUT}")
+    count = len(links)
+    print(f"ok count={count} path={OUT}")
+    notify_telegram(f"✅ x7k sync OK\ncount: {count}")
     return 0
 
 
@@ -139,4 +176,5 @@ if __name__ == "__main__":
         raise SystemExit(main())
     except Exception as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
+        notify_telegram(f"❌ x7k sync FAILED\n{exc}")
         raise SystemExit(1)
