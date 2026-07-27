@@ -40,6 +40,24 @@ jobs:
             git pull --rebase origin main
             git push
           fi
+      - name: telegram count
+        if: success()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          COUNT=$(python3 - <<'PY'
+          from pathlib import Path
+          lines=[l for l in Path('out/cfg.txt').read_text(encoding='utf-8', errors='replace').splitlines() if l.strip()]
+          print(len(lines))
+          PY
+          )
+          MSG=$(printf 'x7k sync OK\ncount: %s\nrun: %s' "$COUNT" "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID")
+          curl -fsS --max-time 20 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=${MSG}" \
+            -d "disable_web_page_preview=true" >/dev/null
+          echo "telegram count=$COUNT"
       - name: telegram on begzar failure
         if: failure() && steps.sync.conclusion == 'failure'
         env:
