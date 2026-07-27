@@ -23,7 +23,9 @@ jobs:
           python-version: "3.11"
           cache: pip
       - run: pip install -r requirements.txt
-      - run: python sync.py
+      - name: sync
+        id: sync
+        run: python sync.py 2>&1 | tee /tmp/sync.log
       - name: commit if changed
         run: |
           git config user.name "github-actions[bot]"
@@ -35,3 +37,17 @@ jobs:
             git commit -m "chore: refresh"
             git push
           fi
+      - name: telegram on failure
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          set +e
+          ERR=$(tail -c 1200 /tmp/sync.log 2>/dev/null || echo "sync failed (no log)")
+          MSG=$(printf 'x7k sync FAILED\nrepo: LAziznezhad/x7k-m2q9-cfg\nrun: %s\n\n%s' "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" "$ERR")
+          curl -fsS --max-time 20 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=${MSG}" \
+            -d "disable_web_page_preview=true" >/dev/null
+          echo "telegram notified"
