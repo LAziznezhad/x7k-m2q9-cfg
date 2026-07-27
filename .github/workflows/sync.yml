@@ -52,7 +52,7 @@ jobs:
           print(len(lines))
           PY
           )
-          MSG=$(printf 'x7k sync OK\ncount: %s\nrun: %s' "$COUNT" "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID")
+          MSG=$(printf '✅ x7k sync OK\ncount: %s\nrun: %s' "$COUNT" "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID")
           curl -fsS --max-time 20 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
             --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
             --data-urlencode "text=${MSG}" \
@@ -66,7 +66,7 @@ jobs:
         run: |
           set +e
           ERR=$(tail -c 1200 /tmp/sync.log 2>/dev/null || echo "sync failed (no log)")
-          MSG=$(printf 'x7k sync FAILED\nrepo: LAziznezhad/x7k-m2q9-cfg\nrun: %s\n\n%s' "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" "$ERR")
+          MSG=$(printf '❌ x7k sync FAILED\nrepo: LAziznezhad/x7k-m2q9-cfg\nrun: %s\n\n%s' "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" "$ERR")
           curl -fsS --max-time 20 -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
             --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
             --data-urlencode "text=${MSG}" \
