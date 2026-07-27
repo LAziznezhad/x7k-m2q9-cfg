@@ -1,35 +1,35 @@
-vless://008cfbcd-7a41-4bb9-be7f-1b9ed8399d2e@tmqlxpzrycnkjfdbhgvw.pub.noafra.ir:1310?encryption=none&security=none&type=tcp&headerType=http&host=play.google.com&path=%2F#FlyB-1
+vless://008cfbcd-7a41-4bb9-be7f-1b9ed8399d2e@bvtcxzpqwkljfhdsnyrm.pub.noafra.ir:443?encryption=none&security=none&type=ws&host=play.google.com&path=%2F#FlyB-1
 
-vless://e3554f72-66cc-4a7d-b4fc-910f077b5897@lyrntckjfmbhgdqzvxwp.pub2.noafra.ir:1310?encryption=none&security=none&type=tcp&headerType=http&host=play.google.com&path=%2F#FlyB-2
+vless://e3554f72-66cc-4a7d-b4fc-910f077b5897@dklpqwzzxcvbnmryhjfs.pub2.noafra.ir:1310?encryption=none&security=none&type=tcp&headerType=http&host=play.google.com&path=%2F#FlyB-2
 
-vless://da341b01-094f-4a89-b559-8997a4b984a4@gtzkpxmyqrvvncwlbfjs.pub3.noafra.ir:443?encryption=none&security=none&type=ws&host=play.google.com&path=%2F#FlyB-3
+vless://da341b01-094f-4a89-b559-8997a4b984a4@zcvbnmkfjdhlpwqxrytz.pub3.noafra.ir:443?encryption=none&security=none&type=ws&host=play.google.com&path=%2F#FlyB-3
 
-vless://008cfbcd-7a41-4bb9-be7f-1b9ed8399d2e@ckjfmbhgdqzvxwplyrnt.pub.noafra.ir:443?encryption=none&security=none&type=ws&host=play.google.com&path=%2F#FlyB-4
+vless://e3554f72-66cc-4a7d-b4fc-910f077b5897@lyrntckjfmbhgdqzvxwp.pub2.noafra.ir:1310?encryption=none&security=none&type=tcp&headerType=http&host=play.google.com&path=%2F#FlyB-4
 
-vless://e3554f72-66cc-4a7d-b4fc-910f077b5897@dklpqwzzxcvbnmryhjfs.pub2.noafra.ir:1310?encryption=none&security=none&type=tcp&headerType=http&host=play.google.com&path=%2F#FlyB-5
+vless://da341b01-094f-4a89-b559-8997a4b984a4@gtzkpxmyqrvvncwlbfjs.pub3.noafra.ir:443?encryption=none&security=none&type=ws&host=play.google.com&path=%2F#FlyB-5
 
 vless://e3554f72-66cc-4a7d-b4fc-910f077b5897@tcxzpqwkljfhdsnyrmbv.pub2.noafra.ir:443?encryption=none&security=none&type=ws&host=play.google.com&path=%2F#FlyB-6
 
-vless://008cfbcd-7a41-4bb9-be7f-1b9ed8399d2e@xyzkpwlrqvnmcbhjfdgs.pub.noafra.ir:1310?encryption=none&security=none&type=tcp&headerType=http&host=play.google.com&path=%2F#FlyB-7
+vless://da341b01-094f-4a89-b559-8997a4b984a4@mqwpzrlxtcvbnnmkjdhd.pub3.noafra.ir:443?encryption=none&security=none&type=ws&host=play.google.com&path=%2F#FlyB-7
 
-vless://008cfbcd-7a41-4bb9-be7f-1b9ed8399d2e@bvtcxzpqwkljfhdsnyrm.pub.noafra.ir:443?encryption=none&security=none&type=ws&host=play.google.com&path=%2F#FlyB-8
+vless://008cfbcd-7a41-4bb9-be7f-1b9ed8399d2e@vbnnmkjdhdqzvxwplyrn.pub.noafra.ir:1310?encryption=none&security=none&type=tcp&headerType=http&host=play.google.com&path=%2F#FlyB-8
 
-vless://da341b01-094f-4a89-b559-8997a4b984a4@mqwpzrlxtcvbnnmkjdhd.pub3.noafra.ir:443?encryption=none&security=none&type=ws&host=play.google.com&path=%2F#FlyB-9
+vless://e3554f72-66cc-4a7d-b4fc-910f077b5897@gvbxyznmlpkwrqtcjdfs.pub2.noafra.ir:443?encryption=none&security=none&type=ws&host=play.google.com&path=%2F#FlyB-9
 
 vless://da341b01-094f-4a89-b559-8997a4b984a4@hjfsdklpqwzzxcvbnmry.pub3.noafra.ir:1310?encryption=none&security=none&type=tcp&headerType=http&host=play.google.com&path=%2F#FlyB-10
 
-vless://e3554f72-66cc-4a7d-b4fc-910f077b5897@gvbxyznmlpkwrqtcjdfs.pub2.noafra.ir:443?encryption=none&security=none&type=ws&host=play.google.com&path=%2F#FlyB-11
+vless://da341b01-094f-4a89-b559-8997a4b984a4@nnxbvccxyzrktjplzmqw.pub3.noafra.ir:1310?encryption=none&security=none&type=tcp&headerType=http&host=play.google.com&path=%2F#FlyB-11
 
-vless://da341b01-094f-4a89-b559-8997a4b984a4@xzkpjrmtnvbcyfhdslqw.pub3.noafra.ir:1310?encryption=none&security=none&type=tcp&headerType=http&host=play.google.com&path=%2F#FlyB-12
+vless://e3554f72-66cc-4a7d-b4fc-910f077b5897@pxrntcvbyjhdfskmwqlz.pub2.noafra.ir:443?encryption=none&security=none&type=ws&host=play.google.com&path=%2F#FlyB-12
 
-vless://da341b01-094f-4a89-b559-8997a4b984a4@nnxbvccxyzrktjplzmqw.pub3.noafra.ir:1310?encryption=none&security=none&type=tcp&headerType=http&host=play.google.com&path=%2F#FlyB-13
+vless://008cfbcd-7a41-4bb9-be7f-1b9ed8399d2e@ckjfmbhgdqzvxwplyrnt.pub.noafra.ir:443?encryption=none&security=none&type=ws&host=play.google.com&path=%2F#FlyB-13
 
-vless://e3554f72-66cc-4a7d-b4fc-910f077b5897@vnmcbhjfdgsxyzkpwlrq.pub2.noafra.ir:1310?encryption=none&security=none&type=tcp&headerType=http&host=play.google.com&path=%2F#FlyB-14
+vless://008cfbcd-7a41-4bb9-be7f-1b9ed8399d2e@tmqlxpzrycnkjfdbhgvw.pub.noafra.ir:1310?encryption=none&security=none&type=tcp&headerType=http&host=play.google.com&path=%2F#FlyB-14
 
-vless://008cfbcd-7a41-4bb9-be7f-1b9ed8399d2e@vbnnmkjdhdqzvxwplyrn.pub.noafra.ir:1310?encryption=none&security=none&type=tcp&headerType=http&host=play.google.com&path=%2F#FlyB-15
+vless://008cfbcd-7a41-4bb9-be7f-1b9ed8399d2e@lzpxrntcvbyjhdfskmwq.pub.noafra.ir:443?encryption=none&security=none&type=ws&host=play.google.com&path=%2F#FlyB-15
 
-vless://da341b01-094f-4a89-b559-8997a4b984a4@zcvbnmkfjdhlpwqxrytz.pub3.noafra.ir:443?encryption=none&security=none&type=ws&host=play.google.com&path=%2F#FlyB-16
+vless://008cfbcd-7a41-4bb9-be7f-1b9ed8399d2e@xyzkpwlrqvnmcbhjfdgs.pub.noafra.ir:1310?encryption=none&security=none&type=tcp&headerType=http&host=play.google.com&path=%2F#FlyB-16
 
-vless://008cfbcd-7a41-4bb9-be7f-1b9ed8399d2e@lzpxrntcvbyjhdfskmwq.pub.noafra.ir:443?encryption=none&security=none&type=ws&host=play.google.com&path=%2F#FlyB-17
+vless://e3554f72-66cc-4a7d-b4fc-910f077b5897@vnmcbhjfdgsxyzkpwlrq.pub2.noafra.ir:1310?encryption=none&security=none&type=tcp&headerType=http&host=play.google.com&path=%2F#FlyB-17
 
-vless://e3554f72-66cc-4a7d-b4fc-910f077b5897@pxrntcvbyjhdfskmwqlz.pub2.noafra.ir:443?encryption=none&security=none&type=ws&host=play.google.com&path=%2F#FlyB-18
+vless://da341b01-094f-4a89-b559-8997a4b984a4@xzkpjrmtnvbcyfhdslqw.pub3.noafra.ir:1310?encryption=none&security=none&type=tcp&headerType=http&host=play.google.com&path=%2F#FlyB-18
