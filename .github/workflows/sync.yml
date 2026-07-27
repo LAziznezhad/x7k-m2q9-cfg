@@ -25,7 +25,9 @@ jobs:
       - run: pip install -r requirements.txt
       - name: sync
         id: sync
-        run: python sync.py 2>&1 | tee /tmp/sync.log
+        run: |
+          set -o pipefail
+          python sync.py 2>&1 | tee /tmp/sync.log
       - name: commit if changed
         run: |
           git config user.name "github-actions[bot]"
