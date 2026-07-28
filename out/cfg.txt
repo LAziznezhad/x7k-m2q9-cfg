@@ -1,6 +1,6 @@
-vless://e0e92aab-e995-41d3-baa8-e7273deebad1@85.192.24.167:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-1
+vless://e0e92aab-e995-41d3-baa8-e7273deebad1@85.192.24.167:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-1
 
-vless://e0e92aab-e995-41d3-baa8-e7273deebad1@85.192.24.167:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-2
+vless://e0e92aab-e995-41d3-baa8-e7273deebad1@85.192.24.167:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-2
 
 vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=DjZoYfMr.sHiRvAnI24.OrG&sni=DjZoYfMr.sHiRvAnI24.OrG&fp=firefox#FlyV-1
 
