@@ -1,10 +1,10 @@
-vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-1
+vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-1
 
-vless://204c4efa-ac63-42a2-8162-463b03a9303a@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-2
+vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-2
 
-vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-3
+vless://204c4efa-ac63-42a2-8162-463b03a9303a@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-3
 
-vless://204c4efa-ac63-42a2-8162-463b03a9303a@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-4
+vless://204c4efa-ac63-42a2-8162-463b03a9303a@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-4
 
 vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=SdAgUzIw12.jUmBeRlAnD.CoM&sni=SdAgUzIw12.jUmBeRlAnD.CoM&fp=firefox#FlyV-1
 
