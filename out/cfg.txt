@@ -2,20 +2,12 @@ vless://e0e92aab-e995-41d3-baa8-e7273deebad1@85.192.24.167:1310?encryption=none&
 
 vless://e0e92aab-e995-41d3-baa8-e7273deebad1@85.192.24.167:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-2
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=ItSiVnJj9.HaSaNgOt.cOm&sni=ItSiVnJj9.HaSaNgOt.cOm&fp=firefox#FlyV-1
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=DjZoYfMr.sHiRvAnI24.OrG&sni=DjZoYfMr.sHiRvAnI24.OrG&fp=firefox#FlyV-1
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=ItSiVnJj10.hAsAnGoT.CoM&sni=ItSiVnJj10.hAsAnGoT.CoM&fp=firefox#FlyV-2
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=RjNoMeYn.sHiRvAnI24.OrG&sni=RjNoMeYn.sHiRvAnI24.OrG&fp=firefox#FlyV-2
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=ItSiVnJj11.hAsAnGoT.CoM&sni=ItSiVnJj11.hAsAnGoT.CoM&fp=firefox#FlyV-3
+vless://bfbc48f0-1781-4f29-9206-6325908bea10@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=chish3.mashadiebod.org&sni=chish3.mashadiebod.org&fp=firefox#FlyV-3
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=JxWdGeSw9.HaSaNgOt.cOm&sni=JxWdGeSw9.HaSaNgOt.cOm&fp=firefox#FlyV-4
+vless://bfbc48f0-1781-4f29-9206-6325908bea10@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=chish2.mashadiebod.org&sni=chish2.mashadiebod.org&fp=firefox#FlyV-4
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=JxWdGeSw10.hAsAnGoT.CoM&sni=JxWdGeSw10.hAsAnGoT.CoM&fp=firefox#FlyV-5
-
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=JxWdGeSw11.hAsAnGoT.CoM&sni=JxWdGeSw11.hAsAnGoT.CoM&fp=firefox#FlyV-6
-
-vless://bfbc48f0-1781-4f29-9206-6325908bea10@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=chish3.mashadiebod.org&sni=chish3.mashadiebod.org&fp=firefox#FlyV-7
-
-vless://bfbc48f0-1781-4f29-9206-6325908bea10@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=chish2.mashadiebod.org&sni=chish2.mashadiebod.org&fp=firefox#FlyV-8
-
-vless://bfbc48f0-1781-4f29-9206-6325908bea10@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=chish1.mashadiebod.org&sni=chish1.mashadiebod.org&fp=firefox#FlyV-9
+vless://bfbc48f0-1781-4f29-9206-6325908bea10@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=chish1.mashadiebod.org&sni=chish1.mashadiebod.org&fp=firefox#FlyV-5
