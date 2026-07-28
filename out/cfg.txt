@@ -1,15 +1,21 @@
-vless://e0e92aab-e995-41d3-baa8-e7273deebad1@85.192.24.167:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-1
+vless://e0e92aab-e995-41d3-baa8-e7273deebad1@85.192.24.167:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-1
 
-vless://e0e92aab-e995-41d3-baa8-e7273deebad1@85.192.24.167:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-2
+vless://e0e92aab-e995-41d3-baa8-e7273deebad1@85.192.24.167:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-2
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=ItKlMzUj12.sHiRvAnI24.OrG&sni=ItKlMzUj12.sHiRvAnI24.OrG&fp=firefox#FlyV-1
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=AcKgQmDv14.sHiRvAnI24.OrG&sni=AcKgQmDv14.sHiRvAnI24.OrG&fp=firefox#FlyV-1
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=ItKlMzUj14.sHiRvAnI24.OrG&sni=ItKlMzUj14.sHiRvAnI24.OrG&fp=firefox#FlyV-2
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=AcKgQmDv13.sHiRvAnI24.OrG&sni=AcKgQmDv13.sHiRvAnI24.OrG&fp=firefox#FlyV-2
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=ItKlMzUj13.sHiRvAnI24.OrG&sni=ItKlMzUj13.sHiRvAnI24.OrG&fp=firefox#FlyV-3
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=AcKgQmDv12.sHiRvAnI24.OrG&sni=AcKgQmDv12.sHiRvAnI24.OrG&fp=firefox#FlyV-3
 
-vless://bfbc48f0-1781-4f29-9206-6325908bea10@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=sher1.shirvani24.org&sni=sher1.shirvani24.org&fp=firefox#FlyV-4
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=LaHoSsAs13.sHiRvAnI24.OrG&sni=LaHoSsAs13.sHiRvAnI24.OrG&fp=firefox#FlyV-4
 
-vless://bfbc48f0-1781-4f29-9206-6325908bea10@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=sher2.shirvani24.org&sni=sher2.shirvani24.org&fp=firefox#FlyV-5
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=LaHoSsAs14.sHiRvAnI24.OrG&sni=LaHoSsAs14.sHiRvAnI24.OrG&fp=firefox#FlyV-5
 
-vless://bfbc48f0-1781-4f29-9206-6325908bea10@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=sher3.shirvani24.org&sni=sher3.shirvani24.org&fp=firefox#FlyV-6
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=LaHoSsAs12.sHiRvAnI24.OrG&sni=LaHoSsAs12.sHiRvAnI24.OrG&fp=firefox#FlyV-6
+
+vless://bfbc48f0-1781-4f29-9206-6325908bea10@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=sher1.shirvani24.org&sni=sher1.shirvani24.org&fp=firefox#FlyV-7
+
+vless://bfbc48f0-1781-4f29-9206-6325908bea10@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=sher2.shirvani24.org&sni=sher2.shirvani24.org&fp=firefox#FlyV-8
+
+vless://bfbc48f0-1781-4f29-9206-6325908bea10@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=sher3.shirvani24.org&sni=sher3.shirvani24.org&fp=firefox#FlyV-9
