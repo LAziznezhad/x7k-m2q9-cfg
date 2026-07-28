@@ -1,21 +1,21 @@
-vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-1
+vless://674ba8b7-e698-4a6b-b939-76fc2dc53486@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-1
 
 vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-2
 
 vless://674ba8b7-e698-4a6b-b939-76fc2dc53486@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-3
 
-vless://674ba8b7-e698-4a6b-b939-76fc2dc53486@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-4
+vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-4
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=BnSvTfJp13.mAsHgOdE.InFo&sni=BnSvTfJp13.mAsHgOdE.InFo&fp=firefox#FlyV-1
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=PuNiOiGr14.hOoTaA.InFo&sni=PuNiOiGr14.hOoTaA.InFo&fp=firefox#FlyV-1
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=BnSvTfJp12.mAsHgOdE.InFo&sni=BnSvTfJp12.mAsHgOdE.InFo&fp=firefox#FlyV-2
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=PuNiOiGr12.hOoTaA.InFo&sni=PuNiOiGr12.hOoTaA.InFo&fp=firefox#FlyV-2
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=BnSvTfJp14.mAsHgOdE.InFo&sni=BnSvTfJp14.mAsHgOdE.InFo&fp=firefox#FlyV-3
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=PuNiOiGr13.hOoTaA.InFo&sni=PuNiOiGr13.hOoTaA.InFo&fp=firefox#FlyV-3
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=VxXhTmZl12.mAsHgOdE.InFo&sni=VxXhTmZl12.mAsHgOdE.InFo&fp=firefox#FlyV-4
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=BpHlRxKv14.hOoTaA.InFo&sni=BpHlRxKv14.hOoTaA.InFo&fp=firefox#FlyV-4
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=VxXhTmZl13.mAsHgOdE.InFo&sni=VxXhTmZl13.mAsHgOdE.InFo&fp=firefox#FlyV-5
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=BpHlRxKv13.hOoTaA.InFo&sni=BpHlRxKv13.hOoTaA.InFo&fp=firefox#FlyV-5
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=VxXhTmZl14.mAsHgOdE.InFo&sni=VxXhTmZl14.mAsHgOdE.InFo&fp=firefox#FlyV-6
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=BpHlRxKv12.hOoTaA.InFo&sni=BpHlRxKv12.hOoTaA.InFo&fp=firefox#FlyV-6
 
-vless://bfbc48f0-1781-4f29-9206-6325908bea10@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=uj.mashgode.info&sni=uj.mashgode.info&fp=firefox#FlyV-7
+vless://bfbc48f0-1781-4f29-9206-6325908bea10@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=up.hootaa.info&sni=up.hootaa.info&fp=firefox#FlyV-7
