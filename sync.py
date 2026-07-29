@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Remote config sync: Begzar (FlyB) + V2VPN (FlyV)."""
+"""Remote config sync: Begzar (FlyB) + V2VPN (FlyV) + SecretVPN (FlyF)."""
 
 from __future__ import annotations
 
@@ -9,7 +9,9 @@ import hashlib
 import hmac
 import json
 import os
+import random
 import re
+import secrets
 import ssl
 import struct
 import sys
@@ -21,6 +23,10 @@ from pathlib import Path
 try:
     from cryptography.hazmat.primitives.ciphers.aead import ChaCha20Poly1305
     from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+    try:
+        from cryptography.hazmat.decrepit.ciphers.modes import CFB8 as AesCFB8
+    except ImportError:
+        AesCFB8 = modes.CFB8
 except ImportError:
     print("Missing dependency: cryptography")
     sys.exit(1)
@@ -50,6 +56,14 @@ V2_APP_VERSION = "110.4"
 V2_KEY_MATERIAL = (
     "3082058830820370a00302010202146758a70bb36de890068c44ad7aacc3916295d109300d06092a864886f70d01010b05003074310b3009060355040613025553311330110603550408130a43616c69666f726e6961311630140603550407130d4d6f756e7461696e205669657731143012060355040a130b476f6f676c6520496e632e3110300e060355040b1307416e64726f69643110300e06035504031307416e64726f69643020170d3233303732353038333431325a180f32303533303732353038333431325a3074310b3009060355040613025553311330110603550408130a43616c69666f726e6961311630140603550407130d4d6f756e7461696e205669657731143012060355040a130b476f6f676c6520496e632e3110300e060355040b1307416e64726f69643110300e06035504031307416e64726f696430820222300d06092a864886f70d01010105000382020f003082020a02820201008c49d0f0fc4021a93314888f9b39e9491c3283eb1f935499c16ba345806532ee28aa4d6379886d896a24035ebb61096e7808aa500bf7581c2e81b75162d129359cb222635eb4c02d8f684f1da7d398aa299135a7d11966dd6a81ca4a170c4666627256e365afceb519ded2bb8f178329a54b48df15153e0983352629bf10a2a8490a1952ac271f80fc739e6275df2387c99d075b0b11e07ba75ca9d66dfc24a84b6fe728a42c14dcbf58f0b7a7afe59f30e6508d13c62972a1bb41b88d5ab6070ef003e39cc52419433cc4817927789762d3106583fa3a2f3cbb7c1ef63eeabd459eca4c40f660eeb5a065c44e599220aecda307b800188bafc85942ef673569071542d5ef25042857326eb6b9bc4742272f135411ab087e180ce98e70436698a08025827ab9ae1378a15c1ddfc1875d55f77e59f92549d8fad1df0221a9604e8ba037f7a9e5158a1323d5adec12ede3d12e05415a729db3f56f682e82e6f88fb52125ab5c405f5a6510cda324a3ff30a8e4167a98e44fbb26bd3296d49b2e84f95de42a020a79034dd350d3d7a6ef2c50c167fa77e32771b9d83cd8ef21fc1c991b9d96a4ef43e8bf17ed3e02eb251d731e36ffc4917a545267abda88ffe6760e9d13d188345a48018066b14fa44b5f35d1833eefc070c839ca96a92ab1780b2d220c47756ae77865be4a491a2f90650cd45ba2fdf00004a85122f518051a230203010001a310300e300c0603551d13040530030101ff300d06092a864886f70d01010b05000382020100187c534df9768e4df70ef7a0f2949e52cb60b7bc825f8d2b809304c90833fcf747e578b21254499acb5ec9ee723e059bded95f4c42aa41a888cf2413cbec5875096009146b374ce841f7b903625204c3c0b391208b2e4c37bee53aa9c1897f3e09be6934185afcad5d734828e1263a06aa781016b21803cd7aaf00950ca8170c3d426b10df90ffe1e1b37ab7dde3cb2364da96d616268af99c5ccdf5a2daea710ce504484bb7d2f43e44e91f781e24de2f75ae13a2b5f18f4b08b9c24474afc47b989809419dfb7af57af727f9f1c542c202626a2dc43a4ed39391346a7c94c07c6ad4f8d8955332883471ae309d6667eee6a587c81117c857c70cf4595a45085fc20692dbfabb98fa98c7613247a8c28fc89eedd1d331f5b963db91898483097ca20290fddf402ac47c5c6b1ce92c3b1a272282e306dc0057353a7e0931ff676407cf0c757f8111d50c3293d6a639880efa79ba532d99cdb57a5d407698ef6598b6d368311ac7c8995bfddc941f4a5863c43452c474348ad7c5a0fcc084be49fa8d8e720e859e0b67351016df69ac64e0be54dc4dc1f79b1d0a9704598b8a18455d600268eb041297ae8ce6ad7ba34ed818a78dfbafdaec82f20d39c83329109c662b005b25a6de56bff1d254460e4cc137ca9db526352b1290714a78a8fa9b7109298361dd25f8a69b18e282926bff5e5d06f0c3b4a871ea9d01967fa7061ccom.v2ray.v2vpn"
 )
+# Secret VPN / V2rayNet (FlyF) — cert SHA-256 must stay UPPERCASE for auth.
+SV_APK_SHA256 = "87179CAE7B0C68EB9939D437BB4747CEBB24F19F232538749A16C04696BAAC3F"
+SV_PACKAGE = "app.secretvpn.free"
+SV_ADMOB = "ca-app-pub-1957678521576263~7067782716"
+SV_ACTION = "refresh_servers"
+SV_HMAC_SECRET = b"kiunniiokikkkkkkkkkkkkkkkkkkkkkk"
+SV_AES_KEY_MATERIAL = b"MbQeThWmZq4t7w!z%C*F-JaNdRfUjXn2"
+SV_AES_IV = b"TjWnZr4u7x!z%C*F"
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "out" / "cfg.txt"
 
@@ -236,6 +250,89 @@ def fetch_flyv_links() -> list[str]:
     return rename_links(links, "FlyV")
 
 
+def fold_domain_id(value: str) -> str:
+    """Fold SHA-256 three times by half-XOR down to 4 bytes (8 hex chars)."""
+    digest = bytearray(hashlib.sha256(value.encode("utf-8")).digest())
+    for step in range(1, 4):
+        half = 32 // (2 ** step)
+        out = bytearray(half)
+        for i in range(half):
+            out[i] = digest[i] ^ digest[i + half]
+        digest = out
+    return bytes(digest).hex()
+
+
+def build_secretvpn_signature(sha_hex: str, kss: list[int], rts: list[int]) -> str:
+    """Build 32-char key field from APK cert sha hex using kss/rts indices."""
+    chars: list[str] = []
+    for i in range(16):
+        i2 = (i + rts[i]) % 16
+        chars.append(sha_hex[kss[i]])
+        chars.append(sha_hex[kss[i2]])
+    return "".join(chars)
+
+
+def make_secretvpn_token(timestamp: int, nonce: str) -> str:
+    """Build two-stage HMAC-SHA256 token for Secret VPN check.token."""
+    pre = f"{SV_PACKAGE}\n{SV_ADMOB}\n{SV_APK_SHA256}"
+    full = f"{SV_PACKAGE}\n{SV_ADMOB}\n{SV_APK_SHA256}\n{SV_ACTION}\n{timestamp}\n{nonce}"
+    stage1 = hmac.new(SV_HMAC_SECRET, pre.encode("utf-8"), hashlib.sha256).hexdigest()
+    return hmac.new(stage1.encode("utf-8"), full.encode("utf-8"), hashlib.sha256).hexdigest()
+
+
+def decrypt_secretvpn_field(b64: str) -> bytes:
+    """Decrypt Secret VPN API field with AES-256-CFB8."""
+    key = hashlib.md5(SV_AES_KEY_MATERIAL).hexdigest().encode("ascii")
+    decryptor = Cipher(algorithms.AES(key), AesCFB8(SV_AES_IV)).decryptor()
+    return decryptor.update(base64.b64decode(b64)) + decryptor.finalize()
+
+
+def fetch_flyf_links() -> list[str]:
+    """Fetch Secret VPN free servers and rename them as FlyF-*."""
+    timestamp = int(time.time())
+    nonce = secrets.token_hex(16)
+    kss = [random.randrange(64) for _ in range(16)]
+    rts = [random.randrange(0xB237) for _ in range(16)]
+    vld = 17 * random.randrange(0x35EC011) + 17
+    body = {
+        "kss": kss,
+        "rts": rts,
+        "key": build_secretvpn_signature(SV_APK_SHA256, kss, rts),
+        "vld": vld,
+        "check": {
+            "action": SV_ACTION,
+            "timestamp": timestamp,
+            "nonce": nonce,
+            "token": make_secretvpn_token(timestamp, nonce),
+        },
+    }
+    url = f"https://vant{fold_domain_id('1')}.xyz/client/api/v1/servers"
+    raw_body = json.dumps(body, separators=(",", ":")).encode("utf-8")
+    req = urllib.request.Request(
+        url,
+        data=raw_body,
+        method="POST",
+        headers={
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "X-App-Version": "1.0.0",
+        },
+    )
+    ctx = ssl.create_default_context()
+    with urllib.request.urlopen(req, timeout=30, context=ctx) as resp:
+        payload = json.loads(resp.read().decode("utf-8"))
+    if not payload.get("successful"):
+        raise RuntimeError(f"secretvpn failed: {payload}")
+    servers = json.loads(decrypt_secretvpn_field(payload["srv"]).decode("utf-8"))
+    links: list[str] = []
+    for country in servers:
+        for server in country.get("servers") or []:
+            link = urllib.parse.unquote(server.get("config") or "").strip()
+            if link:
+                links.append(link)
+    return rename_links(links, "FlyF")
+
+
 def notify_telegram(text: str) -> None:
     """Send a Telegram message when bot token and chat id env vars are set."""
     token = (os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip()
@@ -270,10 +367,11 @@ def notify_telegram(text: str) -> None:
 
 
 def main() -> int:
-    """Fetch FlyB + FlyV configs into one subscription file and notify Telegram."""
+    """Fetch FlyB + FlyV + FlyF configs into one subscription file and notify Telegram."""
     errors: list[str] = []
     flyb: list[str] = []
     flyv: list[str] = []
+    flyf: list[str] = []
     try:
         flyb = fetch_flyb_links()
     except Exception as exc:
@@ -284,13 +382,24 @@ def main() -> int:
     except Exception as exc:
         errors.append(f"FlyV: {exc}")
         print(f"FlyV failed: {exc}", file=sys.stderr)
-    links = flyb + flyv
+    try:
+        flyf = fetch_flyf_links()
+    except Exception as exc:
+        errors.append(f"FlyF: {exc}")
+        print(f"FlyF failed: {exc}", file=sys.stderr)
+    links = flyb + flyv + flyf
     if not links:
         raise RuntimeError("; ".join(errors) if errors else "no links")
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text("\n\n".join(links) + ("\n" if links else ""), encoding="utf-8")
-    print(f"ok flyb={len(flyb)} flyv={len(flyv)} total={len(links)} path={OUT}")
-    msg = f"✅ x7k sync OK\nFlyB: {len(flyb)}\nFlyV: {len(flyv)}\ntotal: {len(links)}"
+    print(
+        f"ok flyb={len(flyb)} flyv={len(flyv)} flyf={len(flyf)} "
+        f"total={len(links)} path={OUT}"
+    )
+    msg = (
+        f"✅ x7k sync OK\nFlyB: {len(flyb)}\nFlyV: {len(flyv)}\n"
+        f"FlyF: {len(flyf)}\ntotal: {len(links)}"
+    )
     if errors:
         msg += "\n⚠️ " + "; ".join(errors)
     notify_telegram(msg)
