@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Remote config sync: Begzar (FlyB) + V2VPN (FlyV) + SecretVPN (FlyF)."""
+"""Remote config sync: Begzar (FlyB) + V2VPN (FlyV) + SecretVPN (FlyF) + TopVPN (FlyT)."""
 
 from __future__ import annotations
 
@@ -16,13 +16,18 @@ import ssl
 import struct
 import sys
 import time
+import uuid
 import urllib.parse
 import urllib.request
 from pathlib import Path
 
 try:
+    from cryptography.hazmat.backends import default_backend
+    from cryptography.hazmat.primitives import hashes
     from cryptography.hazmat.primitives.ciphers.aead import ChaCha20Poly1305
     from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+    from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+    from cryptography.hazmat.primitives.padding import PKCS7
     try:
         from cryptography.hazmat.decrepit.ciphers.modes import CFB8 as AesCFB8
     except ImportError:
@@ -64,6 +69,11 @@ SV_ACTION = "refresh_servers"
 SV_HMAC_SECRET = b"kiunniiokikkkkkkkkkkkkkkkkkkkkkk"
 SV_AES_KEY_MATERIAL = b"MbQeThWmZq4t7w!z%C*F-JaNdRfUjXn2"
 SV_AES_IV = b"TjWnZr4u7x!z%C*F"
+# TopVPN / SupraVPN (FlyT)
+TV_API_URL = "https://fxgoldensignals.com/TopVPN/v2/api/main.php"
+TV_DECRYPT_PASSWORD = b"pXPWUjFm0hW612tav5Ez"
+TV_PBKDF_ITERATIONS = 10000
+TV_APP_VERSION = "555"
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "out" / "cfg.txt"
 
@@ -333,6 +343,68 @@ def fetch_flyf_links() -> list[str]:
     return rename_links(links, "FlyF")
 
 
+def decrypt_topvpn_payload(blob: str) -> str:
+    """Decrypt TopVPN API body: Base64 -> salt|iv|ct -> PBKDF2-AES-CBC."""
+    data = base64.b64decode(blob.strip())
+    if len(data) < 32:
+        raise ValueError("topvpn encrypted payload too short")
+    salt, iv, ciphertext = data[:16], data[16:32], data[32:]
+    key = PBKDF2HMAC(
+        algorithm=hashes.SHA256(),
+        length=32,
+        salt=salt,
+        iterations=TV_PBKDF_ITERATIONS,
+        backend=default_backend(),
+    ).derive(TV_DECRYPT_PASSWORD)
+    decryptor = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend()).decryptor()
+    padded = decryptor.update(ciphertext) + decryptor.finalize()
+    unpadder = PKCS7(128).unpadder()
+    plain = unpadder.update(padded) + unpadder.finalize()
+    return plain.decode("utf-8")
+
+
+def extract_topvpn_links(payload: dict) -> list[str]:
+    """Collect unique share links from TopVPN defaultServer and Connection_Config."""
+    links: list[str] = []
+    default_cfg = (payload.get("defaultServer") or {}).get("config")
+    if isinstance(default_cfg, str) and "://" in default_cfg:
+        links.append(default_cfg)
+    for server in payload.get("servers") or []:
+        cfg_map = server.get("Connection_Config") or {}
+        if isinstance(cfg_map, dict):
+            for value in cfg_map.values():
+                if isinstance(value, str) and "://" in value:
+                    links.append(value)
+        blob = json.dumps(server, ensure_ascii=False)
+        links.extend(re.findall(r"(?:vless|vmess|trojan|ss)://\S+", blob))
+    return links
+
+
+def fetch_flyt_links() -> list[str]:
+    """Fetch TopVPN free servers and rename them as FlyT-*."""
+    device = uuid.uuid4().hex
+    query = (
+        f"access_token=&GetServerList=&defualtServerID=&device_id={device}"
+        f"&isp=MTN&version={TV_APP_VERSION}&isPartnership=FALSE"
+        f"&t={int(time.time() * 1000)}"
+    )
+    req = urllib.request.Request(
+        f"{TV_API_URL}?{query}",
+        headers={
+            "User-Agent": "okhttp/4.12.0",
+            "Accept": "application/json",
+            "Cache-Control": "no-cache",
+        },
+    )
+    ctx = ssl.create_default_context()
+    with urllib.request.urlopen(req, timeout=40, context=ctx) as resp:
+        text = resp.read().decode("utf-8", errors="replace").strip()
+    if text.startswith("{") and '"status"' in text[:80]:
+        raise RuntimeError(f"topvpn rejected: {text}")
+    payload = json.loads(decrypt_topvpn_payload(text))
+    return rename_links(extract_topvpn_links(payload), "FlyT")
+
+
 def notify_telegram(text: str) -> None:
     """Send a Telegram message when bot token and chat id env vars are set."""
     token = (os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip()
@@ -367,11 +439,12 @@ def notify_telegram(text: str) -> None:
 
 
 def main() -> int:
-    """Fetch FlyB + FlyV + FlyF configs into one subscription file and notify Telegram."""
+    """Fetch FlyB + FlyV + FlyF + FlyT configs into one subscription file and notify Telegram."""
     errors: list[str] = []
     flyb: list[str] = []
     flyv: list[str] = []
     flyf: list[str] = []
+    flyt: list[str] = []
     try:
         flyb = fetch_flyb_links()
     except Exception as exc:
@@ -387,18 +460,23 @@ def main() -> int:
     except Exception as exc:
         errors.append(f"FlyF: {exc}")
         print(f"FlyF failed: {exc}", file=sys.stderr)
-    links = flyb + flyv + flyf
+    try:
+        flyt = fetch_flyt_links()
+    except Exception as exc:
+        errors.append(f"FlyT: {exc}")
+        print(f"FlyT failed: {exc}", file=sys.stderr)
+    links = flyb + flyv + flyf + flyt
     if not links:
         raise RuntimeError("; ".join(errors) if errors else "no links")
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text("\n\n".join(links) + ("\n" if links else ""), encoding="utf-8")
     print(
-        f"ok flyb={len(flyb)} flyv={len(flyv)} flyf={len(flyf)} "
+        f"ok flyb={len(flyb)} flyv={len(flyv)} flyf={len(flyf)} flyt={len(flyt)} "
         f"total={len(links)} path={OUT}"
     )
     msg = (
         f"✅ x7k sync OK\nFlyB: {len(flyb)}\nFlyV: {len(flyv)}\n"
-        f"FlyF: {len(flyf)}\ntotal: {len(links)}"
+        f"FlyF: {len(flyf)}\nFlyT: {len(flyt)}\ntotal: {len(links)}"
     )
     if errors:
         msg += "\n⚠️ " + "; ".join(errors)
