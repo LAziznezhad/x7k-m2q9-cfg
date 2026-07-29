@@ -1,24 +1,24 @@
-vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-1
+vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-1
 
-vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-2
+vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-2
 
-vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-3
+vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-3
 
-vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-4
+vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-4
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=NkMjKxYr12.mIrKaVeH.Ir&sni=NkMjKxYr12.mIrKaVeH.Ir&fp=firefox#FlyV-1
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=BfTjFiMb14.mIrKaVeH.Ir&sni=BfTjFiMb14.mIrKaVeH.Ir&fp=firefox#FlyV-1
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=NkMjKxYr13.mIrKaVeH.Ir&sni=NkMjKxYr13.mIrKaVeH.Ir&fp=firefox#FlyV-2
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=BfTjFiMb12.mIrKaVeH.Ir&sni=BfTjFiMb12.mIrKaVeH.Ir&fp=firefox#FlyV-2
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=NkMjKxYr14.mIrKaVeH.Ir&sni=NkMjKxYr14.mIrKaVeH.Ir&fp=firefox#FlyV-3
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=BfTjFiMb13.mIrKaVeH.Ir&sni=BfTjFiMb13.mIrKaVeH.Ir&fp=firefox#FlyV-3
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=JpPpEfQw12.mIrKaVeH.Ir&sni=JpPpEfQw12.mIrKaVeH.Ir&fp=firefox#FlyV-4
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=LpEjOnQq12.mIrKaVeH.Ir&sni=LpEjOnQq12.mIrKaVeH.Ir&fp=firefox#FlyV-4
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=JpPpEfQw13.mIrKaVeH.Ir&sni=JpPpEfQw13.mIrKaVeH.Ir&fp=firefox#FlyV-5
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=LpEjOnQq13.mIrKaVeH.Ir&sni=LpEjOnQq13.mIrKaVeH.Ir&fp=firefox#FlyV-5
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=JpPpEfQw14.mIrKaVeH.Ir&sni=JpPpEfQw14.mIrKaVeH.Ir&fp=firefox#FlyV-6
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=LpEjOnQq14.mIrKaVeH.Ir&sni=LpEjOnQq14.mIrKaVeH.Ir&fp=firefox#FlyV-6
 
-vless://bfbc48f0-1781-4f29-9206-6325908bea10@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=jiiz.gukairo.ir&sni=jiiz.gukairo.ir&fp=firefox#FlyV-7
+vless://bfbc48f0-1781-4f29-9206-6325908bea10@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=cheap.gukairo.ir&sni=cheap.gukairo.ir&fp=firefox#FlyV-7
 
 vmess://eyJhZGQiOiIxNjUuMTQwLjIxNi4xNDIiLCJhaWQiOiIwIiwiaG9zdCI6IiIsImlkIjoiYjY1YTJkNjktNTYzNC00MmEyLWU0YmUtNTRlOGE2MTc2OTAwIiwibmV0IjoidGNwIiwicGF0aCI6Ii9MZXZpa29Db25maWciLCJwb3J0IjoiNDQzIiwicHMiOiJGbHlGLTEiLCJzY3kiOiJhdXRvIiwic2tpcC1jZXJ0LXZlcmlmeSI6dHJ1ZSwic25pIjoiIiwidGVzdF9uYW1lIjoiVVM0IiwidGxzIjoiIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9#FlyF-1
 
