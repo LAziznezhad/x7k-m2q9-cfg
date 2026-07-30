@@ -1,26 +1,26 @@
-vless://8ae38692-8c0f-428a-a51f-8a2621dad6ac@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-1
+vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-1
 
-vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-2
+vless://8ae38692-8c0f-428a-a51f-8a2621dad6ac@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-2
 
-vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-3
+vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-3
 
 vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-4
 
-vless://8ae38692-8c0f-428a-a51f-8a2621dad6ac@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-5
+vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-5
 
-vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-6
+vless://8ae38692-8c0f-428a-a51f-8a2621dad6ac@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-6
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=XiNjUuDz12.nEsHaN.InFo&sni=XiNjUuDz12.nEsHaN.InFo&fp=firefox#FlyV-1
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=JnXeUpMq12.jOuRiNg.hOmEs&sni=JnXeUpMq12.jOuRiNg.hOmEs&fp=firefox#FlyV-1
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=XiNjUuDz14.nEsHaN.InFo&sni=XiNjUuDz14.nEsHaN.InFo&fp=firefox#FlyV-2
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=JnXeUpMq13.jOuRiNg.hOmEs&sni=JnXeUpMq13.jOuRiNg.hOmEs&fp=firefox#FlyV-2
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=XiNjUuDz13.nEsHaN.InFo&sni=XiNjUuDz13.nEsHaN.InFo&fp=firefox#FlyV-3
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=JnXeUpMq14.jOuRiNg.hOmEs&sni=JnXeUpMq14.jOuRiNg.hOmEs&fp=firefox#FlyV-3
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=LhAgIxWs12.nEsHaN.InFo&sni=LhAgIxWs12.nEsHaN.InFo&fp=firefox#FlyV-4
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=XgJxBoPz14.jOuRiNg.hOmEs&sni=XgJxBoPz14.jOuRiNg.hOmEs&fp=firefox#FlyV-4
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=LhAgIxWs14.nEsHaN.InFo&sni=LhAgIxWs14.nEsHaN.InFo&fp=firefox#FlyV-5
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=XgJxBoPz13.jOuRiNg.hOmEs&sni=XgJxBoPz13.jOuRiNg.hOmEs&fp=firefox#FlyV-5
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=LhAgIxWs13.nEsHaN.InFo&sni=LhAgIxWs13.nEsHaN.InFo&fp=firefox#FlyV-6
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=XgJxBoPz12.jOuRiNg.hOmEs&sni=XgJxBoPz12.jOuRiNg.hOmEs&fp=firefox#FlyV-6
 
 vless://bfbc48f0-1781-4f29-9206-6325908bea10@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=ItGrVgLq0.GuKaIrO.Ir&sni=ItGrVgLq0.GuKaIrO.Ir&fp=firefox#FlyV-7
 
