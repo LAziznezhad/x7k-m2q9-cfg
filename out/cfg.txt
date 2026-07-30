@@ -1,14 +1,14 @@
 vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-1
 
-vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-2
+vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-2
 
-vless://8ae38692-8c0f-428a-a51f-8a2621dad6ac@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-3
+vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-3
 
-vless://8ae38692-8c0f-428a-a51f-8a2621dad6ac@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-4
+vless://8ae38692-8c0f-428a-a51f-8a2621dad6ac@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-4
 
-vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-5
+vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-5
 
-vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-6
+vless://8ae38692-8c0f-428a-a51f-8a2621dad6ac@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-6
 
 vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=XiNjUuDz12.nEsHaN.InFo&sni=XiNjUuDz12.nEsHaN.InFo&fp=firefox#FlyV-1
 
@@ -40,9 +40,9 @@ trojan://-----------BanV2ray----------@37.156.45.60:438?Telegram=@GozargahAzad,@
 
 vmess://eyJhZGQiOiI5MS4xMDcuMTM5LjE4NiIsImFpZCI6IjAiLCJob3N0IjoiIiwiaWQiOiI1MDBjZGM4My1iMTg5LTRkNzktYjA2Yi0xMzljNzk3MmE1N2YiLCJuZXQiOiJ0Y3AiLCJwYXRoIjoiIiwicG9ydCI6IjUxNDU5IiwicHMiOiJGbHlGLTgiLCJzY3kiOiJhdXRvIiwic25pIjoiIiwidGxzIjoibm9uZSIsInR5cGUiOiJub25lIiwidiI6IjIifQ==#FlyF-8
 
-vless://e996abc7-cff3-4d9f-a9dc-0d717048a345@germany2.avrilon.us:443?security=reality&encryption=mlkem768x25519plus.native.0rtt.IU93_zTVl-948HR94z9259IKoTU_qSM_0ttmIUamVh8&pbk=rA_ItMaIiG_OUjcaTLpxOoF-OHh4WJsNUfWh7QUn_xU&headerType=none&fp=chrome&spx=/49b9d6fab1f9e6c&type=tcp&flow=xtls-rprx-vision&sni=image.semiconductor.samsung.com&sid=2f3178a1d747#FlyF-9
+vless://055a1ce8-2a16-4a0d-a2c2-22826c9b2413@47.253.226.114:443?security=reality&encryption=none&pbk=Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc&host=BIA_TELEGRAM?=@ShadowFlux2---@ShadowFlux2---@ShadowFlux2---@ShadowFlux2---@ShadowFlux2&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=www.cloudflare.com#FlyF-9
 
-vless://055a1ce8-2a16-4a0d-a2c2-22826c9b2413@47.253.226.114:443?security=reality&encryption=none&pbk=Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc&host=BIA_TELEGRAM?=@ShadowFlux2---@ShadowFlux2---@ShadowFlux2---@ShadowFlux2---@ShadowFlux2&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=www.cloudflare.com#FlyF-10
+vless://e996abc7-cff3-4d9f-a9dc-0d717048a345@germany2.avrilon.us:443?security=reality&encryption=mlkem768x25519plus.native.0rtt.IU93_zTVl-948HR94z9259IKoTU_qSM_0ttmIUamVh8&pbk=rA_ItMaIiG_OUjcaTLpxOoF-OHh4WJsNUfWh7QUn_xU&headerType=none&fp=chrome&spx=/49b9d6fab1f9e6c&type=tcp&flow=xtls-rprx-vision&sni=image.semiconductor.samsung.com&sid=2f3178a1d747#FlyF-10
 
 vless://c90fdc71-d7ac-4b66-8c0c-2be2a7b4ae0c@45.95.233.185:19168?security=reality&spx=/&serviceName=api&fp=chrome&mode=multi&sni=apple.com&pbk=j9-PqbvTxOh3VZ_Sz696WKpEEFvft1CzUzzIvGCJn0w&sid=baeaf515feed2c64&encryption=none&type=grpc#FlyF-11
 
