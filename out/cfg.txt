@@ -1,10 +1,10 @@
-vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-1
+vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-1
 
 vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-2
 
-vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-3
+vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-3
 
-vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-4
+vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-4
 
 vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=KeNhQtCs12.nEsHaN.InFo&sni=KeNhQtCs12.nEsHaN.InFo&fp=firefox#FlyV-1
 
@@ -42,9 +42,9 @@ vless://e996abc7-cff3-4d9f-a9dc-0d717048a345@germany2.avrilon.us:443?security=re
 
 vless://c90fdc71-d7ac-4b66-8c0c-2be2a7b4ae0c@45.95.233.185:19168?security=reality&spx=/&serviceName=api&fp=chrome&mode=multi&sni=apple.com&pbk=j9-PqbvTxOh3VZ_Sz696WKpEEFvft1CzUzzIvGCJn0w&sid=baeaf515feed2c64&encryption=none&type=grpc#FlyF-11
 
-vless://9e1b3859-634f-4dc9-8f59-848a1216f47c@94.143.231.53:39200?security=none&encryption=none&headerType=http&type=tcp#FlyF-12
+vmess://eyJhZGQiOiI5MS4xMDcuMTM5LjE4NiIsImFpZCI6IjAiLCJhbHBuIjoiIiwiZnAiOiIiLCJob3N0IjoiIiwiaWQiOiI1MDBjZGM4My1iMTg5LTRkNzktYjA2Yi0xMzljNzk3MmE1N2YiLCJpbnNlY3VyZSI6IjAiLCJuZXQiOiJ0Y3AiLCJwYXRoIjoiIiwicGNzIjoiIiwicG9ydCI6IjUxNDU5IiwicHMiOiJGbHlGLTEyIiwic2N5IjoiYXV0byIsInNuaSI6IiIsInRscyI6Im5vbmUiLCJ0eXBlIjoibm9uZSIsInYiOiIyIiwidmNuIjoiIn0=#FlyF-12
 
-vmess://eyJhZGQiOiI5MS4xMDcuMTM5LjE4NiIsImFpZCI6IjAiLCJhbHBuIjoiIiwiZnAiOiIiLCJob3N0IjoiIiwiaWQiOiI1MDBjZGM4My1iMTg5LTRkNzktYjA2Yi0xMzljNzk3MmE1N2YiLCJpbnNlY3VyZSI6IjAiLCJuZXQiOiJ0Y3AiLCJwYXRoIjoiIiwicGNzIjoiIiwicG9ydCI6IjUxNDU5IiwicHMiOiJGbHlGLTEzIiwic2N5IjoiYXV0byIsInNuaSI6IiIsInRscyI6Im5vbmUiLCJ0eXBlIjoibm9uZSIsInYiOiIyIiwidmNuIjoiIn0=#FlyF-13
+vless://9e1b3859-634f-4dc9-8f59-848a1216f47c@94.143.231.53:39200?security=none&encryption=none&headerType=http&type=tcp#FlyF-13
 
 trojan://humanity@208.103.161.170:443?Telegram=@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad&allowInsecure=0&fp=chrome&security=tls&sni=www.calmloud.com&host=www.calmloud.com&alpn=http/1.1&insecure=0&type=ws&path=/assignment#FlyF-14
 
