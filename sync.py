@@ -774,8 +774,12 @@ def main() -> int:
         f"flyexo={len(flyexo)} total={len(links)} path={OUT}"
     )
     msg = (
-        f"✅ x7k sync OK\nFlyB: {len(flyb)}\nFlyV: {len(flyv)}\n"
-        f"FlyF: {len(flyf)}\nFlyT: {len(flyt)}\nFlyExo: {len(flyexo)}\n"
+        f"✅ x7k sync OK\n"
+        f"FlyB · Begzar: {len(flyb)}\n"
+        f"FlyV · V2VPN: {len(flyv)}\n"
+        f"FlyF · Secret VPN: {len(flyf)}\n"
+        f"FlyT · TopVPN: {len(flyt)}\n"
+        f"FlyExo · ExoVPN: {len(flyexo)}\n"
         f"total: {len(links)}"
     )
     if errors:
