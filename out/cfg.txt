@@ -1,8 +1,8 @@
 vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-1
 
-vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-2
+vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-2
 
-vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-3
+vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-3
 
 vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-4
 
@@ -22,9 +22,9 @@ vmess://eyJhZGQiOiIxNjUuMTQwLjIxNi4xNDEiLCJhaWQiOiIwIiwiYWxwbiI6IiIsImZwIjoiIiwi
 
 trojan://-----------BanV2ray----------@37.156.45.60:438?Telegram=@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad&security=reality&sni=world.yahoo.com:443&fp=chrome&pbk=TbFPp3kXrmos-f7Cfpm21TZcFtAEJwsF_G9CABhIlUc&sid=4a76cd52&spx=/0a7fbfe99dc4e8f&allowinsecure=1&type=grpc&mode=gun&authority=&serviceName=#FlyF-6
 
-vmess://eyJhZGQiOiI5MS4xMDcuMTM5LjE4NiIsImFpZCI6IjAiLCJob3N0IjoiIiwiaWQiOiI1MDBjZGM4My1iMTg5LTRkNzktYjA2Yi0xMzljNzk3MmE1N2YiLCJuZXQiOiJ0Y3AiLCJwYXRoIjoiIiwicG9ydCI6IjUxNDU5IiwicHMiOiJGbHlGLTciLCJzY3kiOiJhdXRvIiwic25pIjoiIiwidGxzIjoibm9uZSIsInR5cGUiOiJub25lIiwidiI6IjIifQ==#FlyF-7
+vmess://eyJhZGQiOiIxNjUuMTQwLjIxNi4xNDIiLCJhaWQiOiIwIiwiaG9zdCI6IiIsImlkIjoiYjY1YTJkNjktNTYzNC00MmEyLWU0YmUtNTRlOGE2MTc2OTAwIiwibmV0IjoidGNwIiwicGF0aCI6IiIsInBvcnQiOiI0NDMiLCJwcyI6IkZseUYtNyIsInNjeSI6ImF1dG8iLCJza2lwLWNlcnQtdmVyaWZ5Ijp0cnVlLCJzbmkiOiIiLCJ0ZXN0X25hbWUiOiJVUzIiLCJ0bHMiOiIiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=#FlyF-7
 
-vmess://eyJhZGQiOiIxNjUuMTQwLjIxNi4xNDIiLCJhaWQiOiIwIiwiaG9zdCI6IiIsImlkIjoiYjY1YTJkNjktNTYzNC00MmEyLWU0YmUtNTRlOGE2MTc2OTAwIiwibmV0IjoidGNwIiwicGF0aCI6IiIsInBvcnQiOiI0NDMiLCJwcyI6IkZseUYtOCIsInNjeSI6ImF1dG8iLCJza2lwLWNlcnQtdmVyaWZ5Ijp0cnVlLCJzbmkiOiIiLCJ0ZXN0X25hbWUiOiJVUzIiLCJ0bHMiOiIiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=#FlyF-8
+vmess://eyJhZGQiOiI5MS4xMDcuMTM5LjE4NiIsImFpZCI6IjAiLCJob3N0IjoiIiwiaWQiOiI1MDBjZGM4My1iMTg5LTRkNzktYjA2Yi0xMzljNzk3MmE1N2YiLCJuZXQiOiJ0Y3AiLCJwYXRoIjoiIiwicG9ydCI6IjUxNDU5IiwicHMiOiJGbHlGLTgiLCJzY3kiOiJhdXRvIiwic25pIjoiIiwidGxzIjoibm9uZSIsInR5cGUiOiJub25lIiwidiI6IjIifQ==#FlyF-8
 
 vless://055a1ce8-2a16-4a0d-a2c2-22826c9b2413@47.253.226.114:443?security=reality&encryption=none&pbk=Svl81isn16RPAFnjtmYw7A6TPnsEPLHuYYaJht65Rzc&host=BIA_TELEGRAM?=@ShadowFlux2---@ShadowFlux2---@ShadowFlux2---@ShadowFlux2---@ShadowFlux2&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=www.cloudflare.com#FlyF-9
 
