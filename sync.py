@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Remote config sync: Begzar (FlyB) + V2VPN (FlyV) + SecretVPN (FlyF) + TopVPN (FlyT)."""
+"""Remote config sync: Begzar (FlyB) + V2VPN (FlyV) + SecretVPN (FlyF) + TopVPN (FlyT) + ExoVPN (FlyExo)."""
 
 from __future__ import annotations
 
@@ -19,6 +19,7 @@ import time
 import uuid
 import urllib.parse
 import urllib.request
+from datetime import datetime, timezone
 from pathlib import Path
 
 try:
@@ -74,6 +75,33 @@ TV_API_URL = "https://fxgoldensignals.com/TopVPN/v2/api/main.php"
 TV_DECRYPT_PASSWORD = b"pXPWUjFm0hW612tav5Ez"
 TV_PBKDF_ITERATIONS = 10000
 TV_APP_VERSION = "555"
+# ExoVPN (FlyExo)
+EXO_API_URL = "https://oxekinl.com/f887c412-f267-4014-8512-e72c88f0fdfd"
+EXO_ANSWER = "tfodogfxklkfanoxuyrskuvnx"
+EXO_PRIME = int(
+    "115792089237316195423570985008687907853269984665640564039457584007913129319283"
+)
+EXO_D_CONST = "aK9zP3LmX7qT2vR8bN5"
+EXO_SEED = "hT5Kp9Qa"
+EXO_DATE_XOR = 6510615555426900570
+EXO_DATE_MOD = 1000000007
+EXO_ALPHA = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+EXO_ALPHA_FROM = (
+    "!@#$%^&*()-=_+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+)
+EXO_ALPHA_TO = (
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-=_+"
+)
+EXO_SHARE_PREFIXES = (
+    "vless://",
+    "vmess://",
+    "trojan://",
+    "ss://",
+    "ssr://",
+    "hysteria://",
+    "hysteria2://",
+    "tuic://",
+)
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "out" / "cfg.txt"
 
@@ -405,6 +433,271 @@ def fetch_flyt_links() -> list[str]:
     return rename_links(extract_topvpn_links(payload), "FlyT")
 
 
+def exo_xor_strings(a: str, b: str) -> str:
+    """XOR two strings cyclically, like ExoVPN X.Y.D.a."""
+    return "".join(
+        chr(ord(a[i % len(a)]) ^ ord(b[i % len(b)]))
+        for i in range(max(len(a), len(b)))
+    )
+
+
+def exo_checksum(text: str) -> str:
+    """Compute ExoVPN request check header: sum((i+1)*char)."""
+    return str(sum((i + 1) * ord(ch) for i, ch in enumerate(text)))
+
+
+def exo_encrypt_body(plaintext: str, check: str) -> str:
+    """Encrypt ExoVPN POST body (port of packed X.Y.D.b)."""
+    day = datetime.now(timezone.utc).day
+    day_hex = hashlib.sha256(str(day).encode("utf-8")).hexdigest()
+    key_seed = exo_xor_strings(exo_xor_strings(check, day_hex), EXO_D_CONST)
+    key = hashlib.sha256(key_seed.encode("utf-8")).digest()[:16]
+    pad_len = day + 100
+    stream = bytes(random.randrange(256) for _ in range(pad_len))
+    filler = bytes(random.randrange(256) for _ in range(100))
+    raw = plaintext.encode("utf-8")
+    xored = bytes(raw[i] ^ stream[i % pad_len] for i in range(len(raw)))
+    interleaved = bytearray(len(raw) * 2)
+    payload_i = 0
+    for i in range(len(interleaved)):
+        if i % 2 != 0 or payload_i >= len(raw):
+            interleaved[i] = filler[i % 100]
+        else:
+            interleaved[i] = xored[payload_i]
+            payload_i += 1
+    blob = stream + bytes(interleaved)
+    padder = PKCS7(128).padder()
+    padded = padder.update(blob) + padder.finalize()
+    encryptor = Cipher(
+        algorithms.AES(key), modes.ECB(), backend=default_backend()
+    ).encryptor()
+    encrypted = encryptor.update(padded) + encryptor.finalize()
+    check_bytes = check.encode("utf-8")
+    mixed = bytes(
+        check_bytes[i % len(check_bytes)] ^ encrypted[i] for i in range(len(encrypted))
+    )
+    mixed = bytes(b ^ len(check) for b in mixed)
+    filler2 = bytes(random.randrange(256) for _ in range(100))
+    out = bytearray(len(mixed) * 2)
+    payload_i = 0
+    for i in range(len(out)):
+        if i % 2 != 0 or payload_i >= len(mixed):
+            out[i] = filler2[i % 100]
+        else:
+            out[i] = mixed[payload_i]
+            payload_i += 1
+    for i in range(len(out)):
+        j = i + 8
+        if j < len(out):
+            out[i], out[j] = out[j], out[i]
+    return base64.b64encode(bytes(out)).decode("ascii")
+
+
+def exo_date_aes_key() -> bytes:
+    """Build 16-byte AES key from GMT yyyyMMdd + seed (X.Y.A0)."""
+    date = datetime.now(timezone.utc).strftime("%Y%m%d")
+    val = str((int(date) ^ EXO_DATE_XOR) % EXO_DATE_MOD)
+    out: list[str] = []
+    i_seed = 0
+    i_val = 0
+    while i_seed < len(EXO_SEED) or i_val < len(val):
+        if i_seed < len(EXO_SEED):
+            out.append(EXO_SEED[i_seed])
+            i_seed += 1
+        if i_val < len(val):
+            out.append(val[i_val])
+            i_val += 1
+    key = "".join(out)
+    if len(key) > 16:
+        key = key[:16]
+    elif len(key) < 16:
+        key = key.ljust(16, "0")
+    return key.encode("utf-8")
+
+
+def exo_transform_chars(chars: list[str]) -> None:
+    """Apply ExoVPN alphabet map, XOR 'Z', and deterministic shuffle in-place."""
+    for i, ch in enumerate(chars):
+        idx = EXO_ALPHA_FROM.find(ch)
+        if idx >= 0:
+            chars[i] = EXO_ALPHA_TO[idx]
+    for i in range(len(chars)):
+        chars[i] = chr(ord(chars[i]) ^ ord("Z"))
+    length = len(chars) - 1
+    while length >= 0:
+        j = ((length * 7) + 3) % len(chars)
+        chars[length], chars[j] = chars[j], chars[length]
+        length -= 1
+
+
+def exo_decrypt_data(cipher_b64: str) -> str:
+    """Decrypt ExoVPN response data field (port of packed X.Y.A0.a)."""
+    key = exo_date_aes_key()
+    chars = list(base64.b64decode(cipher_b64).decode("latin-1"))
+    exo_transform_chars(chars)
+    ciphertext = base64.b64decode("".join(chars))
+    decryptor = Cipher(
+        algorithms.AES(key), modes.ECB(), backend=default_backend()
+    ).decryptor()
+    padded = decryptor.update(ciphertext) + decryptor.finalize()
+    unpadder = PKCS7(128).unpadder()
+    plain = unpadder.update(padded) + unpadder.finalize()
+    chars2 = list(plain.decode("utf-8"))
+    exo_transform_chars(chars2)
+    return "".join(chars2)
+
+
+def exo_build_request_json() -> str:
+    """Build ExoVPN signed JSON body with Nonce/key1/key2 metadata."""
+    nonce = str(uuid.uuid4())
+
+    def rand_token() -> str:
+        n = max(10, random.randint(0, 59))
+        return "".join(EXO_ALPHA[random.randrange(len(EXO_ALPHA))] for _ in range(n))
+
+    obj: dict = {}
+    obj[rand_token()] = rand_token()
+    obj["Nonce"] = nonce
+    obj["VersionName"] = "1.0"
+    obj["VersionCode"] = "20260426"
+    now = datetime.now(timezone.utc)
+    hour_bytes = struct.pack(">i", now.hour)
+    minute_bytes = struct.pack(">i", now.minute)
+    nonce_bytes = nonce.encode("utf-8")
+    size = max(len(nonce_bytes), len(hour_bytes))
+    matrix = bytearray()
+    for i in range(size):
+        for j in range(size):
+            matrix.append(
+                (nonce_bytes[i % len(nonce_bytes)] * hour_bytes[j % len(hour_bytes)])
+                & 255
+            )
+    obj["key1"] = base64.b64encode(bytes(matrix)).decode("ascii")
+    base = int.from_bytes(nonce_bytes, "big", signed=True)
+    exp = int.from_bytes(minute_bytes, "big", signed=True)
+    obj["key2"] = base64.b64encode(
+        str(pow(base, exp, EXO_PRIME)).encode("utf-8")
+    ).decode("ascii")
+    obj["key3"] = ""
+    obj["key4"] = "---"
+    obj["key5"] = "unknown"
+    obj["key6"] = "google"
+    obj["key7"] = "sdk_gphone64_arm64"
+    obj["key9"] = EXO_API_URL
+    return json.dumps(obj, separators=(",", ":"), ensure_ascii=False)
+
+
+def extract_exo_share_links(payload: dict) -> list[str]:
+    """Collect share URIs from ExoVPN Configs_app / Configs_sp / Configs_vip."""
+    links: list[str] = []
+    for section in ("Configs_app", "Configs_sp", "Configs_vip"):
+        for block in payload.get(section) or []:
+            items = (
+                block.get("config_items")
+                if isinstance(block, dict) and "config_items" in block
+                else ([block] if isinstance(block, dict) else [])
+            )
+            for item in items or []:
+                content = (item or {}).get("config_content") or ""
+                if isinstance(content, str) and content.strip().lower().startswith(
+                    EXO_SHARE_PREFIXES
+                ):
+                    links.append(content.strip())
+    return links
+
+
+def exo_doh_a(host: str) -> str | None:
+    """Resolve A record via Cloudflare DoH to avoid local fake-IP DNS."""
+    req = urllib.request.Request(
+        f"https://cloudflare-dns.com/dns-query?name={host}&type=A",
+        headers={"Accept": "application/dns-json"},
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.loads(resp.read().decode("utf-8", errors="replace"))
+        for item in data.get("Answer") or []:
+            if item.get("type") == 1 and item.get("data"):
+                return str(item["data"])
+    except Exception:
+        return None
+    return None
+
+
+def exo_post_encrypted(encrypted: str, check: str) -> dict:
+    """POST encrypted ExoVPN body; fall back to curl+DoH when local DNS is poisoned."""
+    token = base64.b64encode(EXO_ANSWER.encode("utf-8")).decode("ascii")
+    headers = {
+        "token": token,
+        "lang": "en",
+        "check": check,
+        "Content-Type": "application/json; charset=utf-8",
+        "User-Agent": "okhttp/4.12.0",
+        "Accept-Encoding": "identity",
+    }
+    body = encrypted.encode("utf-8")
+    req = urllib.request.Request(EXO_API_URL, data=body, headers=headers, method="POST")
+    ctx = ssl.create_default_context()
+    try:
+        with urllib.request.urlopen(req, timeout=45, context=ctx) as resp:
+            raw = resp.read().decode("utf-8", errors="replace")
+        return json.loads(raw)
+    except Exception as primary_exc:
+        host = urllib.parse.urlparse(EXO_API_URL).hostname or "oxekinl.com"
+        ip = exo_doh_a(host)
+        if not ip:
+            raise primary_exc
+        import subprocess
+        import tempfile
+
+        with tempfile.NamedTemporaryFile("w", delete=False) as tmp:
+            tmp.write(encrypted)
+            tmp_path = tmp.name
+        try:
+            cmd = [
+                "curl",
+                "-sS",
+                "--http1.1",
+                "--resolve",
+                f"{host}:443:{ip}",
+                "-X",
+                "POST",
+                EXO_API_URL,
+                "-H",
+                f"token: {token}",
+                "-H",
+                "lang: en",
+                "-H",
+                f"check: {check}",
+                "-H",
+                "Content-Type: application/json; charset=utf-8",
+                "-H",
+                "User-Agent: okhttp/4.12.0",
+                "--data-binary",
+                f"@{tmp_path}",
+                "--max-time",
+                "45",
+            ]
+            out = subprocess.check_output(cmd)
+            return json.loads(out.decode("utf-8", errors="replace"))
+        finally:
+            try:
+                os.unlink(tmp_path)
+            except OSError:
+                pass
+
+
+def fetch_flyexo_links() -> list[str]:
+    """Fetch ExoVPN free share links and rename them as FlyExo-*."""
+    body_json = exo_build_request_json()
+    check = exo_checksum(body_json)
+    encrypted = exo_encrypt_body(body_json, check)
+    parsed = exo_post_encrypted(encrypted, check)
+    if parsed.get("status") != 200 or not parsed.get("data"):
+        raise RuntimeError(f"exovpn rejected: {json.dumps(parsed)[:300]}")
+    payload = json.loads(exo_decrypt_data(parsed["data"]))
+    return rename_links(extract_exo_share_links(payload), "FlyExo")
+
+
 def notify_telegram(text: str) -> None:
     """Send a Telegram message when bot token and chat id env vars are set."""
     token = (os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip()
@@ -439,12 +732,13 @@ def notify_telegram(text: str) -> None:
 
 
 def main() -> int:
-    """Fetch FlyB + FlyV + FlyF + FlyT configs into one subscription file and notify Telegram."""
+    """Fetch FlyB + FlyV + FlyF + FlyT + FlyExo configs into one subscription file and notify Telegram."""
     errors: list[str] = []
     flyb: list[str] = []
     flyv: list[str] = []
     flyf: list[str] = []
     flyt: list[str] = []
+    flyexo: list[str] = []
     try:
         flyb = fetch_flyb_links()
     except Exception as exc:
@@ -465,18 +759,24 @@ def main() -> int:
     except Exception as exc:
         errors.append(f"FlyT: {exc}")
         print(f"FlyT failed: {exc}", file=sys.stderr)
-    links = flyb + flyv + flyf + flyt
+    try:
+        flyexo = fetch_flyexo_links()
+    except Exception as exc:
+        errors.append(f"FlyExo: {exc}")
+        print(f"FlyExo failed: {exc}", file=sys.stderr)
+    links = flyb + flyv + flyf + flyt + flyexo
     if not links:
         raise RuntimeError("; ".join(errors) if errors else "no links")
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text("\n\n".join(links) + ("\n" if links else ""), encoding="utf-8")
     print(
         f"ok flyb={len(flyb)} flyv={len(flyv)} flyf={len(flyf)} flyt={len(flyt)} "
-        f"total={len(links)} path={OUT}"
+        f"flyexo={len(flyexo)} total={len(links)} path={OUT}"
     )
     msg = (
         f"✅ x7k sync OK\nFlyB: {len(flyb)}\nFlyV: {len(flyv)}\n"
-        f"FlyF: {len(flyf)}\nFlyT: {len(flyt)}\ntotal: {len(links)}"
+        f"FlyF: {len(flyf)}\nFlyT: {len(flyt)}\nFlyExo: {len(flyexo)}\n"
+        f"total: {len(links)}"
     )
     if errors:
         msg += "\n⚠️ " + "; ".join(errors)
