@@ -742,27 +742,27 @@ def main() -> int:
     try:
         flyb = fetch_flyb_links()
     except Exception as exc:
-        errors.append(f"FlyB: {exc}")
+        errors.append(f"FlyB · Begzar: {exc}")
         print(f"FlyB failed: {exc}", file=sys.stderr)
     try:
         flyv = fetch_flyv_links()
     except Exception as exc:
-        errors.append(f"FlyV: {exc}")
+        errors.append(f"FlyV · V2VPN: {exc}")
         print(f"FlyV failed: {exc}", file=sys.stderr)
     try:
         flyf = fetch_flyf_links()
     except Exception as exc:
-        errors.append(f"FlyF: {exc}")
+        errors.append(f"FlyF · Secret VPN: {exc}")
         print(f"FlyF failed: {exc}", file=sys.stderr)
     try:
         flyt = fetch_flyt_links()
     except Exception as exc:
-        errors.append(f"FlyT: {exc}")
+        errors.append(f"FlyT · TopVPN: {exc}")
         print(f"FlyT failed: {exc}", file=sys.stderr)
     try:
         flyexo = fetch_flyexo_links()
     except Exception as exc:
-        errors.append(f"FlyExo: {exc}")
+        errors.append(f"FlyExo · ExoVPN: {exc}")
         print(f"FlyExo failed: {exc}", file=sys.stderr)
     links = flyb + flyv + flyf + flyt + flyexo
     if not links:
