@@ -1,14 +1,14 @@
-vless://8ae38692-8c0f-428a-a51f-8a2621dad6ac@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-1
+vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-1
 
-vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-2
+vless://8ae38692-8c0f-428a-a51f-8a2621dad6ac@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-2
 
-vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-3
+vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-3
 
-vless://8ae38692-8c0f-428a-a51f-8a2621dad6ac@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-4
+vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-4
 
-vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-5
+vless://8ae38692-8c0f-428a-a51f-8a2621dad6ac@138.199.238.109:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-5
 
-vless://2fa7f7f5-4f0d-44e8-a501-95293ec9c267@138.199.238.109:443?encryption=none&host=play.google.com&path=%2F&security=none&type=ws#FlyB-6
+vless://ffd2905b-748c-40a6-880e-ff8ae227903f@85.192.24.167:1310?encryption=none&headerType=http&host=play.google.com&path=%2F&security=none&type=tcp#FlyB-6
 
 vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=XiNjUuDz12.nEsHaN.InFo&sni=XiNjUuDz12.nEsHaN.InFo&fp=firefox#FlyV-1
 
@@ -80,9 +80,9 @@ vless://df4bda66-59d7-4b79-abd0-0e4ee14d7c70@188.130.207.217:443?encryption=none
 
 vless://89049f79-320b-48a0-b1cf-110165cae30c@83.228.250.119:2083?security=reality&encryption=none&pbk=l1Ekgk-8T5rB-yolp5OIpc0XZTcd2gBeqmIR2bytKXY&headerType=none&fp=chrome&spx=/&type=tcp&flow=xtls-rprx-vision&sni=www.yahoo.com&sid=4e590fdc#FlyF-28
 
-vmess://eyJ2IjoiMiIsInBzIjoiRmx5Ri0yOSIsImFkZCI6Ijc0LjIxMS4xMDIuMTc5IiwicG9ydCI6IjIwMDAxIiwiaWQiOiI3ZjVmMDcwNS0zZGZiLTRmNTYtOTY1Ny1jOTVjYWRlMmJhODMiLCJhaWQiOiIwIiwic2N5IjoiYXV0byIsIm5ldCI6InRjcCIsInR5cGUiOiJub25lIiwiaG9zdCI6IiIsInBhdGgiOiIiLCJ0bHMiOiIiLCJzbmkiOiIiLCJ0ZXN0X25hbWUiOiJVUzIifQ==#FlyF-29
+vmess://eyJhZGQiOiIzOC4xMDcuMjM0LjU3IiwiYWlkIjowLCJob3N0IjoiM2gta2F6YWtoc3RhbjEuMDl2cG4uY29tIiwiaWQiOiI1NjdmNGJlNS0xMmFiLTQyZTEtYjhkOS1kYjZmZDFmZGQzMWMiLCJuZXQiOiJ3cyIsInBhdGgiOiIvdm1lc3MvIiwicG9ydCI6ODAsInBzIjoiRmx5Ri0yOSIsInRscyI6IiIsInR5cGUiOiJhdXRvIiwic2VjdXJpdHkiOiJhdXRvIiwic2tpcC1jZXJ0LXZlcmlmeSI6dHJ1ZSwic25pIjoiIn0=#FlyF-29
 
-vmess://eyJhZGQiOiIzOC4xMDcuMjM0LjU3IiwiYWlkIjowLCJob3N0IjoiM2gta2F6YWtoc3RhbjEuMDl2cG4uY29tIiwiaWQiOiI1NjdmNGJlNS0xMmFiLTQyZTEtYjhkOS1kYjZmZDFmZGQzMWMiLCJuZXQiOiJ3cyIsInBhdGgiOiIvdm1lc3MvIiwicG9ydCI6ODAsInBzIjoiRmx5Ri0zMCIsInRscyI6IiIsInR5cGUiOiJhdXRvIiwic2VjdXJpdHkiOiJhdXRvIiwic2tpcC1jZXJ0LXZlcmlmeSI6dHJ1ZSwic25pIjoiIn0=#FlyF-30
+vmess://eyJ2IjoiMiIsInBzIjoiRmx5Ri0zMCIsImFkZCI6Ijc0LjIxMS4xMDIuMTc5IiwicG9ydCI6IjIwMDAxIiwiaWQiOiI3ZjVmMDcwNS0zZGZiLTRmNTYtOTY1Ny1jOTVjYWRlMmJhODMiLCJhaWQiOiIwIiwic2N5IjoiYXV0byIsIm5ldCI6InRjcCIsInR5cGUiOiJub25lIiwiaG9zdCI6IiIsInBhdGgiOiIiLCJ0bHMiOiIiLCJzbmkiOiIiLCJ0ZXN0X25hbWUiOiJVUzIifQ==#FlyF-30
 
 vmess://eyJhZGQiOiIxNzguNjIuMTE4LjIwNSIsImFpZCI6IjAiLCJhbHBuIjoiIiwiZnAiOiIiLCJob3N0IjoiIiwiaWQiOiJlMTAxZGQzMy0yMzZmLTRmZGQtYWU1OS0wN2IxM2U4MzZjMjIiLCJpbnNlY3VyZSI6IjEiLCJuZXQiOiJ0Y3AiLCJwYXRoIjoiL0JlZ29vX1ZQTi9CZWdvb19WUE4vQmVnb29fVlBOL0JlZ29vX1ZQTi9CZWdvb19WUE4vQmVnb29fVlBOL0JlZ29vX1ZQTi9CZWdvb19WUE4vQmVnb29fVlBOL0JlZ29vX1ZQTi9CZWdvb19WUE4vQmVnb29fVlBOL0JlZ29vX1ZQTiIsInBvcnQiOiIyOTU3NCIsInBzIjoiRmx5Ri0zMSIsInNjeSI6ImF1dG8iLCJzbmkiOiIiLCJ0bHMiOiIiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=#FlyF-31
 
