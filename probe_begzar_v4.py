@@ -79,14 +79,18 @@ def main() -> int:
         ("default", {}),
         ("path_full", {"sign_path": FETCH}),
         ("path_noslash", {"sign_path": "subscription/fetch/android"}),
-        ("path_fetch_slash", {"sign_path": "/subscription/fetch/"}),
         ("body_empty", {"body": b""}),
         ("secret_utf8", {"secret_bytes": token.encode()}),
         ("derive_empty_dev", {"derive_msg": f"{CERT}||{VAULT}".encode()}),
+        ("derive_cert_as_dev", {"derive_msg": f"{CERT}|{CERT}|{VAULT}".encode()}),
+        ("derive_vault_mid", {"derive_msg": f"{CERT}|{VAULT}|{device}".encode()}),
         ("sig_b64", {"sig_fmt": "b64"}),
         ("get_promotions", {"method": "GET", "url_path": "/api/v4/promotions/list", "sign_path": "/promotions/list", "body": b""}),
-        ("get_promotions_full", {"method": "GET", "url_path": "/api/v4/promotions/list", "sign_path": "/api/v4/promotions/list", "body": b""}),
-        ("secret_b64_of_token_str", {"secret_bytes": base64.b64decode(base64.b64encode(token.encode()))}),
+        # Maybe Session-Key should be raw base64 without JSON escaping issues - already parsed
+        # Try body as JSON with device_id
+        ("body_device", {"body": json.dumps({"device_id": device}, separators=(",", ":")).encode()}),
+        ("body_deviceId", {"body": json.dumps({"deviceId": device}, separators=(",", ":")).encode()}),
+        # Double HMAC: sign with HMAC(secret, canon) where secret is already derived? 
         ("no_derive_raw",),
     ]
     # raw hmac without derive
@@ -107,6 +111,35 @@ def main() -> int:
         if attempt(name, **kwargs):
             return 0
         time.sleep(0.2)
+    # Extra: maybe Integrity uses cert|device|vault but signature path uses only secret as key over method\nurl\nts\nnonce\nbody
+    extra = []
+    body = b"{}"
+    for sign_path in ("/subscription/fetch/android", FETCH, "/api/v4/subscription/fetch/android"):
+        for keymaker in (
+            lambda: hmac.new(secret, f"{CERT}|{device}|{VAULT}".encode(), hashlib.sha256).digest(),
+            lambda: hmac.new(secret, f"{CERT}|{device}|{VAULT}".encode(), hashlib.sha256).digest()[:16],
+            lambda: hashlib.sha256(secret + f"{CERT}|{device}|{VAULT}".encode()).digest(),
+            lambda: hashlib.pbkdf2_hmac("sha256", secret, f"{CERT}|{device}|{VAULT}".encode(), 1000, 32),
+        ):
+            nonce = secrets.token_hex(16); ts = str(int(time.time())); bh = hashlib.sha256(body).hexdigest()
+            key = keymaker()
+            canon = f"POST\n{sign_path}\n{ts}\n{nonce}\n{bh}".encode()
+            sig = hmac.new(key, canon, hashlib.sha256).hexdigest()
+            headers = {
+                "X-Begzar-Device-Id": device, "X-Begzar-Session-Key": token, "X-Begzar-Nonce": nonce,
+                "X-Begzar-Timestamp": ts, "X-Begzar-Integrity": integ(device), "X-Begzar-Signature": sig,
+            }
+            code, resp = http(FETCH, body, headers)
+            text = resp.decode("utf-8", "replace")
+            name = f"extra path={sign_path} key={key[:4].hex()}"
+            print(f"{name}: {code} {text[:120]}")
+            if code == 200 or resp.startswith(b"BGZ4"):
+                open("/tmp/begzar_hit.bin", "wb").write(resp)
+                print("SUCCESS", name)
+                return 0
+            if "Invalid signature" not in text and "ip_blocked" not in text:
+                print("INTERESTING", name, text[:200])
+            time.sleep(0.05)
     print("ALL_FAILED")
     return 2
 
