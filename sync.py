@@ -18,6 +18,7 @@ import sys
 import time
 import uuid
 import urllib.parse
+import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -25,7 +26,7 @@ from pathlib import Path
 try:
     from cryptography.hazmat.backends import default_backend
     from cryptography.hazmat.primitives import hashes
-    from cryptography.hazmat.primitives.ciphers.aead import ChaCha20Poly1305
+    from cryptography.hazmat.primitives.ciphers.aead import AESGCM, ChaCha20Poly1305
     from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
     from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
     from cryptography.hazmat.primitives.padding import PKCS7
@@ -38,12 +39,17 @@ except ImportError:
     sys.exit(1)
 
 API_BASE = "https://engage.begweb.com"
-INIT_URL = f"{API_BASE}/api/v3/init/android"
-DATA_URL_TMPL = f"{API_BASE}/api/v3/data/{{key}}"
-TOTP_SALT = b"BegzarApp2025SecretSaltForTOTP"
+REGISTER_PATH = "/api/v4/session/register/android"
+FETCH_PATH = "/api/v4/subscription/fetch/android"
+SIGN_PATH = "/subscription/fetch/android"
+APK_CERT_SHA256 = "c11b5d7bac4365a25ae1bc98ef8c0ba04e1e1b84fe84ef58ba305358a33cc34d"
+VAULT_SIGN_INFO = "begzar-sign-v1"
+BGZ4_KEY = base64.b64decode("ZvK8P/69/r60RO1BzWe1FJxGFtkwq+bf6he88eAtqVk=")
+BGZ4_MAGIC = b"BGZ4"
 HEADERS = {
     "User-Agent": "BegzarVPN",
     "Accept": "application/json",
+    "Content-Type": "application/json",
     "X-Content-Type-Options": "nosniff",
 }
 V2_API_URL = "https://api.gem-panel.com/api/v1/apps/app-data"
@@ -109,6 +115,7 @@ EXO_SHARE_PREFIXES = (
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "out" / "cfg.txt"
 EXO_CACHE = ROOT / "cache" / "flyexo.txt"
+FLYB_CACHE = ROOT / "cache" / "flyb.txt"
 
 
 def set_link_name(link: str, name: str) -> str:
@@ -152,60 +159,144 @@ def http_get_json(url: str, extra: dict[str, str] | None = None, timeout: int = 
         return json.loads(resp.read().decode("utf-8"))
 
 
-def totp(secret: bytes, digits: int = 6, step: int = 30) -> str:
-    counter = int(time.time()) // step
-    digest = hmac.new(secret, struct.pack(">Q", counter), hashlib.sha1).digest()
-    offset = digest[-1] & 0x0F
-    code = (
-        (digest[offset] & 0x7F) << 24
-        | digest[offset + 1] << 16
-        | digest[offset + 2] << 8
-        | digest[offset + 3]
-    ) % (10**digits)
-    return f"{code:0{digits}d}"
-
-
-def fetch_key() -> str:
-    data = http_get_json(INIT_URL)
-    key = data.get("key")
-    if not key:
-        raise RuntimeError(f"no key in init: {data}")
-    return key
-
-
-def fetch_payload(key: str) -> dict:
-    url = DATA_URL_TMPL.format(key=urllib.parse.quote(key, safe=""))
-    secret = hashlib.sha256(key.encode("utf-8") + TOTP_SALT).digest()[:16]
-    data = http_get_json(url, {"X-TOTP-Code": totp(secret)})
-    if not data.get("status"):
-        raise RuntimeError(f"data failed: {data}")
-    inner = data.get("data") or {}
-    for field in ("secure", "x1", "x2"):
-        if field not in inner:
-            raise RuntimeError(f"missing {field}")
-    return data
-
-
-def decrypt(key: str, secure: str, x1: str, x2: str) -> str:
-    plain = ChaCha20Poly1305(base64.b64decode(key)).decrypt(
-        base64.b64decode(x1),
-        base64.b64decode(secure) + base64.b64decode(x2),
-        None,
-    )
-    return plain.decode("utf-8")
-
-
 def extract_links(text: str) -> list[str]:
     return re.findall(r"(?:vless|vmess|trojan|ss)://\S+", text)
 
 
+def flyb_load_cache() -> list[str]:
+    """Load last-known FlyB share links from cache file."""
+    if not FLYB_CACHE.exists():
+        return []
+    links = []
+    for line in FLYB_CACHE.read_text(encoding="utf-8").splitlines():
+        s = line.strip()
+        if s and not s.startswith("#"):
+            links.append(s)
+    return links
+
+
+def flyb_save_cache(links: list[str]) -> None:
+    """Persist FlyB links for use when Begzar live API is down."""
+    FLYB_CACHE.parent.mkdir(parents=True, exist_ok=True)
+    FLYB_CACHE.write_text("\n".join(links) + ("\n" if links else ""), encoding="utf-8")
+
+
+def begzar_integrity(device_id: str) -> str:
+    """Build X-Begzar-Integrity = sha256_hex(cert|deviceId|vault)."""
+    msg = f"{APK_CERT_SHA256}|{device_id}|{VAULT_SIGN_INFO}".encode("utf-8")
+    return hashlib.sha256(msg).hexdigest()
+
+
+def begzar_sign(method: str, sign_path: str, ts: str, nonce: str, body: bytes, secret: bytes, device_id: str) -> str:
+    """Port of native signRequest: HMAC(signing_key, METHOD\npath\nts\nnonce\nbodyhash)."""
+    signing_key = hmac.new(
+        secret,
+        f"{APK_CERT_SHA256}|{device_id}|{VAULT_SIGN_INFO}".encode("utf-8"),
+        hashlib.sha256,
+    ).digest()
+    body_hash = hashlib.sha256(body).hexdigest()
+    canonical = f"{method.upper()}\n{sign_path}\n{ts}\n{nonce}\n{body_hash}".encode("utf-8")
+    return hmac.new(signing_key, canonical, hashlib.sha256).hexdigest()
+
+
+def begzar_http(path: str, body: bytes | None = b"{}", extra: dict[str, str] | None = None, method: str = "POST", timeout: int = 30) -> tuple[int, bytes]:
+    """POST/GET engage.begweb.com and return (status, raw body)."""
+    headers = dict(HEADERS)
+    if extra:
+        headers.update(extra)
+    if method == "GET":
+        headers.pop("Content-Type", None)
+        data = None
+    else:
+        data = body if body is not None else b""
+    ctx = ssl.create_default_context()
+    req = urllib.request.Request(API_BASE + path, data=data, method=method)
+    for key, value in headers.items():
+        req.add_header(key, value)
+    try:
+        with urllib.request.urlopen(req, timeout=timeout, context=ctx) as resp:
+            return resp.status, resp.read()
+    except urllib.error.HTTPError as exc:
+        return exc.code, exc.read()
+
+
+def begzar_register() -> str:
+    """Register free Android session and return session_token."""
+    status, raw = begzar_http(REGISTER_PATH, b"{}")
+    if status != 200:
+        raise RuntimeError(f"register HTTP {status}: {raw[:200]!r}")
+    data = json.loads(raw.decode("utf-8"))
+    token = data.get("session_token")
+    if not token:
+        raise RuntimeError(f"no session_token: {data}")
+    return token
+
+
+def begzar_decrypt_bgz4(blob: bytes) -> str:
+    """Decrypt BGZ4 AES-GCM subscription envelope into UTF-8 text."""
+    if blob.lstrip().startswith((b"{", b"[")):
+        return blob.decode("utf-8", errors="replace")
+    if not blob.startswith(BGZ4_MAGIC) or len(blob) < 4 + 12 + 16:
+        raise RuntimeError(f"unexpected begzar payload prefix={blob[:12]!r}")
+    aes = AESGCM(BGZ4_KEY)
+    candidates = [(blob[4:16], blob[16:])]
+    if len(blob) > 33:
+        candidates.append((blob[5:17], blob[17:]))
+    for nonce, ct in candidates:
+        if len(nonce) != 12 or len(ct) < 16:
+            continue
+        for aad in (None, BGZ4_MAGIC, blob[:5]):
+            try:
+                return aes.decrypt(nonce, ct, aad).decode("utf-8", errors="replace")
+            except Exception:
+                continue
+    raise RuntimeError("BGZ4 decrypt failed")
+
+
+def begzar_fetch_live() -> list[str]:
+    """Fetch Begzar servers via API v4 signed subscription endpoint."""
+    token = begzar_register()
+    secret = base64.b64decode(token)
+    device_id = str(uuid.uuid4())
+    body = b"{}"
+    nonce = secrets.token_hex(16)
+    ts = str(int(time.time()))
+    headers = {
+        "X-Begzar-Device-Id": device_id,
+        "X-Begzar-Session-Key": token,
+        "X-Begzar-Nonce": nonce,
+        "X-Begzar-Timestamp": ts,
+        "X-Begzar-Integrity": begzar_integrity(device_id),
+        "X-Begzar-Signature": begzar_sign("POST", SIGN_PATH, ts, nonce, body, secret, device_id),
+    }
+    status, raw = begzar_http(FETCH_PATH, body, headers)
+    if status != 200 and not raw.startswith(BGZ4_MAGIC):
+        raise RuntimeError(f"fetch HTTP {status}: {raw[:240]!r}")
+    text = begzar_decrypt_bgz4(raw)
+    links = rename_links(extract_links(text), "FlyB")
+    if not links:
+        raise RuntimeError("begzar v4 returned no share links")
+    return links
+
+
 def fetch_flyb_links() -> list[str]:
-    """Fetch Begzar configs and rename them as FlyB-*."""
-    key = fetch_key()
-    payload = fetch_payload(key)
-    inner = payload["data"]
-    text = decrypt(key, inner["secure"], inner["x1"], inner["x2"])
-    return rename_links(extract_links(text), "FlyB")
+    """Fetch Begzar configs as FlyB-*; fall back to cache if live API fails."""
+    errors: list[str] = []
+    try:
+        links = begzar_fetch_live()
+        flyb_save_cache(links)
+        return links
+    except Exception as exc:
+        errors.append(str(exc))
+    cached = flyb_load_cache()
+    if cached:
+        print(
+            f"FlyB using cache ({len(cached)} links); live failed: "
+            + "; ".join(errors)[:400],
+            file=sys.stderr,
+        )
+        return rename_links(cached, "FlyB")
+    raise RuntimeError("; ".join(errors) if errors else "begzar fetch failed")
 
 
 def fetch_v2_wrapper() -> dict:
