@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Begzar v4 auth header semantics probe."""
+"""Probe Session-Key encoding and native-faithful signing."""
 from __future__ import annotations
-import base64, hashlib, hmac, json, secrets, time, uuid, urllib.request, ssl, sys
+import base64, hashlib, hmac, json, secrets, time, uuid, urllib.request, ssl, sys, urllib.parse
 API = "https://engage.begweb.com"
 REG = "/api/v4/session/register/android"
 FETCH = "/api/v4/subscription/fetch/android"
@@ -32,15 +32,36 @@ def http(path, body=b"{}", headers=None, method="POST"):
                 pass
         return code, raw or str(e).encode()
 
-def integ(device: str, cert: str = CERT) -> str:
-    return hashlib.sha256(f"{cert}|{device}|{VAULT}".encode()).hexdigest()
+def integ(device: str) -> str:
+    return hashlib.sha256(f"{CERT}|{device}|{VAULT}".encode()).hexdigest()
 
-def sign(secret: bytes, device: str, method: str, path: str, ts: str, nonce: str, body: bytes, derive_dev: str | None = None) -> str:
-    d = device if derive_dev is None else derive_dev
-    key = hmac.new(secret, f"{CERT}|{d}|{VAULT}".encode(), hashlib.sha256).digest()
+def make_sig(secret: bytes, device: str, method: str, path: str, ts: str, nonce: str, body: bytes) -> str:
+    key = hmac.new(secret, f"{CERT}|{device}|{VAULT}".encode(), hashlib.sha256).digest()
     bh = hashlib.sha256(body).hexdigest()
     canon = f"{method}\n{path}\n{ts}\n{nonce}\n{bh}".encode()
     return hmac.new(key, canon, hashlib.sha256).hexdigest()
+
+def attempt(name, token, secret, device, *, session_key=None, path="/subscription/fetch/android", body=b"{}"):
+    session_key = token if session_key is None else session_key
+    nonce = secrets.token_hex(16)
+    ts = str(int(time.time()))
+    sig = make_sig(secret, device, "POST", path, ts, nonce, body)
+    headers = {
+        "X-Begzar-Device-Id": device,
+        "X-Begzar-Session-Key": session_key,
+        "X-Begzar-Nonce": nonce,
+        "X-Begzar-Timestamp": ts,
+        "X-Begzar-Integrity": integ(device),
+        "X-Begzar-Signature": sig,
+    }
+    code, resp = http(FETCH, body, headers)
+    text = resp.decode("utf-8", "replace")
+    print(f"{name}: {code} {text[:160]} magic={resp[:4]!r}")
+    if code == 200 or resp.startswith(b"BGZ4"):
+        open("begzar_hit.bin", "wb").write(resp)
+        print("SUCCESS", name, "len", len(resp))
+        return True
+    return False
 
 def main() -> int:
     st, raw = http(REG, b"{}")
@@ -50,115 +71,69 @@ def main() -> int:
     token = json.loads(raw)["session_token"]
     secret = base64.b64decode(token)
     device = str(uuid.uuid4())
-    body = b"{}"
-    print("device", device, "token", token)
+    print("token", token)
+    print("has_plus", "+" in token, "has_slash", "/" in token)
 
-    def post(name, headers):
-        code, resp = http(FETCH, body, headers)
-        text = resp.decode("utf-8", "replace")
-        print(f"{name}: {code} {text[:160]}")
-        return code, resp, text
+    variants = [
+        ("default", {}),
+        ("sk_urlencoded", {"session_key": urllib.parse.quote(token, safe="")}),
+        ("sk_quote_plus", {"session_key": urllib.parse.quote_plus(token)}),
+        ("sk_replace_plus", {"session_key": token.replace("+", "-").replace("/", "_")}),
+        ("sk_b64url_nopad", {"session_key": base64.urlsafe_b64encode(secret).decode().rstrip("=")}),
+        ("sk_b64url_pad", {"session_key": base64.urlsafe_b64encode(secret).decode()}),
+        ("secret_from_urlsafe_decode",),  # special
+        ("path_full", {"path": FETCH}),
+        ("device_no_dash", {"device": device.replace("-", "")}),
+    ]
 
-    nonce = secrets.token_hex(16)
-    ts = str(int(time.time()))
-    sig = sign(secret, device, "POST", "/subscription/fetch/android", ts, nonce, body)
-    base = {
-        "X-Begzar-Device-Id": device,
-        "X-Begzar-Session-Key": token,
-        "X-Begzar-Nonce": nonce,
-        "X-Begzar-Timestamp": ts,
-        "X-Begzar-Integrity": integ(device),
-        "X-Begzar-Signature": sig,
-    }
-    post("full_default", base)
+    # special: decode token as urlsafe
+    try:
+        secret_url = base64.urlsafe_b64decode(token + "==")
+    except Exception:
+        secret_url = secret
 
-    # Drop headers one by one
-    for drop in list(base):
-        h = dict(base)
-        del h[drop]
-        post(f"drop_{drop}", h)
+    for item in variants:
+        name = item[0]
+        kwargs = item[1] if len(item) > 1 else {}
+        if name == "secret_from_urlsafe_decode":
+            if attempt(name, token, secret_url, device):
+                return 0
+            continue
+        if "device" in kwargs:
+            dev = kwargs.pop("device")
+            # need to recompute with that device - hack by temp
+            if attempt(name, token, secret, dev, **kwargs):
+                return 0
+            continue
+        if attempt(name, token, secret, device, **kwargs):
+            return 0
+        time.sleep(0.15)
 
-    # Wrong integrity, correct signature
-    h = dict(base)
-    h["X-Begzar-Integrity"] = "0" * 64
-    post("bad_integrity", h)
-
-    # Wrong signature, correct integrity
-    h = dict(base)
-    h["X-Begzar-Signature"] = "ab" * 32
-    post("bad_signature", h)
-
-    # Wrong device in header but correct in integrity/sign derive
-    h = dict(base)
-    h["X-Begzar-Device-Id"] = str(uuid.uuid4())
-    post("mismatched_device_header", h)
-
-    # Session-Key = secret hex
-    h = dict(base)
-    h["X-Begzar-Session-Key"] = secret.hex()
-    post("session_key_hex", h)
-
-    # Session-Key = secret raw base64 urlsafe
-    h = dict(base)
-    h["X-Begzar-Session-Key"] = base64.urlsafe_b64encode(secret).decode().rstrip("=")
-    post("session_key_b64url", h)
-
-    # Try Authorization header styles
-    for k, v in [
-        ("Authorization", f"Bearer {token}"),
-        ("Authorization", f"Session {token}"),
-        ("X-Session-Token", token),
-    ]:
-        h = dict(base)
-        h[k] = v
-        post(f"extra_{k}", h)
-
-    # Canonical with CRLF
-    nonce = secrets.token_hex(16); ts = str(int(time.time()))
-    bh = hashlib.sha256(body).hexdigest()
+    # Fresh nonce each; try signing with bodyHash UPPERCASE
+    nonce = secrets.token_hex(16); ts = str(int(time.time())); body = b"{}"
     key = hmac.new(secret, f"{CERT}|{device}|{VAULT}".encode(), hashlib.sha256).digest()
-    for sep_name, sep in [("lf", "\n"), ("crlf", "\r\n"), ("cr", "\r")]:
-        canon = sep.join(["POST", "/subscription/fetch/android", ts, nonce, bh]).encode()
-        sig = hmac.new(key, canon, hashlib.sha256).hexdigest()
-        h = {
-            "X-Begzar-Device-Id": device, "X-Begzar-Session-Key": token, "X-Begzar-Nonce": nonce,
-            "X-Begzar-Timestamp": ts, "X-Begzar-Integrity": integ(device), "X-Begzar-Signature": sig,
-        }
-        post(f"sep_{sep_name}", h)
+    bh = hashlib.sha256(body).hexdigest().upper()
+    canon = f"POST\n/subscription/fetch/android\n{ts}\n{nonce}\n{bh}".encode()
+    sig = hmac.new(key, canon, hashlib.sha256).hexdigest()
+    headers = {
+        "X-Begzar-Device-Id": device, "X-Begzar-Session-Key": token, "X-Begzar-Nonce": nonce,
+        "X-Begzar-Timestamp": ts, "X-Begzar-Integrity": integ(device), "X-Begzar-Signature": sig,
+    }
+    code, resp = http(FETCH, body, headers)
+    print("bodyhash_upper:", code, resp[:160])
 
-    # Maybe path for android register endpoint style signing of fetch uses same path template with platform
-    for path in [
-        "/subscription/fetch/android",
-        "/api/v4/subscription/fetch/android",
-        "https://engage.begweb.com/api/v4/subscription/fetch/android",
-        "/api/v4/subscription/fetch/android/",
-    ]:
-        nonce = secrets.token_hex(16); ts = str(int(time.time()))
-        sig = sign(secret, device, "POST", path, ts, nonce, body)
-        h = {
-            "X-Begzar-Device-Id": device, "X-Begzar-Session-Key": token, "X-Begzar-Nonce": nonce,
-            "X-Begzar-Timestamp": ts, "X-Begzar-Integrity": integ(device), "X-Begzar-Signature": sig,
-        }
-        post(f"path_{path}", h)
+    # Signature uppercase
+    nonce = secrets.token_hex(16); ts = str(int(time.time()))
+    sig = make_sig(secret, device, "POST", "/subscription/fetch/android", ts, nonce, body).upper()
+    headers = {
+        "X-Begzar-Device-Id": device, "X-Begzar-Session-Key": token, "X-Begzar-Nonce": nonce,
+        "X-Begzar-Timestamp": ts, "X-Begzar-Integrity": integ(device), "X-Begzar-Signature": sig,
+    }
+    code, resp = http(FETCH, body, headers)
+    print("sig_upper:", code, resp[:160])
 
-    # Unicorn-independent: try signing key = HMAC(vault, secret) etc
-    nonce = secrets.token_hex(16); ts = str(int(time.time())); bh = hashlib.sha256(body).hexdigest()
-    for name, key in [
-        ("hmac_vault_secret", hmac.new(VAULT.encode(), secret, hashlib.sha256).digest()),
-        ("hmac_secret_vault", hmac.new(secret, VAULT.encode(), hashlib.sha256).digest()),
-        ("hmac_cert_secret", hmac.new(CERT.encode(), secret, hashlib.sha256).digest()),
-        ("sha256_secret_msg", hashlib.sha256(secret + f"{CERT}|{device}|{VAULT}".encode()).digest()),
-    ]:
-        canon = f"POST\n/subscription/fetch/android\n{ts}\n{nonce}\n{bh}".encode()
-        sig = hmac.new(key, canon, hashlib.sha256).hexdigest()
-        h = {
-            "X-Begzar-Device-Id": device, "X-Begzar-Session-Key": token, "X-Begzar-Nonce": nonce,
-            "X-Begzar-Timestamp": ts, "X-Begzar-Integrity": integ(device), "X-Begzar-Signature": sig,
-        }
-        post(name, h)
-
-    print("DONE")
-    return 0
+    print("ALL_FAILED")
+    return 2
 
 if __name__ == "__main__":
     raise SystemExit(main())
