@@ -2,6 +2,8 @@
 from __future__ import annotations
 import base64, hashlib, hmac, json, secrets, time, uuid, urllib.request, ssl, sys
 API="https://engage.begweb.com"
+REG="/api/v4/session/register/android"
+FETCH="/api/v4/subscription/fetch/android"
 CERT="c11b5d7bac4365a25ae1bc98ef8c0ba04e1e1b84fe84ef58ba305358a33cc34d"
 VAULT="begzar-sign-v1"
 UA={"User-Agent":"BegzarVPN","Accept":"application/json","Content-Type":"application/json","X-Content-Type-Options":"nosniff"}
@@ -23,102 +25,124 @@ def http(path, body=b"{}", headers=None, method="POST"):
             except Exception: pass
         return code, raw or str(e).encode()
 
-def integ(device):
-    return hashlib.sha256(f"{CERT}|{device}|{VAULT}".encode()).hexdigest()
-
-def sign(method, path, ts, nonce, body, secret, device):
-    key=hmac.new(secret, f"{CERT}|{device}|{VAULT}".encode(), hashlib.sha256).digest()
-    bh=hashlib.sha256(body).hexdigest()
-    return hmac.new(key, f"{method.upper()}\n{path}\n{ts}\n{nonce}\n{bh}".encode(), hashlib.sha256).hexdigest()
-
-def signed_req(name, token, secret, device, *, path_http, sign_path, body=b"{}", method="POST"):
-    nonce=secrets.token_hex(16); ts=str(int(time.time()))
-    sig=sign(method, sign_path, ts, nonce, body if method!="GET" else b"", secret, device)
+def attempt(name, token, secret, device, *, path, body, nonce, ts, key_msg=None, key=None, canon=None, sig=None, integ=None, session_key=None):
+    body_hash=hashlib.sha256(body).hexdigest()
+    if key is None:
+        msg = key_msg if key_msg is not None else f"{CERT}|{device}|{VAULT}".encode()
+        key=hmac.new(secret, msg, hashlib.sha256).digest()
+    if canon is None:
+        canon=f"POST\n{path}\n{ts}\n{nonce}\n{body_hash}".encode()
+    if sig is None:
+        sig=hmac.new(key, canon, hashlib.sha256).hexdigest()
+    if integ is None:
+        integ=hashlib.sha256(f"{CERT}|{device}|{VAULT}".encode()).hexdigest()
     headers={
         "X-Begzar-Device-Id":device,
-        "X-Begzar-Session-Key":token,
+        "X-Begzar-Session-Key": token if session_key is None else session_key,
         "X-Begzar-Nonce":nonce,
         "X-Begzar-Timestamp":ts,
-        "X-Begzar-Integrity":integ(device),
+        "X-Begzar-Integrity":integ,
         "X-Begzar-Signature":sig,
     }
-    code, resp=http(path_http, body if method!="GET" else None, headers, method=method)
+    code, resp=http(FETCH, body, headers)
     text=resp.decode("utf-8","replace")
-    print(f"{name}: {code} {text[:180]} magic={resp[:4]!r}")
+    print(f"{name}: {code} {text[:120]} magic={resp[:4]!r}")
     if code==200 or resp.startswith(b"BGZ4"):
-        open("begzar_hit.bin","wb").write(resp); print("SUCCESS", name); return True
+        open("begzar_hit.bin","wb").write(resp)
+        print("SUCCESS", name)
+        return True
     return False
 
 def main():
-    device=str(uuid.uuid4())
-    # A) register plain
-    st, raw=http("/api/v4/session/register/android", b"{}")
-    print("register_plain", st, raw[:180])
-    # B) register with device headers (no signature)
-    st2, raw2=http("/api/v4/session/register/android", b"{}", {
-        "X-Begzar-Device-Id":device,
-        "X-Begzar-Integrity":integ(device),
-    })
-    print("register_with_device", st2, raw2[:180])
-    # C) register with device in body
-    body_reg=json.dumps({"device_id":device},separators=(",",":")).encode()
-    st3, raw3=http("/api/v4/session/register/android", body_reg, {
-        "X-Begzar-Device-Id":device,
-        "X-Begzar-Integrity":integ(device),
-    })
-    print("register_body_device", st3, raw3[:180])
-    token=None
-    for st,raw in [(st,raw),(st2,raw2),(st3,raw3)]:
-        if st==200:
-            try:
-                token=json.loads(raw)["session_token"]; break
-            except Exception:
-                pass
-    if not token:
-        print("no token"); return 1
+    st, raw=http(REG,b"{}")
+    print("register", st, raw[:200])
+    if st!=200: return 1
+    token=json.loads(raw)["session_token"]
     secret=base64.b64decode(token)
-    print("using token len", len(secret), "device", device)
-    attempts=[
-        ("fetch_android", "/api/v4/subscription/fetch/android", "/subscription/fetch/android", b"{}", "POST"),
-        ("fetch_win", "/api/v4/subscription/fetch/", "/subscription/fetch/", b"{}", "POST"),
-        ("fetch_android_body_dev", "/api/v4/subscription/fetch/android", "/subscription/fetch/android", body_reg, "POST"),
-        ("fetch_fullpath_sign", "/api/v4/subscription/fetch/android", "/api/v4/subscription/fetch/android", b"{}", "POST"),
-        ("promo_get", "/api/v4/promotions/list", "/promotions/list", b"", "GET"),
-        ("promo_get_slash", "/api/v4/promotions/list", "/promotions/list/", b"", "GET"),
-        ("geo_signed", "/api/v4/network/geo", "/network/geo", b"", "GET"),
-        ("empty_body", "/api/v4/subscription/fetch/android", "/subscription/fetch/android", b"", "POST"),
-        ("body_null", "/api/v4/subscription/fetch/android", "/subscription/fetch/android", b"null", "POST"),
-    ]
-    for name, http_path, sign_path, body, method in attempts:
-        if signed_req(name, token, secret, device, path_http=http_path, sign_path=sign_path, body=body, method=method):
-            return 0
-        time.sleep(0.15)
-    # D) reuse same device from register_body_device token specifically
-    if st3==200:
-        token3=json.loads(raw3)["session_token"]; secret3=base64.b64decode(token3)
-        if signed_req("bound_device_fetch", token3, secret3, device, path_http="/api/v4/subscription/fetch/android", sign_path="/subscription/fetch/android", body=body_reg):
-            return 0
-    # E) try secret = token utf-8, and HMAC key/msg swap
-    nonce=secrets.token_hex(16); ts=str(int(time.time())); body=b"{}"; path="/subscription/fetch/android"
-    for name, secret_b, key_first in [
-        ("utf8_secret", token.encode(), True),
-        ("swap_hmac", secret, False),
+    device=str(uuid.uuid4())
+    print("device", device)
+    tests=[]
+    def add(name, **kw):
+        tests.append((name, kw))
+    # nonce formats
+    for nname, nonce in [
+        ("hex16", secrets.token_hex(16)),
+        ("hex8", secrets.token_hex(8)),
+        ("uuid", str(uuid.uuid4())),
+        ("b64", base64.b64encode(secrets.token_bytes(16)).decode()),
+        ("b64url", base64.urlsafe_b64encode(secrets.token_bytes(16)).decode().rstrip("=")),
     ]:
-        msg=f"{CERT}|{device}|{VAULT}".encode()
-        if key_first:
-            key=hmac.new(secret_b, msg, hashlib.sha256).digest()
-        else:
-            key=hmac.new(msg, secret_b, hashlib.sha256).digest()
-        bh=hashlib.sha256(body).hexdigest()
-        sig=hmac.new(key, f"POST\n{path}\n{ts}\n{nonce}\n{bh}".encode(), hashlib.sha256).hexdigest()
-        # new nonce each
-        nonce=secrets.token_hex(16); ts=str(int(time.time()))
-        sig=hmac.new(key, f"POST\n{path}\n{ts}\n{nonce}\n{bh}".encode(), hashlib.sha256).hexdigest()
-        headers={"X-Begzar-Device-Id":device,"X-Begzar-Session-Key":token,"X-Begzar-Nonce":nonce,"X-Begzar-Timestamp":ts,"X-Begzar-Integrity":integ(device),"X-Begzar-Signature":sig}
-        code, resp=http("/api/v4/subscription/fetch/android", body, headers)
-        print(f"{name}: {code} {resp[:120]!r}")
-        if code==200 or resp.startswith(b"BGZ4"):
-            print("SUCCESS", name); return 0
-    print("ALL_FAILED"); return 2
+        add(f"nonce_{nname}", path="/subscription/fetch/android", body=b"{}", nonce=nonce, ts=str(int(time.time())))
+    # path variants with fresh uuid nonce
+    for path in [
+        "/subscription/fetch/android",
+        "subscription/fetch/android",
+        "/api/v4/subscription/fetch/android",
+        "api/v4/subscription/fetch/android",
+        "/subscription/fetch/",
+        "/subscription/fetch",
+        "https://engage.begweb.com/api/v4/subscription/fetch/android",
+    ]:
+        add(f"path_{path}", path=path, body=b"{}", nonce=str(uuid.uuid4()), ts=str(int(time.time())))
+    # body variants
+    for bname, body in [
+        ("obj", b"{}"),
+        ("empty", b""),
+        ("device", json.dumps({"device_id":device},separators=(",",":")).encode()),
+        ("deviceId", json.dumps({"deviceId":device},separators=(",",":")).encode()),
+        ("null", b"null"),
+    ]:
+        add(f"body_{bname}", path="/subscription/fetch/android", body=body, nonce=str(uuid.uuid4()), ts=str(int(time.time())))
+    # key / canonical experiments
+    ts=str(int(time.time())); nonce=str(uuid.uuid4()); body=b"{}"; bh=hashlib.sha256(body).hexdigest(); path="/subscription/fetch/android"
+    key=hmac.new(secret, f"{CERT}|{device}|{VAULT}".encode(), hashlib.sha256).digest()
+    integ=hashlib.sha256(f"{CERT}|{device}|{VAULT}".encode()).hexdigest()
+    add("canon_with_integ", path=path, body=body, nonce=nonce, ts=ts,
+        canon=f"POST\n{path}\n{ts}\n{nonce}\n{bh}\n{integ}".encode())
+    add("canon_method_path_only", path=path, body=body, nonce=str(uuid.uuid4()), ts=str(int(time.time())),
+        canon=lambda: None)
+    # fix lambda - rebuild properly below
+    tests = [t for t in tests if t[0] != "canon_method_path_only"]
+    n=str(uuid.uuid4()); t=str(int(time.time()))
+    add("canon_colon", path=path, body=body, nonce=n, ts=t,
+        canon=f"POST:{path}:{t}:{n}:{bh}".encode())
+    n=str(uuid.uuid4()); t=str(int(time.time()))
+    add("canon_no_bodyhash", path=path, body=body, nonce=n, ts=t,
+        canon=f"POST\n{path}\n{t}\n{n}".encode())
+    n=str(uuid.uuid4()); t=str(int(time.time()))
+    add("key_is_integrity_hex", path=path, body=body, nonce=n, ts=t, key=bytes.fromhex(integ))
+    n=str(uuid.uuid4()); t=str(int(time.time()))
+    add("key_is_integrity_utf8", path=path, body=body, nonce=n, ts=t, key=integ.encode())
+    n=str(uuid.uuid4()); t=str(int(time.time()))
+    add("secret_utf8_derive", path=path, body=body, nonce=n, ts=t, key=hmac.new(token.encode(), f"{CERT}|{device}|{VAULT}".encode(), hashlib.sha256).digest())
+    n=str(uuid.uuid4()); t=str(int(time.time()))
+    add("no_derive_secret", path=path, body=body, nonce=n, ts=t, key=secret)
+    n=str(uuid.uuid4()); t=str(int(time.time()))
+    add("derive_vault_dev_cert", path=path, body=body, nonce=n, ts=t, key_msg=f"{VAULT}|{device}|{CERT}".encode())
+    n=str(uuid.uuid4()); t=str(int(time.time()))
+    add("ts_ms", path=path, body=body, nonce=n, ts=str(int(time.time()*1000)))
+    n=str(uuid.uuid4()); t=str(int(time.time()))
+    add("session_quoted", path=path, body=body, nonce=n, ts=t, session_key=f'"{token}"')
+    n=str(uuid.uuid4()); t=str(int(time.time()))
+    # Double HMAC: sign with HMAC(secret, canon) then hex — already no_derive
+    # Maybe signature is base64 of hmac
+    n=str(uuid.uuid4()); t=str(int(time.time())); bh=hashlib.sha256(body).hexdigest()
+    key=hmac.new(secret, f"{CERT}|{device}|{VAULT}".encode(), hashlib.sha256).digest()
+    raw=hmac.new(key, f"POST\n{path}\n{t}\n{n}\n{bh}".encode(), hashlib.sha256).digest()
+    add("sig_b64", path=path, body=body, nonce=n, ts=t, sig=base64.b64encode(raw).decode())
+    n=str(uuid.uuid4()); t=str(int(time.time()))
+    raw=hmac.new(key, f"POST\n{path}\n{t}\n{n}\n{bh}".encode(), hashlib.sha256).digest()
+    add("sig_upper", path=path, body=body, nonce=n, ts=t, sig=raw.hex().upper())
+    # integrity = native style, but maybe device empty in integrity only
+    n=str(uuid.uuid4()); t=str(int(time.time()))
+    add("integ_empty_device", path=path, body=body, nonce=n, ts=t,
+        integ=hashlib.sha256(f"{CERT}||{VAULT}".encode()).hexdigest())
+    # Maybe path for sign is fetch path used by dio options.uri.path with base
+    for name, kw in tests:
+        if attempt(name, token, secret, device, **kw):
+            return 0
+        time.sleep(0.12)
+    print("ALL_FAILED", len(tests))
+    return 2
 if __name__=="__main__":
     raise SystemExit(main())
