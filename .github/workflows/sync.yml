@@ -37,11 +37,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add out/cfg.txt
+          # Include caches too; leaving them dirty broke pull --rebase and blocked cfg push.
+          git add out/cfg.txt cache/
           if git diff --staged --quiet; then
             echo "no changes"
-          else
-            git commit -m "chore: refresh"
-            git pull --rebase origin main
-            git push
+            exit 0
           fi
+          git commit -m "chore: refresh"
+          git pull --rebase --autostash origin main
+          git push
