@@ -75,8 +75,12 @@ TV_API_URL = "https://fxgoldensignals.com/TopVPN/v2/api/main.php"
 TV_DECRYPT_PASSWORD = b"pXPWUjFm0hW612tav5Ez"
 TV_PBKDF_ITERATIONS = 10000
 TV_APP_VERSION = "555"
-# ExoVPN (FlyExo)
-EXO_API_URL = "https://oxekinl.com/f887c412-f267-4014-8512-e72c88f0fdfd"
+# ExoVPN (FlyExo) — primary + SecondURL fallback from last good payload
+EXO_API_URLS = (
+    "https://oxekinl.com/f887c412-f267-4014-8512-e72c88f0fdfd",
+    "https://goglcdn.com/a4912c28-6fb5-43a9-8c20-22c0cdb15bfd",
+)
+EXO_API_URL = EXO_API_URLS[0]
 EXO_ANSWER = "tfodogfxklkfanoxuyrskuvnx"
 EXO_PRIME = int(
     "115792089237316195423570985008687907853269984665640564039457584007913129319283"
@@ -104,6 +108,7 @@ EXO_SHARE_PREFIXES = (
 )
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "out" / "cfg.txt"
+EXO_CACHE = ROOT / "cache" / "flyexo.txt"
 
 
 def set_link_name(link: str, name: str) -> str:
@@ -547,7 +552,7 @@ def exo_decrypt_data(cipher_b64: str) -> str:
     return "".join(chars2)
 
 
-def exo_build_request_json() -> str:
+def exo_build_request_json(api_url: str = EXO_API_URL) -> str:
     """Build ExoVPN signed JSON body with Nonce/key1/key2 metadata."""
     nonce = str(uuid.uuid4())
 
@@ -583,7 +588,7 @@ def exo_build_request_json() -> str:
     obj["key5"] = "unknown"
     obj["key6"] = "google"
     obj["key7"] = "sdk_gphone64_arm64"
-    obj["key9"] = EXO_API_URL
+    obj["key9"] = api_url
     return json.dumps(obj, separators=(",", ":"), ensure_ascii=False)
 
 
@@ -606,8 +611,8 @@ def extract_exo_share_links(payload: dict) -> list[str]:
     return links
 
 
-def exo_doh_a(host: str) -> str | None:
-    """Resolve A record via Cloudflare DoH to avoid local fake-IP DNS."""
+def exo_doh_a_records(host: str) -> list[str]:
+    """Resolve all A records via Cloudflare DoH to avoid local fake-IP DNS."""
     req = urllib.request.Request(
         f"https://cloudflare-dns.com/dns-query?name={host}&type=A",
         headers={"Accept": "application/dns-json"},
@@ -615,16 +620,42 @@ def exo_doh_a(host: str) -> str | None:
     try:
         with urllib.request.urlopen(req, timeout=15) as resp:
             data = json.loads(resp.read().decode("utf-8", errors="replace"))
+        ips: list[str] = []
         for item in data.get("Answer") or []:
             if item.get("type") == 1 and item.get("data"):
-                return str(item["data"])
+                ip = str(item["data"])
+                if ip not in ips:
+                    ips.append(ip)
+        return ips
     except Exception:
-        return None
-    return None
+        return []
 
 
-def exo_post_encrypted(encrypted: str, check: str) -> dict:
-    """POST encrypted ExoVPN body; fall back to curl+DoH when local DNS is poisoned."""
+def exo_doh_a(host: str) -> str | None:
+    """Resolve first A record via Cloudflare DoH."""
+    ips = exo_doh_a_records(host)
+    return ips[0] if ips else None
+
+
+def _exo_parse_api_body(raw: bytes | str) -> dict:
+    """Parse ExoVPN API body; reject empty/HTML/Cloudflare error pages."""
+    text = raw.decode("utf-8", errors="replace") if isinstance(raw, (bytes, bytearray)) else raw
+    text = (text or "").strip()
+    if not text:
+        raise RuntimeError("exovpn empty response")
+    if text[0] not in "{[":
+        raise RuntimeError(f"exovpn non-json response: {text[:120]!r}")
+    parsed = json.loads(text)
+    if not isinstance(parsed, dict):
+        raise RuntimeError("exovpn response is not an object")
+    return parsed
+
+
+def exo_post_encrypted(encrypted: str, check: str, api_url: str = EXO_API_URL) -> dict:
+    """POST encrypted ExoVPN body; try urllib then curl+DoH across all A records."""
+    import subprocess
+    import tempfile
+
     token = base64.b64encode(EXO_ANSWER.encode("utf-8")).decode("ascii")
     headers = {
         "token": token,
@@ -635,24 +666,23 @@ def exo_post_encrypted(encrypted: str, check: str) -> dict:
         "Accept-Encoding": "identity",
     }
     body = encrypted.encode("utf-8")
-    req = urllib.request.Request(EXO_API_URL, data=body, headers=headers, method="POST")
+    errors: list[str] = []
+    req = urllib.request.Request(api_url, data=body, headers=headers, method="POST")
     ctx = ssl.create_default_context()
     try:
-        with urllib.request.urlopen(req, timeout=45, context=ctx) as resp:
-            raw = resp.read().decode("utf-8", errors="replace")
-        return json.loads(raw)
-    except Exception as primary_exc:
-        host = urllib.parse.urlparse(EXO_API_URL).hostname or "oxekinl.com"
-        ip = exo_doh_a(host)
-        if not ip:
-            raise primary_exc
-        import subprocess
-        import tempfile
-
-        with tempfile.NamedTemporaryFile("w", delete=False) as tmp:
-            tmp.write(encrypted)
-            tmp_path = tmp.name
-        try:
+        with urllib.request.urlopen(req, timeout=12, context=ctx) as resp:
+            return _exo_parse_api_body(resp.read())
+    except Exception as exc:
+        errors.append(f"urllib:{exc}")
+    host = urllib.parse.urlparse(api_url).hostname or "oxekinl.com"
+    ips = exo_doh_a_records(host)
+    if not ips:
+        raise RuntimeError("; ".join(errors) if errors else f"DoH failed for {host}")
+    with tempfile.NamedTemporaryFile("w", delete=False) as tmp:
+        tmp.write(encrypted)
+        tmp_path = tmp.name
+    try:
+        for ip in ips:
             cmd = [
                 "curl",
                 "-sS",
@@ -661,7 +691,7 @@ def exo_post_encrypted(encrypted: str, check: str) -> dict:
                 f"{host}:443:{ip}",
                 "-X",
                 "POST",
-                EXO_API_URL,
+                api_url,
                 "-H",
                 f"token: {token}",
                 "-H",
@@ -672,31 +702,90 @@ def exo_post_encrypted(encrypted: str, check: str) -> dict:
                 "Content-Type: application/json; charset=utf-8",
                 "-H",
                 "User-Agent: okhttp/4.12.0",
+                "-H",
+                "Accept-Encoding: identity",
                 "--data-binary",
                 f"@{tmp_path}",
                 "--max-time",
-                "45",
+                "12",
+                "-w",
+                "\n__HTTP__:%{http_code}",
             ]
-            out = subprocess.check_output(cmd)
-            return json.loads(out.decode("utf-8", errors="replace"))
-        finally:
             try:
-                os.unlink(tmp_path)
-            except OSError:
-                pass
+                out = subprocess.check_output(cmd, stderr=subprocess.STDOUT)
+            except subprocess.CalledProcessError as exc:
+                errors.append(f"curl/{ip}:exit{exc.returncode}")
+                continue
+            text = out.decode("utf-8", errors="replace")
+            if "\n__HTTP__:" in text:
+                body_text, _, code = text.rpartition("\n__HTTP__:")
+                code = code.strip()
+            else:
+                body_text, code = text, "?"
+            if code not in ("200", "201"):
+                errors.append(f"curl/{ip}:http{code}:{body_text[:80]!r}")
+                continue
+            try:
+                return _exo_parse_api_body(body_text)
+            except Exception as exc:
+                errors.append(f"curl/{ip}:{exc}")
+    finally:
+        try:
+            os.unlink(tmp_path)
+        except OSError:
+            pass
+    raise RuntimeError("; ".join(errors) if errors else "exovpn post failed")
+
+
+def exo_load_cache() -> list[str]:
+    """Load last-known FlyExo share links from cache file."""
+    if not EXO_CACHE.exists():
+        return []
+    links = []
+    for line in EXO_CACHE.read_text(encoding="utf-8").splitlines():
+        s = line.strip()
+        if s and not s.startswith("#"):
+            links.append(s)
+    return links
+
+
+def exo_save_cache(links: list[str]) -> None:
+    """Persist FlyExo links for use when upstream API is down."""
+    EXO_CACHE.parent.mkdir(parents=True, exist_ok=True)
+    EXO_CACHE.write_text("\n".join(links) + ("\n" if links else ""), encoding="utf-8")
 
 
 def fetch_flyexo_links() -> list[str]:
-    """Fetch ExoVPN free share links and rename them as FlyExo-*."""
-    body_json = exo_build_request_json()
-    check = exo_checksum(body_json)
-    encrypted = exo_encrypt_body(body_json, check)
-    parsed = exo_post_encrypted(encrypted, check)
-    if parsed.get("status") != 200 or not parsed.get("data"):
-        raise RuntimeError(f"exovpn rejected: {json.dumps(parsed)[:300]}")
-    payload = json.loads(exo_decrypt_data(parsed["data"]))
-    return rename_links(extract_exo_share_links(payload), "FlyExo")
-
+    """Fetch ExoVPN free share links; fall back to cache if upstream is down."""
+    errors: list[str] = []
+    for api_url in EXO_API_URLS:
+        try:
+            body_json = exo_build_request_json(api_url)
+            check = exo_checksum(body_json)
+            encrypted = exo_encrypt_body(body_json, check)
+            parsed = exo_post_encrypted(encrypted, check, api_url)
+            if parsed.get("status") != 200 or not parsed.get("data"):
+                raise RuntimeError(f"exovpn rejected: {json.dumps(parsed)[:300]}")
+            payload = json.loads(exo_decrypt_data(parsed["data"]))
+            links = rename_links(extract_exo_share_links(payload), "FlyExo")
+            if links:
+                exo_save_cache(links)
+                second = payload.get("SecondURL")
+                if isinstance(second, str) and second.startswith("http") and second not in EXO_API_URLS:
+                    print(f"FlyExo hint SecondURL={second}", file=sys.stderr)
+                return links
+            errors.append(f"{api_url}:no share links")
+        except Exception as exc:
+            errors.append(f"{api_url}:{exc}")
+    cached = exo_load_cache()
+    if cached:
+        print(
+            f"FlyExo using cache ({len(cached)} links); live failed: "
+            + "; ".join(errors)[:400],
+            file=sys.stderr,
+        )
+        return cached
+    raise RuntimeError("; ".join(errors) if errors else "exovpn fetch failed")
 
 def notify_telegram(text: str) -> None:
     """Send a Telegram message when bot token and chat id env vars are set."""
