@@ -29,7 +29,8 @@ jobs:
         id: sync
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          # Existing secret chat + personal alert recipient.
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }},124962083
         run: |
           set -o pipefail
           python sync.py 2>&1 | tee /tmp/sync.log

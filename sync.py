@@ -971,37 +971,55 @@ def fetch_flyexo_links() -> list[str]:
         return cached
     raise RuntimeError("; ".join(errors) if errors else "exovpn fetch failed")
 
+def telegram_chat_ids() -> list[str]:
+    """Collect unique Telegram chat IDs from TELEGRAM_CHAT_ID (comma-separated)."""
+    raw = (os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
+    ids: list[str] = []
+    seen: set[str] = set()
+    for part in raw.split(","):
+        chat_id = part.strip()
+        if not chat_id or chat_id in seen:
+            continue
+        seen.add(chat_id)
+        ids.append(chat_id)
+    return ids
+
+
 def notify_telegram(text: str) -> None:
-    """Send a Telegram message when bot token and chat id env vars are set."""
+    """Send a Telegram message to every configured chat id."""
     token = (os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip()
-    chat_id = (os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
-    if not token or not chat_id:
+    chat_ids = telegram_chat_ids()
+    if not token or not chat_ids:
         print("telegram skipped: missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID")
         return
     url = f"https://api.telegram.org/bot{token}/sendMessage"
-    body = urllib.parse.urlencode(
-        {
-            "chat_id": chat_id,
-            "text": text,
-            "disable_web_page_preview": "true",
-        }
-    ).encode("utf-8")
-    req = urllib.request.Request(
-        url,
-        data=body,
-        headers={"Content-Type": "application/x-www-form-urlencoded"},
-        method="POST",
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=20) as resp:
-            raw = resp.read().decode("utf-8", errors="replace")
-        data = json.loads(raw)
-        if not data.get("ok"):
-            print(f"telegram api error: {raw[:300]}")
-            return
-        print(f"telegram sent message_id={data.get('result', {}).get('message_id')}")
-    except Exception as exc:
-        print(f"telegram send failed: {exc}")
+    for chat_id in chat_ids:
+        body = urllib.parse.urlencode(
+            {
+                "chat_id": chat_id,
+                "text": text,
+                "disable_web_page_preview": "true",
+            }
+        ).encode("utf-8")
+        req = urllib.request.Request(
+            url,
+            data=body,
+            headers={"Content-Type": "application/x-www-form-urlencoded"},
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=20) as resp:
+                raw = resp.read().decode("utf-8", errors="replace")
+            data = json.loads(raw)
+            if not data.get("ok"):
+                print(f"telegram api error chat_id={chat_id}: {raw[:300]}")
+                continue
+            print(
+                f"telegram sent chat_id={chat_id} "
+                f"message_id={data.get('result', {}).get('message_id')}"
+            )
+        except Exception as exc:
+            print(f"telegram send failed chat_id={chat_id}: {exc}")
 
 
 def main() -> int:
