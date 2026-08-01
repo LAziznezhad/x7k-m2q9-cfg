@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Remote config sync: Begzar (FlyB) + V2VPN (FlyV) + SecretVPN (FlyF) + TopVPN (FlyT) + ExoVPN (FlyExo)."""
+"""Remote config sync: Begzar (FlyB) + V2VPN (FlyV) + SecretVPN (FlyF) + TopVPN (FlyT) + ExoVPN (FlyExo) + DarkVPN (FlyD)."""
 
 from __future__ import annotations
 
@@ -68,6 +68,21 @@ V2_APP_VERSION = "110.4"
 V2_KEY_MATERIAL = (
     "3082058830820370a00302010202146758a70bb36de890068c44ad7aacc3916295d109300d06092a864886f70d01010b05003074310b3009060355040613025553311330110603550408130a43616c69666f726e6961311630140603550407130d4d6f756e7461696e205669657731143012060355040a130b476f6f676c6520496e632e3110300e060355040b1307416e64726f69643110300e06035504031307416e64726f69643020170d3233303732353038333431325a180f32303533303732353038333431325a3074310b3009060355040613025553311330110603550408130a43616c69666f726e6961311630140603550407130d4d6f756e7461696e205669657731143012060355040a130b476f6f676c6520496e632e3110300e060355040b1307416e64726f69643110300e06035504031307416e64726f696430820222300d06092a864886f70d01010105000382020f003082020a02820201008c49d0f0fc4021a93314888f9b39e9491c3283eb1f935499c16ba345806532ee28aa4d6379886d896a24035ebb61096e7808aa500bf7581c2e81b75162d129359cb222635eb4c02d8f684f1da7d398aa299135a7d11966dd6a81ca4a170c4666627256e365afceb519ded2bb8f178329a54b48df15153e0983352629bf10a2a8490a1952ac271f80fc739e6275df2387c99d075b0b11e07ba75ca9d66dfc24a84b6fe728a42c14dcbf58f0b7a7afe59f30e6508d13c62972a1bb41b88d5ab6070ef003e39cc52419433cc4817927789762d3106583fa3a2f3cbb7c1ef63eeabd459eca4c40f660eeb5a065c44e599220aecda307b800188bafc85942ef673569071542d5ef25042857326eb6b9bc4742272f135411ab087e180ce98e70436698a08025827ab9ae1378a15c1ddfc1875d55f77e59f92549d8fad1df0221a9604e8ba037f7a9e5158a1323d5adec12ede3d12e05415a729db3f56f682e82e6f88fb52125ab5c405f5a6510cda324a3ff30a8e4167a98e44fbb26bd3296d49b2e84f95de42a020a79034dd350d3d7a6ef2c50c167fa77e32771b9d83cd8ef21fc1c991b9d96a4ef43e8bf17ed3e02eb251d731e36ffc4917a545267abda88ffe6760e9d13d188345a48018066b14fa44b5f35d1833eefc070c839ca96a92ab1780b2d220c47756ae77865be4a491a2f90650cd45ba2fdf00004a85122f518051a230203010001a310300e300c0603551d13040530030101ff300d06092a864886f70d01010b05000382020100187c534df9768e4df70ef7a0f2949e52cb60b7bc825f8d2b809304c90833fcf747e578b21254499acb5ec9ee723e059bded95f4c42aa41a888cf2413cbec5875096009146b374ce841f7b903625204c3c0b391208b2e4c37bee53aa9c1897f3e09be6934185afcad5d734828e1263a06aa781016b21803cd7aaf00950ca8170c3d426b10df90ffe1e1b37ab7dde3cb2364da96d616268af99c5ccdf5a2daea710ce504484bb7d2f43e44e91f781e24de2f75ae13a2b5f18f4b08b9c24474afc47b989809419dfb7af57af727f9f1c542c202626a2dc43a4ed39391346a7c94c07c6ad4f8d8955332883471ae309d6667eee6a587c81117c857c70cf4595a45085fc20692dbfabb98fa98c7613247a8c28fc89eedd1d331f5b963db91898483097ca20290fddf402ac47c5c6b1ce92c3b1a272282e306dc0057353a7e0931ff676407cf0c757f8111d50c3293d6a639880efa79ba532d99cdb57a5d407698ef6598b6d368311ac7c8995bfddc941f4a5863c43452c474348ad7c5a0fcc084be49fa8d8e720e859e0b67351016df69ac64e0be54dc4dc1f79b1d0a9704598b8a18455d600268eb041297ae8ce6ad7ba34ed818a78dfbafdaec82f20d39c83329109c662b005b25a6de56bff1d254460e4cc137ca9db526352b1290714a78a8fa9b7109298361dd25f8a69b18e282926bff5e5d06f0c3b4a871ea9d01967fa7061ccom.v2ray.v2vpn"
 )
+# Dark VPN / V2Dark (FlyD)
+DV_API_URL = "https://api.gem-panel.com/api/v1/apps/app-data"
+DV_JSDELIVR_URL = (
+    "https://cdn.jsdelivr.net/gh/s741dev/"
+    "90ca9107bbfc6796c5015b956812f6de@main/"
+    "68db408fcba3e0d57657a6a47619d1c4"
+)
+DV_RAW_URL = (
+    "https://raw.githubusercontent.com/s741dev/"
+    "90ca9107bbfc6796c5015b956812f6de/main/"
+    "68db408fcba3e0d57657a6a47619d1c4"
+)
+DV_API_KEY = "fdef0f5e-9aba-43d2-b75b-e11baa8d7f99"
+DV_APP_VERSION = "110.1"
+DV_KEY_MATERIAL = """3082058930820371a00302010202150096643cf074b408fabfdb03ad4b2771a5d994565c300d06092a864886f70d01010b05003074310b3009060355040613025553311330110603550408130a43616c69666f726e6961311630140603550407130d4d6f756e7461696e205669657731143012060355040a130b476f6f676c6520496e632e3110300e060355040b1307416e64726f69643110300e06035504031307416e64726f69643020170d3233303533313037333835355a180f32303533303533313037333835355a3074310b3009060355040613025553311330110603550408130a43616c69666f726e6961311630140603550407130d4d6f756e7461696e205669657731143012060355040a130b476f6f676c6520496e632e3110300e060355040b1307416e64726f69643110300e06035504031307416e64726f696430820222300d06092a864886f70d01010105000382020f003082020a0282020100a1070e353c122c9c4ce83f4a396931bc494c706a09f65b061a35dbea2df5445ef092e6b1f34182a74bf4f9ea96e02aa4e502b12d1ea03550acaaf92657d956d8ca595fa66c74868d9a2986de73276d97f7721822f567400a3441f3b1ff53796f8659f489eb60dc3ce21dacc67b7b16715da05f09ea5138768590d900868bd97b794ce909f16ae6f0df186c4ae693b71ecf4ba119e8312467605e2d759f49ce57b68dca390b57f2ad74966b00373ff5d1cc99dff9cdbe015e9be2c67460f5d1b91f6dc0cb0a43ec60296ded610caa25cbfadf8cfc5e0b29726c2aa2c797ae66b9654c26b951583bf6b9fac871d687067e23cfb002f00a4ce1ab95c3c0aba6627ecb531765dfe201bb608853c3e47527050ce0dba42d37de83d0d7af3b0bc9f7688cd413962b2c7d5ce222749c6bd2754df12b20a134702e1f972f2bab85ffde570c7b18dd407b603d2414838b4af627f55ade7630965ea8b0cbe361c5dbf307d14edc11fbaed17866d4f2f1e62988962d086c3a646fc7931abcf6539adc9899302cc9ff6c84c643bbb719907c93fba71990f6e57a2ac4ed5f497b4fb18f20046fd1089f2b800565ff0d8bd00d89e616ea999cacca9d77fee4c847278f5e0324588b3293a5135a0ba7287fd789d32782fad7d7bb1be6dc2197360e8cf7386fbb25f7560bd0cf625d3d42aca108e53d6fb7b8e7542ce2a08d37f9418351686bdcab0203010001a310300e300c0603551d13040530030101ff300d06092a864886f70d01010b050003820201000323b5200b8b71f2115dc3619d7235e145d069b6ef5400ee41eab5510fec53b458ff656511cb84fd67ec0862a5c4f25decaaa9d4e9ff0c99e769e87f2897bcb07ebbd3fd331df0f2daf1154a1070e7e2c793f9298dac26b2558fa961277dbf33e32f28e2d2a389b44574e23afc485731a9a6dcf353a5a322d7b22cba25d438176a2c50ea93cf55610b180e6596c2c7b376a391b73d22cf648b0ece469f979af295079e99b1453b26a0dd3522efeb807b64a24ea19d75de1702379efefe03fd3f681b053892e34bbbf449ad1f99604a67e1914685220d715803badc9897e9ca4016cbd632561907b17efd61b268e8b6dd7bdec137aa87350c88c5790d58f29df1bc704b55805525592a1ef76b3615ec26058ca8c3af302f81ad8dd82444a8980b992a8d29d52a113e4f0410f02c46707fddf3d707d43de5e22b85d578caaa62b4a73c34b4c261d9a6c879f6733b52a9a66808795681fa882e300342757cca249cae36c9fcc552f5acb4028c62f333f311ad74552a122ad66d1cfb0c48a2a70dd3799ccb9a1378fa4a9c37e04a3e1ef07f1855cc581f18200217e5df2daf1f41c79e12142213e169e22289f728f717018e78a500871a27fbbe6a897d79f569db96f699802029bd49e705fed41c90a9e1bf15c6abb0543766d96668508f9efa381e803e7985091cdd6e2f49e1b0b389c7fdfd93334e361539488ca266be1a874436com.dark.vpn.free"""
 # Secret VPN / V2rayNet (FlyF) — cert SHA-256 must stay UPPERCASE for auth.
 SV_APK_SHA256 = "87179CAE7B0C68EB9939D437BB4747CEBB24F19F232538749A16C04696BAAC3F"
 SV_PACKAGE = "app.secretvpn.free"
@@ -382,6 +397,84 @@ def fetch_flyv_links() -> list[str]:
                 if link:
                     links.append(link)
     return rename_links(links, "FlyV")
+
+
+def fetch_dv_wrapper() -> dict:
+    """Fetch encrypted DarkVPN app-data from primary API or public fallbacks."""
+    sources = [
+        (
+            DV_API_URL,
+            {
+                "User-Agent": "okhttp/4.12.0",
+                "authorization": f"ApiKey {DV_API_KEY}",
+                "v": DV_APP_VERSION,
+            },
+        ),
+        (DV_JSDELIVR_URL, {"User-Agent": "okhttp/4.12.0"}),
+        (DV_RAW_URL, {"User-Agent": "okhttp/4.12.0"}),
+    ]
+    errors: list[str] = []
+    for url, headers in sources:
+        try:
+            return http_get_json(url, headers, timeout=45)
+        except Exception as exc:
+            errors.append(f"{url}: {exc}")
+    raise RuntimeError(" | ".join(errors))
+
+
+def decrypt_dv_payload(wrapper: dict) -> dict:
+    """Decrypt DarkVPN payload with AES-CTR then gzip/raw JSON."""
+    encoded = wrapper.get("data")
+    if not encoded:
+        raise ValueError("DarkVPN response missing encrypted data")
+    payload = base64.b64decode(encoded)
+    if len(payload) <= 16:
+        raise ValueError("DarkVPN encrypted payload too short")
+    iv = payload[:16]
+    ciphertext = payload[16:]
+    key = hashlib.sha256(DV_KEY_MATERIAL.encode("utf-8")).digest()
+    decryptor = Cipher(algorithms.AES(key), modes.CTR(iv)).decryptor()
+    plain = decryptor.update(ciphertext) + decryptor.finalize()
+    try:
+        return json.loads(gzip.decompress(plain).decode("utf-8"))
+    except Exception:
+        return json.loads(plain.decode("utf-8"))
+
+
+def extract_flyd_config_link(config_value) -> str | None:
+    """Extract a share URI from DarkVPN config (URI first, else Xray JSON)."""
+    if not isinstance(config_value, str):
+        return None
+    value = config_value.strip()
+    if not value:
+        return None
+    for scheme in ("vless://", "vmess://", "trojan://", "ss://"):
+        if value.startswith(scheme):
+            return value
+    if value.startswith("{"):
+        try:
+            cfg = json.loads(value)
+        except json.JSONDecodeError:
+            return None
+        for outbound in cfg.get("outbounds", []):
+            link = build_vless_link(outbound)
+            if link:
+                return link
+    return None
+
+
+def fetch_flyd_links() -> list[str]:
+    """Fetch DarkVPN profiles and rename them as FlyD-*."""
+    wrapper = fetch_dv_wrapper()
+    app_data = decrypt_dv_payload(wrapper)
+    links: list[str] = []
+    for section in ("normal", "smart"):
+        for profile in app_data.get("configs", {}).get(section, []):
+            cfg_val = profile.get("config") if isinstance(profile, dict) else profile
+            link = extract_flyd_config_link(cfg_val)
+            if link:
+                links.append(link)
+    return rename_links(links, "FlyD")
 
 
 def fold_domain_id(value: str) -> str:
@@ -912,13 +1005,14 @@ def notify_telegram(text: str) -> None:
 
 
 def main() -> int:
-    """Fetch FlyB + FlyV + FlyF + FlyT + FlyExo configs into one subscription file and notify Telegram."""
+    """Fetch FlyB + FlyV + FlyF + FlyT + FlyExo + FlyD configs into one subscription file and notify Telegram."""
     errors: list[str] = []
     flyb: list[str] = []
     flyv: list[str] = []
     flyf: list[str] = []
     flyt: list[str] = []
     flyexo: list[str] = []
+    flyd: list[str] = []
     try:
         flyb = fetch_flyb_links()
     except Exception as exc:
@@ -944,14 +1038,19 @@ def main() -> int:
     except Exception as exc:
         errors.append(f"FlyExo · ExoVPN: {exc}")
         print(f"FlyExo failed: {exc}", file=sys.stderr)
-    links = flyb + flyv + flyf + flyt + flyexo
+    try:
+        flyd = fetch_flyd_links()
+    except Exception as exc:
+        errors.append(f"FlyD · DarkVPN: {exc}")
+        print(f"FlyD failed: {exc}", file=sys.stderr)
+    links = flyb + flyv + flyf + flyt + flyexo + flyd
     if not links:
         raise RuntimeError("; ".join(errors) if errors else "no links")
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text("\n\n".join(links) + ("\n" if links else ""), encoding="utf-8")
     print(
         f"ok flyb={len(flyb)} flyv={len(flyv)} flyf={len(flyf)} flyt={len(flyt)} "
-        f"flyexo={len(flyexo)} total={len(links)} path={OUT}"
+        f"flyexo={len(flyexo)} flyd={len(flyd)} total={len(links)} path={OUT}"
     )
     msg = (
         f"✅ x7k sync OK\n"
@@ -960,6 +1059,7 @@ def main() -> int:
         f"FlyF · Secret VPN: {len(flyf)}\n"
         f"FlyT · TopVPN: {len(flyt)}\n"
         f"FlyExo · ExoVPN: {len(flyexo)}\n"
+        f"FlyD · DarkVPN: {len(flyd)}\n"
         f"total: {len(links)}"
     )
     if errors:
