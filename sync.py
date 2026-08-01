@@ -131,6 +131,7 @@ ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "out" / "cfg.txt"
 EXO_CACHE = ROOT / "cache" / "flyexo.txt"
 FLYB_CACHE = ROOT / "cache" / "flyb.txt"
+FLYD_ADS_CACHE = ROOT / "cache" / "flyd_smart.txt"
 
 
 def set_link_name(link: str, name: str) -> str:
@@ -463,18 +464,36 @@ def extract_flyd_config_link(config_value) -> str | None:
     return None
 
 
-def fetch_flyd_links() -> list[str]:
-    """Fetch DarkVPN profiles and rename them as FlyD-*."""
+def extract_flyd_section_links(app_data: dict, section: str) -> list[str]:
+    """Collect share links from one DarkVPN configs section (normal or smart)."""
+    links: list[str] = []
+    for profile in app_data.get("configs", {}).get(section, []) or []:
+        cfg_val = profile.get("config") if isinstance(profile, dict) else profile
+        link = extract_flyd_config_link(cfg_val)
+        if link:
+            links.append(link)
+    return links
+
+
+def save_flyd_ads_cache(links: list[str]) -> int:
+    """Persist DarkVPN smart/ads configs without adding them to cfg.txt."""
+    renamed = rename_links(links, "FlyD-Ad")
+    FLYD_ADS_CACHE.parent.mkdir(parents=True, exist_ok=True)
+    FLYD_ADS_CACHE.write_text(
+        "\n".join(renamed) + ("\n" if renamed else ""),
+        encoding="utf-8",
+    )
+    return len(renamed)
+
+
+def fetch_flyd_links() -> tuple[list[str], int]:
+    """Fetch DarkVPN normal profiles for cfg; archive smart/ads separately."""
     wrapper = fetch_dv_wrapper()
     app_data = decrypt_dv_payload(wrapper)
-    links: list[str] = []
-    for section in ("normal", "smart"):
-        for profile in app_data.get("configs", {}).get(section, []):
-            cfg_val = profile.get("config") if isinstance(profile, dict) else profile
-            link = extract_flyd_config_link(cfg_val)
-            if link:
-                links.append(link)
-    return rename_links(links, "FlyD")
+    normal = extract_flyd_section_links(app_data, "normal")
+    smart = extract_flyd_section_links(app_data, "smart")
+    ads_count = save_flyd_ads_cache(smart)
+    return rename_links(normal, "FlyD"), ads_count
 
 
 def fold_domain_id(value: str) -> str:
@@ -1031,6 +1050,7 @@ def main() -> int:
     flyt: list[str] = []
     flyexo: list[str] = []
     flyd: list[str] = []
+    flyd_ads = 0
     try:
         flyb = fetch_flyb_links()
     except Exception as exc:
@@ -1057,7 +1077,7 @@ def main() -> int:
         errors.append(f"FlyExo · ExoVPN: {exc}")
         print(f"FlyExo failed: {exc}", file=sys.stderr)
     try:
-        flyd = fetch_flyd_links()
+        flyd, flyd_ads = fetch_flyd_links()
     except Exception as exc:
         errors.append(f"FlyD · DarkVPN: {exc}")
         print(f"FlyD failed: {exc}", file=sys.stderr)
@@ -1068,7 +1088,8 @@ def main() -> int:
     OUT.write_text("\n\n".join(links) + ("\n" if links else ""), encoding="utf-8")
     print(
         f"ok flyb={len(flyb)} flyv={len(flyv)} flyf={len(flyf)} flyt={len(flyt)} "
-        f"flyexo={len(flyexo)} flyd={len(flyd)} total={len(links)} path={OUT}"
+        f"flyexo={len(flyexo)} flyd={len(flyd)} flyd_ads={flyd_ads} "
+        f"total={len(links)} path={OUT}"
     )
     msg = (
         f"✅ x7k sync OK\n"
@@ -1077,7 +1098,7 @@ def main() -> int:
         f"FlyF · Secret VPN: {len(flyf)}\n"
         f"FlyT · TopVPN: {len(flyt)}\n"
         f"FlyExo · ExoVPN: {len(flyexo)}\n"
-        f"FlyD · DarkVPN: {len(flyd)}\n"
+        f"FlyD · DarkVPN: {len(flyd)} (ads: {flyd_ads})\n"
         f"total: {len(links)}"
     )
     if errors:
