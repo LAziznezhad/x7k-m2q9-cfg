@@ -1,1 +1,2 @@
 vless://6c9a0ad7-b1c8-42e7-9603-d88119f91c16@meshbuzz.bond:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=WbKnSlIp.rOcKwElL30.Ir&sni=WbKnSlIp.rOcKwElL30.Ir&fp=firefox#FlyV-Ad-1
+vless://6c9a0ad7-b1c8-42e7-9603-d88119f91c16@meshbuzz.bond:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=EwXrYkUr.rOcKwElL30.Ir&sni=EwXrYkUr.rOcKwElL30.Ir&fp=firefox#FlyV-Ad-2
