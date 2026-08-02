@@ -1,8 +1,0 @@
-vless://5fc6d0ca-f121-4d11-893f-e2717f6c648f@46.101.152.7:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-1
-vless://5fc6d0ca-f121-4d11-893f-e2717f6c648f@104.248.143.238:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-2
-vless://5fc6d0ca-f121-4d11-893f-e2717f6c648f@104.248.242.81:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-3
-vless://5fc6d0ca-f121-4d11-893f-e2717f6c648f@161.35.204.30:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-4
-vless://5fc6d0ca-f121-4d11-893f-e2717f6c648f@164.92.142.182:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-5
-vless://5fc6d0ca-f121-4d11-893f-e2717f6c648f@167.172.96.55:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-6
-vless://5fc6d0ca-f121-4d11-893f-e2717f6c648f@165.22.28.126:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-7
-vless://5fc6d0ca-f121-4d11-893f-e2717f6c648f@164.90.171.62:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-8
