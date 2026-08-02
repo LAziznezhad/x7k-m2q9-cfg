@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Remote config sync: Begzar (FlyB) + V2VPN (FlyV) + SecretVPN (FlyF) + TopVPN (FlyT) + ExoVPN (FlyExo) + DarkVPN (FlyD)."""
+"""Remote config sync: Begzar (FlyB) + V2VPN (FlyV) + SecretVPN (FlyF) + TopVPN (FlyT) + ExoVPN (FlyExo) + DarkVPN (FlyD) + GitiVPN (FlyG)."""
 
 from __future__ import annotations
 
@@ -74,6 +74,22 @@ DV_CF_API_URL = "https://d3pwd137ql21v4.cloudfront.net/api/v1/apps/app-data"
 DV_API_KEY = "fdef0f5e-9aba-43d2-b75b-e11baa8d7f99"
 DV_APP_VERSION = "110.1"
 DV_KEY_MATERIAL = """3082058930820371a00302010202150096643cf074b408fabfdb03ad4b2771a5d994565c300d06092a864886f70d01010b05003074310b3009060355040613025553311330110603550408130a43616c69666f726e6961311630140603550407130d4d6f756e7461696e205669657731143012060355040a130b476f6f676c6520496e632e3110300e060355040b1307416e64726f69643110300e06035504031307416e64726f69643020170d3233303533313037333835355a180f32303533303533313037333835355a3074310b3009060355040613025553311330110603550408130a43616c69666f726e6961311630140603550407130d4d6f756e7461696e205669657731143012060355040a130b476f6f676c6520496e632e3110300e060355040b1307416e64726f69643110300e06035504031307416e64726f696430820222300d06092a864886f70d01010105000382020f003082020a0282020100a1070e353c122c9c4ce83f4a396931bc494c706a09f65b061a35dbea2df5445ef092e6b1f34182a74bf4f9ea96e02aa4e502b12d1ea03550acaaf92657d956d8ca595fa66c74868d9a2986de73276d97f7721822f567400a3441f3b1ff53796f8659f489eb60dc3ce21dacc67b7b16715da05f09ea5138768590d900868bd97b794ce909f16ae6f0df186c4ae693b71ecf4ba119e8312467605e2d759f49ce57b68dca390b57f2ad74966b00373ff5d1cc99dff9cdbe015e9be2c67460f5d1b91f6dc0cb0a43ec60296ded610caa25cbfadf8cfc5e0b29726c2aa2c797ae66b9654c26b951583bf6b9fac871d687067e23cfb002f00a4ce1ab95c3c0aba6627ecb531765dfe201bb608853c3e47527050ce0dba42d37de83d0d7af3b0bc9f7688cd413962b2c7d5ce222749c6bd2754df12b20a134702e1f972f2bab85ffde570c7b18dd407b603d2414838b4af627f55ade7630965ea8b0cbe361c5dbf307d14edc11fbaed17866d4f2f1e62988962d086c3a646fc7931abcf6539adc9899302cc9ff6c84c643bbb719907c93fba71990f6e57a2ac4ed5f497b4fb18f20046fd1089f2b800565ff0d8bd00d89e616ea999cacca9d77fee4c847278f5e0324588b3293a5135a0ba7287fd789d32782fad7d7bb1be6dc2197360e8cf7386fbb25f7560bd0cf625d3d42aca108e53d6fb7b8e7542ce2a08d37f9418351686bdcab0203010001a310300e300c0603551d13040530030101ff300d06092a864886f70d01010b050003820201000323b5200b8b71f2115dc3619d7235e145d069b6ef5400ee41eab5510fec53b458ff656511cb84fd67ec0862a5c4f25decaaa9d4e9ff0c99e769e87f2897bcb07ebbd3fd331df0f2daf1154a1070e7e2c793f9298dac26b2558fa961277dbf33e32f28e2d2a389b44574e23afc485731a9a6dcf353a5a322d7b22cba25d438176a2c50ea93cf55610b180e6596c2c7b376a391b73d22cf648b0ece469f979af295079e99b1453b26a0dd3522efeb807b64a24ea19d75de1702379efefe03fd3f681b053892e34bbbf449ad1f99604a67e1914685220d715803badc9897e9ca4016cbd632561907b17efd61b268e8b6dd7bdec137aa87350c88c5790d58f29df1bc704b55805525592a1ef76b3615ec26058ca8c3af302f81ad8dd82444a8980b992a8d29d52a113e4f0410f02c46707fddf3d707d43de5e22b85d578caaa62b4a73c34b4c261d9a6c879f6733b52a9a66808795681fa882e300342757cca249cae36c9fcc552f5acb4028c62f333f311ad74552a122ad66d1cfb0c48a2a70dd3799ccb9a1378fa4a9c37e04a3e1ef07f1855cc581f18200217e5df2daf1f41c79e12142213e169e22289f728f717018e78a500871a27fbbe6a897d79f569db96f699802029bd49e705fed41c90a9e1bf15c6abb0543766d96668508f9efa381e803e7985091cdd6e2f49e1b0b389c7fdfd93334e361539488ca266be1a874436com.dark.vpn.free"""
+# GitiVPN (FlyG) — gem-panel + CloudFront + CDN mirrors (prefer live panel).
+GT_API_URL = "https://api.gem-panel.com/api/v1/apps/app-data"
+GT_CF_API_URL = "https://d3pwd137ql21v4.cloudfront.net/api/v1/apps/app-data"
+GT_JSDELIVR_URL = (
+    "https://cdn.jsdelivr.net/gh/s741dev/"
+    "8cf923f83818315e7b47bc635fe87b93@main/"
+    "1d1619b2c966003e235aad70010c113e"
+)
+GT_GITLAB_URL = (
+    "https://gitlab.com/s741.dev/"
+    "8cf923f83818315e7b47bc635fe87b93/-/raw/main/"
+    "1d1619b2c966003e235aad70010c113e"
+)
+GT_API_KEY = "19edc8df-14ec-484d-a838-14125e416a02"
+GT_APP_VERSION = "111.1"
+GT_KEY_MATERIAL = """3082058930820371a003020102021500d20b9c75258f602834e61d869ebfea1aee1b1dc2300d06092a864886f70d01010b05003074310b3009060355040613025553311330110603550408130a43616c69666f726e6961311630140603550407130d4d6f756e7461696e205669657731143012060355040a130b476f6f676c6520496e632e3110300e060355040b1307416e64726f69643110300e06035504031307416e64726f69643020170d3233303533313038310110375a180f32303533303533313038313030375a3074310b3009060355040613025553311330110603550408130a43616c69666f726e6961311630140603550407130d4d6f756e7461696e205669657731143012060355040a130b476f6f676c6520496e632e3110302e060355040b1307416e64726f69643110300e06035504031307416e64726f696430820222300d06092a864886f70d01010105000382020f003082020a0282020100d01019905306412b990caeeafe9d201ec67753e3f5feb544609d6ac844e83790d1fbc1bdfa3e5d898288feaa168ae128a650fed416ff16afb45958bd112e2fd82323bc1371a2c6e8304b641e0a76f5e4b73c043a450f576e28258a7cca51281fa2bff5c250324c35aca35c2c32acaa854cb3aa5636c301035e6e34579e185eaece3154a1f26e86da8f58de01211455ff67db6d9c8ec0a48bc20888df0e043e7c5e8481a174b8c1872a774932d9ea2bc123f435b8369875bfcc4d8367c49535ff6577ee72383b3433c46252c849826b9d7d3272c39b6b069fcbf6d214392d377688e5303e2e9bfcc8dc87a2a7b464ec48acd4921ef9c81bbcadfcf2f61e3a8c42b116adcd73957ff921e886c2863397eabd6134ef4fb24c98049af40b047c1be7dabd7963cc5631db4e7805c170bd42937f632be9a91901c138a7d26053af40321fda614344dcb4adf967db69b388073cc04069be69102e904c4e5e6caffb2efad6b1c203d4313f1b219d6d9b268cdf335d58695062edb85748ff20c15528f9657a9c838a1c1d0095b8b4eead3dfd871b4b12dc67fe96148183fafb3b995f955dad8c80cd1dc4232d70e09b061167742051155244e2c524dad93cc621e2a575c4fe5912dc9273a5b8e6cb49349e56a3ffad1999ff26d839be242618447e2d2ec8c1f4ee7326ad047326aaf0468e8b12b942598e9cb2d5a596e0bd1c4fe93681830203010001a310300e300c0603551d13040530030101ff300d06092a864886f70d01010b05000382020100bbc624212d22469db46320a507dc4c2592fcb30b95b53912c9d092f2a800d38efbc391a20f25c452f7b994b824bc159a3dd6873edba1f8e0bbfc26d490ca70ead8a8b7cf9a1279c541069eb0fdfa928aa95f2884f999bdf2f3d33fef5a1c8deff4f0b4ce2bd7cda47bf2c123f6e439feef510d63bb066536e30640e0c1185d62324f2e29e95dee1c7ec612af7d78f3aa4c2496189be214c2af6fbc0f7083241ec5239fc2175a38d842673965e96fb013a7c218afa9541cfa4478059a08e3b6cbadce7d47da06bafca1f2d81611acd3dac4d95664e72c6751204c3bb97cb2145c700c6a7c69aaa9618610d1272fd45b4ed7f7bbafb2ec26e29a4513de3e6df9cb7caed339a90bf0bf39b31b9282d7144fac57a40761cbd173efec21e74a149ea48f7c34d9f79d67abefeed215945fe34d6763e41c319bddd3ce35987bbcc0a2dc939a95d221d20a56c7960b5bc844761a53f5520d52a71c80c2a4fe9948c2358492c6a2416cda7a5f9bf6a9e4932880e5f4bd8549c880ff0f63964203d4865959b6ce6307e068b73fc4e6583e095ec6d05aa92a8c55b3e5c5141a34deeadd76945d39da039350d0b95c6cf13927dfc0ea10aab8cdd4544d3166ebd3b9e13c381d70137a1c0b01ce343f6e3daeede046ac0166e9a0df3c9416d10979ad42a2e4eb90a927967feca660bffd0bb5614de37696aac21407f35b7aa2155315daa42e63com.gitivpn.secureg"""
 # Secret VPN / V2rayNet (FlyF) — cert SHA-256 must stay UPPERCASE for auth.
 SV_APK_SHA256 = "87179CAE7B0C68EB9939D437BB4747CEBB24F19F232538749A16C04696BAAC3F"
 SV_PACKAGE = "app.secretvpn.free"
@@ -124,6 +140,7 @@ EXO_CACHE = ROOT / "cache" / "flyexo.txt"
 FLYB_CACHE = ROOT / "cache" / "flyb.txt"
 FLYD_ADS_OUT = ROOT / "cache" / "flyd_smart.txt"
 FLYV_ADS_OUT = ROOT / "cache" / "flyv_smart.txt"
+FLYG_ADS_OUT = ROOT / "cache" / "flyg_smart.txt"
 
 
 def set_link_name(link: str, name: str) -> str:
@@ -517,6 +534,83 @@ def fetch_flyd_links() -> tuple[list[str], int]:
     smart = extract_flyd_section_links(app_data, "smart")
     ads_count = save_flyd_ads_snapshot(smart)
     return rename_links(normal, "FlyD"), ads_count
+
+def fetch_gt_wrapper() -> dict:
+    """Fetch GitiVPN app-data: gem-panel, CloudFront, then live CDN mirrors."""
+    api_headers = {
+        "User-Agent": "okhttp/4.12.0",
+        "authorization": f"ApiKey {GT_API_KEY}",
+        "v": GT_APP_VERSION,
+        "Accept": "application/json",
+    }
+    sources = [
+        ("gem-panel", GT_API_URL, api_headers),
+        ("cloudfront", GT_CF_API_URL, api_headers),
+        ("gitlab", GT_GITLAB_URL, {"User-Agent": "okhttp/4.12.0", "Accept": "application/json"}),
+        ("jsdelivr", GT_JSDELIVR_URL, {"User-Agent": "okhttp/4.12.0", "Accept": "application/json"}),
+    ]
+    errors: list[str] = []
+    for name, url, headers in sources:
+        try:
+            data = http_get_json_exact(url, headers, timeout=45)
+            if not isinstance(data, dict) or "data" not in data:
+                raise ValueError(f"{name}: missing encrypted data field")
+            print(f"FlyG source={name}")
+            return data
+        except Exception as exc:
+            errors.append(f"{name}: {exc}")
+    raise RuntimeError(" | ".join(errors))
+
+
+def decrypt_gt_payload(wrapper: dict) -> dict:
+    """Decrypt GitiVPN payload with AES-CTR then gzip/raw JSON."""
+    encoded = wrapper.get("data")
+    if not encoded:
+        raise ValueError("GitiVPN response missing encrypted data")
+    payload = base64.b64decode(encoded)
+    if len(payload) <= 16:
+        raise ValueError("GitiVPN encrypted payload too short")
+    iv = payload[:16]
+    ciphertext = payload[16:]
+    key = hashlib.sha256(GT_KEY_MATERIAL.encode("utf-8")).digest()
+    decryptor = Cipher(algorithms.AES(key), modes.CTR(iv)).decryptor()
+    plain = decryptor.update(ciphertext) + decryptor.finalize()
+    try:
+        return json.loads(gzip.decompress(plain).decode("utf-8"))
+    except Exception:
+        return json.loads(plain.decode("utf-8"))
+
+
+def extract_flyg_section_links(app_data: dict, section: str) -> list[str]:
+    """Collect share links from one GitiVPN configs section (normal or smart)."""
+    links: list[str] = []
+    for profile in app_data.get("configs", {}).get(section, []) or []:
+        cfg_val = profile.get("config") if isinstance(profile, dict) else profile
+        link = extract_flyd_config_link(cfg_val)
+        if link:
+            links.append(link)
+    return links
+
+
+def save_flyg_ads_snapshot(links: list[str]) -> int:
+    """Overwrite GitiVPN smart/ads snapshot from this live fetch (never read back)."""
+    renamed = rename_links(links, "FlyG-Ad")
+    FLYG_ADS_OUT.parent.mkdir(parents=True, exist_ok=True)
+    FLYG_ADS_OUT.write_text(
+        "\n".join(renamed) + ("\n" if renamed else ""),
+        encoding="utf-8",
+    )
+    return len(renamed)
+
+
+def fetch_flyg_links() -> tuple[list[str], int]:
+    """Fetch live GitiVPN normal for cfg; write smart/ads snapshot separately."""
+    wrapper = fetch_gt_wrapper()
+    app_data = decrypt_gt_payload(wrapper)
+    normal = extract_flyg_section_links(app_data, "normal")
+    smart = extract_flyg_section_links(app_data, "smart")
+    ads_count = save_flyg_ads_snapshot(smart)
+    return rename_links(normal, "FlyG"), ads_count
 
 
 def fold_domain_id(value: str) -> str:
@@ -1065,7 +1159,7 @@ def notify_telegram(text: str) -> None:
 
 
 def main() -> int:
-    """Fetch FlyB + FlyV + FlyF + FlyT + FlyExo + FlyD configs into one subscription file and notify Telegram."""
+    """Fetch FlyB + FlyV + FlyF + FlyT + FlyExo + FlyD + FlyG configs into one subscription file and notify Telegram."""
     errors: list[str] = []
     flyb: list[str] = []
     flyv: list[str] = []
@@ -1073,8 +1167,10 @@ def main() -> int:
     flyt: list[str] = []
     flyexo: list[str] = []
     flyd: list[str] = []
+    flyg: list[str] = []
     flyv_ads = 0
     flyd_ads = 0
+    flyg_ads = 0
     try:
         flyb = fetch_flyb_links()
     except Exception as exc:
@@ -1105,7 +1201,12 @@ def main() -> int:
     except Exception as exc:
         errors.append(f"FlyD · DarkVPN: {exc}")
         print(f"FlyD failed: {exc}", file=sys.stderr)
-    links = flyb + flyv + flyf + flyt + flyexo + flyd
+    try:
+        flyg, flyg_ads = fetch_flyg_links()
+    except Exception as exc:
+        errors.append(f"FlyG · GitiVPN: {exc}")
+        print(f"FlyG failed: {exc}", file=sys.stderr)
+    links = flyb + flyv + flyf + flyt + flyexo + flyd + flyg
     if not links:
         raise RuntimeError("; ".join(errors) if errors else "no links")
     OUT.parent.mkdir(parents=True, exist_ok=True)
@@ -1113,7 +1214,8 @@ def main() -> int:
     print(
         f"ok flyb={len(flyb)} flyv={len(flyv)} flyv_ads={flyv_ads} "
         f"flyf={len(flyf)} flyt={len(flyt)} flyexo={len(flyexo)} "
-        f"flyd={len(flyd)} flyd_ads={flyd_ads} total={len(links)} path={OUT}"
+        f"flyd={len(flyd)} flyd_ads={flyd_ads} "
+        f"flyg={len(flyg)} flyg_ads={flyg_ads} total={len(links)} path={OUT}"
     )
     msg = (
         f"✅ x7k sync OK\n"
@@ -1123,6 +1225,7 @@ def main() -> int:
         f"FlyT · TopVPN: {len(flyt)}\n"
         f"FlyExo · ExoVPN: {len(flyexo)}\n"
         f"FlyD · DarkVPN: {len(flyd)} (ads: {flyd_ads})\n"
+        f"FlyG · GitiVPN: {len(flyg)} (ads: {flyg_ads})\n"
         f"total: {len(links)}"
     )
     if errors:
