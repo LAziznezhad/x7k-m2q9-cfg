@@ -123,6 +123,7 @@ OUT = ROOT / "out" / "cfg.txt"
 EXO_CACHE = ROOT / "cache" / "flyexo.txt"
 FLYB_CACHE = ROOT / "cache" / "flyb.txt"
 FLYD_ADS_OUT = ROOT / "cache" / "flyd_smart.txt"
+FLYV_ADS_OUT = ROOT / "cache" / "flyv_smart.txt"
 
 
 def set_link_name(link: str, name: str) -> str:
@@ -376,19 +377,40 @@ def build_vless_link(outbound: dict) -> str | None:
     )
 
 
-def fetch_flyv_links() -> list[str]:
-    """Fetch V2VPN profiles and rename them as FlyV-*."""
+def extract_flyv_section_links(app_data: dict, section: str) -> list[str]:
+    """Collect vless share links from one V2VPN configs section."""
+    links: list[str] = []
+    for profile in app_data.get("configs", {}).get(section, []) or []:
+        try:
+            cfg = json.loads(profile["config"])
+        except (TypeError, KeyError, json.JSONDecodeError):
+            continue
+        for outbound in cfg.get("outbounds", []):
+            link = build_vless_link(outbound)
+            if link:
+                links.append(link)
+    return links
+
+
+def save_flyv_ads_snapshot(links: list[str]) -> int:
+    """Overwrite V2VPN smart/ads snapshot from this live fetch (never read back)."""
+    renamed = rename_links(links, "FlyV-Ad")
+    FLYV_ADS_OUT.parent.mkdir(parents=True, exist_ok=True)
+    FLYV_ADS_OUT.write_text(
+        "\n".join(renamed) + ("\n" if renamed else ""),
+        encoding="utf-8",
+    )
+    return len(renamed)
+
+
+def fetch_flyv_links() -> tuple[list[str], int]:
+    """Fetch V2VPN normal for cfg; write smart/ads snapshot separately."""
     wrapper = fetch_v2_wrapper()
     app_data = decrypt_v2_payload(wrapper)
-    links: list[str] = []
-    for section in ("normal", "smart"):
-        for profile in app_data.get("configs", {}).get(section, []):
-            cfg = json.loads(profile["config"])
-            for outbound in cfg.get("outbounds", []):
-                link = build_vless_link(outbound)
-                if link:
-                    links.append(link)
-    return rename_links(links, "FlyV")
+    normal = extract_flyv_section_links(app_data, "normal")
+    smart = extract_flyv_section_links(app_data, "smart")
+    ads_count = save_flyv_ads_snapshot(smart)
+    return rename_links(normal, "FlyV"), ads_count
 
 
 def http_get_json_exact(url: str, headers: dict[str, str], timeout: int = 45) -> dict:
@@ -1051,6 +1073,7 @@ def main() -> int:
     flyt: list[str] = []
     flyexo: list[str] = []
     flyd: list[str] = []
+    flyv_ads = 0
     flyd_ads = 0
     try:
         flyb = fetch_flyb_links()
@@ -1058,7 +1081,7 @@ def main() -> int:
         errors.append(f"FlyB · Begzar: {exc}")
         print(f"FlyB failed: {exc}", file=sys.stderr)
     try:
-        flyv = fetch_flyv_links()
+        flyv, flyv_ads = fetch_flyv_links()
     except Exception as exc:
         errors.append(f"FlyV · V2VPN: {exc}")
         print(f"FlyV failed: {exc}", file=sys.stderr)
@@ -1088,14 +1111,14 @@ def main() -> int:
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text("\n\n".join(links) + ("\n" if links else ""), encoding="utf-8")
     print(
-        f"ok flyb={len(flyb)} flyv={len(flyv)} flyf={len(flyf)} flyt={len(flyt)} "
-        f"flyexo={len(flyexo)} flyd={len(flyd)} flyd_ads={flyd_ads} "
-        f"total={len(links)} path={OUT}"
+        f"ok flyb={len(flyb)} flyv={len(flyv)} flyv_ads={flyv_ads} "
+        f"flyf={len(flyf)} flyt={len(flyt)} flyexo={len(flyexo)} "
+        f"flyd={len(flyd)} flyd_ads={flyd_ads} total={len(links)} path={OUT}"
     )
     msg = (
         f"✅ x7k sync OK\n"
         f"FlyB · Begzar: {len(flyb)}\n"
-        f"FlyV · V2VPN: {len(flyv)}\n"
+        f"FlyV · V2VPN: {len(flyv)} (ads: {flyv_ads})\n"
         f"FlyF · Secret VPN: {len(flyf)}\n"
         f"FlyT · TopVPN: {len(flyt)}\n"
         f"FlyExo · ExoVPN: {len(flyexo)}\n"

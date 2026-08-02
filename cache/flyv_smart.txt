@@ -1,0 +1,1 @@
+vless://bfbc48f0-1781-4f29-9206-6325908bea10@meshbuzz.bond:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=AoMqUkQe0.RoCkWeLl30.iR&sni=AoMqUkQe0.RoCkWeLl30.iR&fp=firefox#FlyV-Ad-1
