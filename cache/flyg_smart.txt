@@ -1,1 +1,1 @@
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2087?encryption=none&security=tls&type=xhttp&path=&host=&sni=s83m031l.digirahh.ir&fp=firefox#FlyG-Ad-1
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2087?encryption=none&security=tls&type=xhttp&path=&host=&sni=kjkdrapg.digirahh.ir&fp=firefox#FlyG-Ad-1
