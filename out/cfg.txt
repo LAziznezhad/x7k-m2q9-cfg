@@ -710,56 +710,56 @@ vless://31ef6ea9-7ea6-4199-ab6a-746f3fa1ad1e@104.248.140.37:440?type=tcp&encrypt
 
 vless://32d168c1-cf92-4528-99c5-ac80b8f1c8eb@sos.electriccanyonwise.info:4433?encryption=none&flow=xtls-rprx-vision&security=reality&sni=play.google.com&fp=chrome&pbk=QAoJHZT6_DZsBu-jH74uYZUTpGgxmvN2tXpRKj4CygE&sid=cf4e6f8338&spx=%2F&type=tcp&headerType=none#FlyG-1
 
-vless://f667a096-5231-4cfb-8759-92bb32473139@77.91.68.70:55983?security=reality&sni=yahoo.com&fp=chrome&pbk=nWQ7b9l9X6N3PrXLgIzOvMM8iSYrqjVHEb9ikWxqYSg&sid=0e&type=tcp&packetEncoding=xudp&encryption=none#FlyG-2
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=g7uqcb6z.nettnamaa.ir&fp=firefox#FlyG-2
 
-vless://4480161e-2c59-4d37-8736-675c9af32bf1@netraidly.ru:40443?flow=xtls-rprx-vision&encryption=none&security=reality&sni=deepl.com&fp=qq&pbk=fWzCKXwvMXaacsl1DdFb1vKQ9l9cTK1G7udqmaYHL0Y&sid=01d1bf2d4755d40c&allowinsecure=0&type=tcp&headerType=none#FlyG-3
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=k9s8rm6v.nettnamaa.ir&fp=firefox#FlyG-3
 
-vless://14b48651-3738-4926-bc09-4c04e87ff80b@static.lotussec.com:443?mode=stream-one&path=%2FJoin-JavidnamanIran-on-Telegram&security=tls&alpn=h2&encryption=none&extra=%7B%22noGRPCHeader%22%3Atrue%2C%22xmux%22%3A%7B%22maxConcurrency%22%3A%226%22%2C%22hKeepAlivePeriod%22%3A12%7D%2C%22headers%22%3A%7B%22User-Agent%22%3A%22Mozilla%2F5.0%28WindowsNT10.0%3BWin64%3Bx64%29AppleWebKit%2F537.36%28KHTML%2ClikeGecko%29Chrome%2F101.0.4951.67Safari%2F537.36%22%7D%7D&insecure=0&host=static.lotussec.com&fp=firefox&type=xhttp&allowInsecure=0&sni=static.lotussec.com#FlyG-4
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=qozauvhk.nettnamaa.ir&fp=firefox#FlyG-4
 
-vless://21c25bef-eb3b-44a8-9b26-fa7f674e5bfc@51.195.116.82:443?security=reality&encryption=none&pbk=RWE5ORdQ2SzuFWX8DlaRP415wbhee9ynJkqC7yFPgQw&host=TELEGRAM%3F&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=speedtest.net&sid=d13ddfca12760d03#FlyG-5
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=ho6ocu86.webbnamaa.ir&fp=firefox#FlyG-5
 
-vless://a03df445-0666-4d61-acde-9705009e409c@rf4.o4ka-internet.com:443?security=reality&type=tcp&sni=rf4.o4ka-internet.com&fp=firefox&flow=xtls-rprx-vision&sid=5629431325884ff0&pbk=V2JprbR_aJkS7uX6anyU3nrswGxdvDQT2HpY4WnzuC8&encryption=none#FlyG-6
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=wl3d7bfk.webbnamaa.ir&fp=firefox#FlyG-6
 
-vless://9609f33a-faa7-49d2-a237-37b0f6d53f08@www.speedtest.net:443?encryption=none&security=tls&sni=BPb-E234adb8.xjGcjHVjkV.WorKERs.DEV&fp=chrome&alpn=http%2F1.1&insecure=0&allowInsecure=0&type=ws&host=bpb-e234adb8.xjgcjhvjkv.workers.dev&path=%2FeyJqdW5rIjoiQU5JNXVpeHVlZG9va0puIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ%3D%3D%3Fed%3D2560#FlyG-7
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=0wza0i3q.webbnamaa.ir&fp=firefox#FlyG-7
 
-vless://7ff55eb0-eff4-4d71-ad1c-e6fe1a6c68d9@159.69.192.171:1234?security=&encryption=none&host=play.google.com&headerType=http&type=tcp#FlyG-8
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=f7m7g5yf.raaahkaraan.ir&fp=firefox#FlyG-8
 
-vless://e911c552-3a98-41e0-b5fb-0dd3879887b7@162.159.38.119:443?path=%2Fapi%2Fv1%2Firc&security=tls&alpn=http%2F1.1&encryption=none&insecure=0&host=vod.ensf.top&type=ws&allowInsecure=0&sni=vod.ensf.top#FlyG-9
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=v6pp5lxq.raaahkaraan.ir&fp=firefox#FlyG-9
 
-vless://e73df646-1f62-41bf-8c50-653497d603d0@163.172.213.174:80?path=%2Fvless%2F&security=&encryption=none&host=SC-TheNetherlands2.09vpn.com&type=ws#FlyG-10
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=hhtshyfn.raaahkaraan.ir&fp=firefox#FlyG-10
 
-vless://a3d24b02-6703-49f0-8a60-526044edc49d@104.17.108.69:443?type=ws&security=tls&fp=chrome&sni=tarafdarto.alanfaz.org#FlyG-11
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=0r2hjkih.roshdiinoo.ir&fp=firefox#FlyG-11
 
-vless://dd321f25-8f90-4e7c-a1fa-01883a8988a7@172.64.32.6:443?type=ws&security=tls&sni=soucuovls.pages.dev#FlyG-12
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=o059djbo.roshdiinoo.ir&fp=firefox#FlyG-12
 
-vless://c532eb8f-0ee6-4b9b-b258-3cc22dfd7130@165.245.255.43:43376?encryption=none&fp=chrome&pbk=wao7fuBMCR6po9PtLR1eRQjH7McA17SHoh95JudXaUI&security=reality&sid=0937ffd874d1&sni=www.m.amazon.com&spx=%2F9aeb9f49f7ea9c3&type=tcp#FlyG-13
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=s60eigcv.roshdiinoo.ir&fp=firefox#FlyG-13
 
-vless://54bb59cf-96fc-4a66-8488-fa2391f2e650@190.97.165.84:448?security=reality&encryption=none&pbk=XxCsLlJ3kJJa2MiPHS3FlF0DyAS9TkQkn8lfCVZgDQw&headerType=&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=www.cloudflare.com&sid=cd2d4a8f08aa985d#FlyG-14
+vless://1ad37675-b4cf-42fa-9dc5-83fd35cd63cb@104.21.41.131:8443?path=%2F&security=tls&encryption=none&insecure=0&host=ad-020.vector9nmb3.info&fp=chrome&type=ws&allowInsecure=0&sni=ad-020.vector9nmb3.info#FlyG-14
 
-vless://598b823c-d3fc-4013-aae5-837f10080f7a@72.56.36.96:40443?encryption=none&flow=xtls-rprx-vision&fp=&pbk=cZF84xUCciKRXxTA39vNnh0U8CjUZiUSjLzuNTMOzV8&security=reality&sid=33e48a03db900ff3&sni=deepl.com&type=tcp#FlyG-15
+vless://b91abe1a-80ca-417b-998b-2b542661c16f@ip.feywebsite.ir:2083?path=%2Fapi%2Fv1%2Fstream&security=tls&alpn=h2&encryption=none&insecure=0&fp=chrome&type=xhttp&allowInsecure=0&sni=tr.feyland.ir#FlyG-15
 
-vless://753dd705-f4ae-4f76-9b78-0362a3039035@159.195.12.98:16923?encryption=none&type=grpc&serviceName=neurex&security=reality&sni=api-maps.yandex.ru&fp=firefox&pbk=_QeslG3rHGM7DoM99pYC8-jpc16pM2MbNZ6NRMoxmHA&sid=10ffb85da1c2d986#FlyG-16
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@jush.sukario.ir:443?path=%2Fmashdi&security=tls&alpn=h2&encryption=none&insecure=0&host=KxUkNaDj13.mUlTiCuT.BoNd&fp=firefox&type=ws&allowInsecure=0&sni=KxUkNaDj13.mUlTiCuT.BoNd#FlyG-16
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=g7uqcb6z.nettnamaa.ir&fp=firefox#FlyG-17
+vless://a03df445-0666-4d61-acde-9705009e409c@rf4.o4ka-internet.com:443?security=reality&type=tcp&sni=rf4.o4ka-internet.com&fp=firefox&flow=xtls-rprx-vision&sid=5629431325884ff0&pbk=V2JprbR_aJkS7uX6anyU3nrswGxdvDQT2HpY4WnzuC8&encryption=none#FlyG-17
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=k9s8rm6v.nettnamaa.ir&fp=firefox#FlyG-18
+vless://5d3abfa9-bdf5-4334-8383-dcf92df802a5@ad-018.cloud25075.info:8443?encryption=none&type=ws&path=%2F&host=ad-018.cloud25075.info&security=tls&sni=ad-018.cloud25075.info&fp=chrome#FlyG-18
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=qozauvhk.nettnamaa.ir&fp=firefox#FlyG-19
+vless://29ca503d-e6b8-4509-b666-48133f450857@162.159.44.66:2053?path=%2Ffdip&security=tls&encryption=none&insecure=0&host=learn00.evany.de5.net&type=ws&allowInsecure=0&sni=learn00.evany.de5.net#FlyG-19
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=ho6ocu86.webbnamaa.ir&fp=firefox#FlyG-20
+vless://49e76398-5127-4005-90cb-c2a971f745f1@love.ns.cloudflare.com:443?path=%2Fcarbon&security=tls&encryption=none&insecure=0&host=xyjuo.skypixelway-fla.sbs&fp=chrome&type=ws&allowInsecure=0&sni=xyjuo.skypixelway-fla.sbs#FlyG-20
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=wl3d7bfk.webbnamaa.ir&fp=firefox#FlyG-21
+vless://7ff55eb0-eff4-4d71-ad1c-e6fe1a6c68d9@159.69.192.171:1234?security=&encryption=none&host=play.google.com&headerType=http&type=tcp#FlyG-21
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=0wza0i3q.webbnamaa.ir&fp=firefox#FlyG-22
+vless://c532eb8f-0ee6-4b9b-b258-3cc22dfd7130@165.245.255.43:43376?encryption=none&fp=chrome&pbk=wao7fuBMCR6po9PtLR1eRQjH7McA17SHoh95JudXaUI&security=reality&sid=0937ffd874d1&sni=www.m.amazon.com&spx=%2F9aeb9f49f7ea9c3&type=tcp#FlyG-22
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=f7m7g5yf.raaahkaraan.ir&fp=firefox#FlyG-23
+vless://9b44bfb4-9d28-4870-9fc3-5154d6d462ff@5.129.194.34:4100?path=%2Fv1%23TELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI%3Fed%3D512&security=none&encryption=none&type=ws&sni=live.ok.ru#FlyG-23
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=v6pp5lxq.raaahkaraan.ir&fp=firefox#FlyG-24
+vless://03707fb7-0990-440f-88f6-b0e0f7242a38@104.16.75.99:443?security=tls&type=ws&path=/&host=germany-2.ariyuz.org&packetEncoding=xudp&alpn=http/1.1&sni=germany-2.ariyuz.org&fp=chrome#FlyG-24
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=hhtshyfn.raaahkaraan.ir&fp=firefox#FlyG-25
+vless://dd321f25-8f90-4e7c-a1fa-01883a8988a7@172.64.32.6:443?type=ws&security=tls&sni=soucuovls.pages.dev#FlyG-25
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=0r2hjkih.roshdiinoo.ir&fp=firefox#FlyG-26
+vless://4e0f4e59-3613-4f0c-b824-7348413d20e6@premium-us-ca-01-gthost.efgwf.online:8080?type=ws&host=premium-us-ca-01-gthost.efgwf.online&path=/ws-6Tta3kYF#FlyG-26
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=o059djbo.roshdiinoo.ir&fp=firefox#FlyG-27
+vless://9609f33a-faa7-49d2-a237-37b0f6d53f08@www.speedtest.net:443?encryption=none&security=tls&sni=BPb-E234adb8.xjGcjHVjkV.WorKERs.DEV&fp=chrome&alpn=http%2F1.1&insecure=0&allowInsecure=0&type=ws&host=bpb-e234adb8.xjgcjhvjkv.workers.dev&path=%2FeyJqdW5rIjoiQU5JNXVpeHVlZG9va0puIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcm94eWlwIiwicGFuZWxJUHMiOltdfQ%3D%3D%3Fed%3D2560#FlyG-27
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=s60eigcv.roshdiinoo.ir&fp=firefox#FlyG-28
+vless://e5cc16a6-ea42-46b2-82ae-ad2157e1641b@104.18.37.228:443?path=%2Ffp&security=tls&encryption=none&insecure=0&host=hhlfy.twiladaphne.ndjp.net&type=ws&allowInsecure=0&sni=hhlfy.twiladaphne.ndjp.net#FlyG-28
