@@ -88,9 +88,9 @@ vmess://eyJhZGQiOiI1Ny4xMjkuMTMyLjIyMyIsImFpZCI6MCwiYWxwbiI6IiIsImZwIjoiIiwiaG9z
 
 vmess://eyJhZGQiOiIxNjUuMTQwLjIxNi4xNDIiLCJhaWQiOiIwIiwiaG9zdCI6IiIsImlkIjoiYjY1YTJkNjktNTYzNC00MmEyLWU0YmUtNTRlOGE2MTc2OTAwIiwibmV0IjoidGNwIiwicGF0aCI6IiIsInBvcnQiOiI0NDMiLCJwcyI6IkZseUYtMzMiLCJzY3kiOiJhdXRvIiwic2tpcC1jZXJ0LXZlcmlmeSI6dHJ1ZSwic25pIjoiIiwidGVzdF9uYW1lIjoiVVMyIiwidGxzIjoiIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9#FlyF-33
 
-vmess://eyJhZGQiOiIxNjUuMTQwLjIxNi4xNDEiLCJhaWQiOiIwIiwiaG9zdCI6IiIsImlkIjoiZTdkNzJhOGQtMjZmMi00YjU0LWIzNjYtMGM0M2UwYmNiYTdkIiwibmV0IjoidGNwIiwicGF0aCI6IiIsInBvcnQiOiI0NDMiLCJwcyI6IkZseUYtMzQiLCJzY3kiOiJhdXRvIiwic25pIjoiIiwidGVzdF9uYW1lIjoiNzkiLCJ0bHMiOiIiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=#FlyF-34
+vless://de5dcb9e-6a72-45a2-8d3d-de00e5431426@89.167.81.142:22012?security=reality&sni=login.yahoo.com&type=tcp&fp=firefox&pbk=OncWhxWwzrKOFH21JT9WxcenacQuc7ZmuQy_rZFJ8xg&sid=c6e19c434dc87df7#FlyF-34
 
-vless://de5dcb9e-6a72-45a2-8d3d-de00e5431426@89.167.81.142:22012?security=reality&sni=login.yahoo.com&type=tcp&fp=firefox&pbk=OncWhxWwzrKOFH21JT9WxcenacQuc7ZmuQy_rZFJ8xg&sid=c6e19c434dc87df7#FlyF-35
+vmess://eyJhZGQiOiIxNjUuMTQwLjIxNi4xNDEiLCJhaWQiOiIwIiwiaG9zdCI6IiIsImlkIjoiZTdkNzJhOGQtMjZmMi00YjU0LWIzNjYtMGM0M2UwYmNiYTdkIiwibmV0IjoidGNwIiwicGF0aCI6IiIsInBvcnQiOiI0NDMiLCJwcyI6IkZseUYtMzUiLCJzY3kiOiJhdXRvIiwic25pIjoiIiwidGVzdF9uYW1lIjoiNzkiLCJ0bHMiOiIiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=#FlyF-35
 
 vmess://eyJhZGQiOiIxMjkuMTQ2Ljc3LjI0OCIsImFpZCI6MCwiYWxwbiI6IiIsImZwIjoiIiwiaG9zdCI6IjEyOS4xNDYuNzcuMjQ4IiwiaWQiOiJmODM2YzczNi04N2ZjLTRmZGUtYWFiYy0wMDg1N2VjZGZmM2UiLCJuZXQiOiJ3cyIsInBhdGgiOiIvY2N0djEzLm0zdTgiLCJwb3J0IjozOTQ5NSwicHMiOiJGbHlGLTM2Iiwic2N5IjoiYXV0byIsInNuaSI6IiIsInRscyI6ImF1dG8iLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=#FlyF-36
 
@@ -176,9 +176,9 @@ vmess://eyJhZGQiOiIxMjkuMTQ2Ljc3LjI0OCIsImFpZCI6MCwiYWxwbiI6Imh0dHAvMS4xIiwiZnAi
 
 vmess://eyJhZGQiOiIxMjkuMTQ2Ljc3LjI0OCIsImFpZCI6MCwiYWxwbiI6IiIsImZwIjoiIiwiaG9zdCI6IiIsImlkIjoiZjgzNmM3MzYtODdmYy00ZmRlLWFhYmMtMDA4NTdlY2RmZjNlIiwibmV0Ijoid3MiLCJwYXRoIjoiL2NjdHYxMy5tM3U4IiwicG9ydCI6Mzk0OTUsInBzIjoiRmx5Ri03NyIsInNjeSI6ImF1dG8iLCJzbmkiOiIiLCJ0bHMiOiJhdXRvIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9#FlyF-77
 
-ss://YWVzLTI1Ni1jZmI6YW1hem9uc2tyMDU=@18.222.166.251:443#FlyF-78
+vmess://eyJhZGQiOiI4NC4xNy40MS4yIiwiYWlkIjoiMCIsImlkIjoiZjhjOGRjM2QtMGQzNy00NmIwLThiMzQtYTcyMzI4ODJmY2ZlIiwibmV0IjoidGNwIiwicG9ydCI6IjE4MDAwIiwicHMiOiJGbHlGLTc4Iiwic2N5IjoiYXV0byIsInRscyI6IiIsInR5cGUiOiIiLCJ2IjoiMiJ9#FlyF-78
 
-vmess://eyJhZGQiOiI4NC4xNy40MS4yIiwiYWlkIjoiMCIsImlkIjoiZjhjOGRjM2QtMGQzNy00NmIwLThiMzQtYTcyMzI4ODJmY2ZlIiwibmV0IjoidGNwIiwicG9ydCI6IjE4MDAwIiwicHMiOiJGbHlGLTc5Iiwic2N5IjoiYXV0byIsInRscyI6IiIsInR5cGUiOiIiLCJ2IjoiMiJ9#FlyF-79
+ss://YWVzLTI1Ni1jZmI6YW1hem9uc2tyMDU=@18.222.166.251:443#FlyF-79
 
 vmess://eyJhZGQiOiI0NS43Ni4yMDIuNDUiLCJhaWQiOiIwIiwiZnAiOiJjaHJvbWUiLCJpZCI6IjA3MWE4YTcxLWM2NTYtNGZiNi1hOTA4LTRlNDJlYjcyMjQzZCIsIm5ldCI6IndzIiwicGF0aCI6Ii9saWtzdXpjcCIsInBvcnQiOiI0MDEwIiwicHMiOiJGbHlGLTgwIiwic2N5IjoiYXV0byIsInRscyI6IiIsInR5cGUiOiIiLCJ2IjoiMiJ9#FlyF-80
 
@@ -226,9 +226,9 @@ vless://a4548d7f-8e0f-4780-9f5a-30cbd2754550@suolar.yellowsky.ir:2053?mode=auto&
 
 vless://eb4d9888-b3fc-470b-aba3-57fdf39925ba@www.zula.ir:80?type=ws&path=%2F%3Fed%3D2048&host=bloger4.trustdevlo.COM.&security=none#FlyT-1
 
-vless://bf285161-c2b4-4c1f-872f-889c35e8b4ff@199.232.78.159:443?path=/&security=tls&encryption=none&host=uaenewi.global.ssl.fastly.neT.&type=ws&sni=ssl.fastly.com#FlyT-2
+vless://43d3f90b-da93-4ae4-bc64-149988acdb30@shop.horqen.ir:21289?security=&encryption=none&headerType=none&type=tcp#FlyT-2
 
-vless://43d3f90b-da93-4ae4-bc64-149988acdb30@shop.horqen.ir:21289?security=&encryption=none&headerType=none&type=tcp#FlyT-3
+vless://bf285161-c2b4-4c1f-872f-889c35e8b4ff@199.232.78.159:443?path=/&security=tls&encryption=none&host=uaenewi.global.ssl.fastly.neT.&type=ws&sni=ssl.fastly.com#FlyT-3
 
 vless://bf285161-c2b4-4c1f-872f-889c35e8b4ff@199.232.78.159:443?path=/&security=tls&encryption=none&host=terkyi.global.ssl.fastly.neT.&type=ws&sni=ssl.fastly.com#FlyT-4
 
@@ -643,3 +643,9 @@ vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&s
 vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=tc1qf1yv.raaahkaraan.ir&fp=firefox#FlyG-24
 
 vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=1h702s8w.raaahkaraan.ir&fp=firefox#FlyG-25
+
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=dbe0hk6m.roshdiinoo.ir&fp=firefox#FlyG-26
+
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=60pli5ir.roshdiinoo.ir&fp=firefox#FlyG-27
+
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=zkejr242.roshdiinoo.ir&fp=firefox#FlyG-28
