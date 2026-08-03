@@ -165,13 +165,33 @@ def rename_links(links: list[str], prefix: str) -> list[str]:
     """Deduplicate link bases and rename them as prefix-1, prefix-2, ..."""
     seen: set[str] = set()
     unique: list[str] = []
-    for link in links:
+    for link in filter_supported_links(links):
         base = link.split("#", 1)[0].rstrip()
         if not base or base in seen:
             continue
         seen.add(base)
         unique.append(base)
     return [set_link_name(link, f"{prefix}-{i}") for i, link in enumerate(unique, start=1)]
+
+
+def link_transport(link: str) -> str:
+    """Return share-link transport type (ws/tcp/grpc/xhttp/...)."""
+    base = link.split("#", 1)[0]
+    if "://" not in base or "?" not in base:
+        return ""
+    query = urllib.parse.parse_qs(base.split("?", 1)[1], keep_blank_values=True)
+    raw = (query.get("type") or query.get("network") or [""])[0]
+    return str(raw).strip().lower()
+
+
+def is_unsupported_transport(link: str) -> bool:
+    """True when the client app cannot use this share link (xhttp/splithttp)."""
+    return link_transport(link) in ("xhttp", "splithttp")
+
+
+def filter_supported_links(links: list[str]) -> list[str]:
+    """Drop xhttp/splithttp share links that the consumer app does not support."""
+    return [link for link in links if link and not is_unsupported_transport(link)]
 
 
 def http_get_json(url: str, extra: dict[str, str] | None = None, timeout: int = 25) -> dict:
@@ -185,7 +205,7 @@ def http_get_json(url: str, extra: dict[str, str] | None = None, timeout: int = 
 
 
 def extract_links(text: str) -> list[str]:
-    return re.findall(r"(?:vless|vmess|trojan|ss)://\S+", text)
+    return filter_supported_links(re.findall(r"(?:vless|vmess|trojan|ss)://\S+", text))
 
 
 def flyb_load_cache() -> list[str]:
@@ -363,9 +383,11 @@ def decrypt_v2_payload(wrapper: dict) -> dict:
     return json.loads(gzip.decompress(plain).decode("utf-8"))
 
 
-def build_vless_link(outbound: dict) -> str | None:
-    """Build one vless:// URI from an Xray vless outbound."""
+def build_vless_link(outbound: dict, full_config: dict | None = None) -> str | None:
+    """Build one vless:// URI; skip xhttp (unsupported by consumer app)."""
     if outbound.get("protocol") != "vless":
+        return None
+    if outbound.get("tag") == "fragment":
         return None
     vnext_list = outbound.get("settings", {}).get("vnext", [])
     if not vnext_list:
@@ -375,38 +397,70 @@ def build_vless_link(outbound: dict) -> str | None:
     if not users:
         return None
     user = users[0]
-    stream = outbound.get("streamSettings", {})
-    ws = stream.get("wsSettings", {})
-    tls = stream.get("tlsSettings", {})
-    host = ws.get("headers", {}).get("Host") or ""
-    query = {
-        "encryption": "none",
-        "security": stream.get("security", "none"),
-        "type": stream.get("network", "tcp"),
-        "path": ws.get("path", ""),
-        "host": host,
-        "sni": tls.get("serverName", ""),
-        "fp": tls.get("fingerprint", ""),
+    uuid = user.get("id")
+    addr = vnext.get("address")
+    port = vnext.get("port")
+    if not uuid or not addr or not port:
+        return None
+    stream = outbound.get("streamSettings") or {}
+    network = (stream.get("network") or "tcp").lower()
+    if network in ("xhttp", "splithttp"):
+        return None
+    security = stream.get("security") or "none"
+    tls = stream.get("tlsSettings") or {}
+    reality = stream.get("realitySettings") or {}
+    ws = stream.get("wsSettings") or {}
+    grpc = stream.get("grpcSettings") or {}
+    query: dict[str, str] = {
+        "encryption": user.get("encryption") or "none",
+        "security": security,
+        "type": network,
     }
-    return (
-        f"vless://{user.get('id')}@{vnext.get('address')}:{vnext.get('port')}"
-        f"?{urllib.parse.urlencode(query)}"
-    )
+    if user.get("flow"):
+        query["flow"] = str(user["flow"])
+    if network in ("ws", "httpupgrade"):
+        if ws.get("path"):
+            query["path"] = str(ws["path"])
+        host = ((ws.get("headers") or {}).get("Host")) or ""
+        if host:
+            query["host"] = str(host)
+    elif network == "grpc":
+        if grpc.get("serviceName"):
+            query["serviceName"] = str(grpc["serviceName"])
+        if grpc.get("multiMode"):
+            query["mode"] = "multi"
+    if security == "tls":
+        if tls.get("serverName"):
+            query["sni"] = str(tls["serverName"])
+        if tls.get("fingerprint"):
+            query["fp"] = str(tls["fingerprint"])
+        alpn = tls.get("alpn") or []
+        if alpn:
+            query["alpn"] = ",".join(str(x) for x in alpn)
+        if tls.get("allowInsecure"):
+            query["allowInsecure"] = "1"
+    elif security == "reality":
+        for src, dst in (
+            ("publicKey", "pbk"),
+            ("shortId", "sid"),
+            ("serverName", "sni"),
+            ("fingerprint", "fp"),
+            ("spiderX", "spx"),
+        ):
+            if reality.get(src) not in (None, ""):
+                query[dst] = str(reality[src])
+    return f"vless://{uuid}@{addr}:{port}?{urllib.parse.urlencode(query)}"
 
 
 def extract_flyv_section_links(app_data: dict, section: str) -> list[str]:
-    """Collect vless share links from one V2VPN configs section."""
+    """Collect supported share links from one V2VPN configs section."""
     links: list[str] = []
     for profile in app_data.get("configs", {}).get(section, []) or []:
-        try:
-            cfg = json.loads(profile["config"])
-        except (TypeError, KeyError, json.JSONDecodeError):
-            continue
-        for outbound in cfg.get("outbounds", []):
-            link = build_vless_link(outbound)
-            if link:
-                links.append(link)
-    return links
+        cfg_val = profile.get("config") if isinstance(profile, dict) else None
+        link = extract_flyd_config_link(cfg_val) if cfg_val is not None else None
+        if link:
+            links.append(link)
+    return filter_supported_links(links)
 
 
 def save_flyv_ads_snapshot(links: list[str]) -> int:
@@ -483,7 +537,7 @@ def decrypt_dv_payload(wrapper: dict) -> dict:
 
 
 def extract_flyd_config_link(config_value) -> str | None:
-    """Extract a share URI from DarkVPN config (URI first, else Xray JSON)."""
+    """Extract a supported share URI from Dark/Giti/V2 config (URI or Xray JSON)."""
     if not isinstance(config_value, str):
         return None
     value = config_value.strip()
@@ -491,28 +545,38 @@ def extract_flyd_config_link(config_value) -> str | None:
         return None
     for scheme in ("vless://", "vmess://", "trojan://", "ss://"):
         if value.startswith(scheme):
-            return value
+            return None if is_unsupported_transport(value) else value
     if value.startswith("{"):
         try:
             cfg = json.loads(value)
         except json.JSONDecodeError:
             return None
+        proxy = None
         for outbound in cfg.get("outbounds", []):
-            link = build_vless_link(outbound)
-            if link:
-                return link
+            if (outbound.get("protocol") or "").lower() != "vless":
+                continue
+            if outbound.get("tag") == "fragment":
+                continue
+            if outbound.get("tag") in (None, "proxy", "PROXY"):
+                proxy = outbound
+                break
+            if proxy is None:
+                proxy = outbound
+        if proxy is None:
+            return None
+        return build_vless_link(proxy, cfg)
     return None
 
 
 def extract_flyd_section_links(app_data: dict, section: str) -> list[str]:
-    """Collect share links from one DarkVPN configs section (normal or smart)."""
+    """Collect supported share links from one DarkVPN configs section."""
     links: list[str] = []
     for profile in app_data.get("configs", {}).get(section, []) or []:
         cfg_val = profile.get("config") if isinstance(profile, dict) else profile
         link = extract_flyd_config_link(cfg_val)
         if link:
             links.append(link)
-    return links
+    return filter_supported_links(links)
 
 
 def save_flyd_ads_snapshot(links: list[str]) -> int:
@@ -582,14 +646,14 @@ def decrypt_gt_payload(wrapper: dict) -> dict:
 
 
 def extract_flyg_section_links(app_data: dict, section: str) -> list[str]:
-    """Collect share links from one GitiVPN configs section (normal or smart)."""
+    """Collect supported share links from one GitiVPN configs section."""
     links: list[str] = []
     for profile in app_data.get("configs", {}).get(section, []) or []:
         cfg_val = profile.get("config") if isinstance(profile, dict) else profile
         link = extract_flyd_config_link(cfg_val)
         if link:
             links.append(link)
-    return links
+    return filter_supported_links(links)
 
 
 def save_flyg_ads_snapshot(links: list[str]) -> int:
@@ -730,7 +794,7 @@ def extract_topvpn_links(payload: dict) -> list[str]:
                     links.append(value)
         blob = json.dumps(server, ensure_ascii=False)
         links.extend(re.findall(r"(?:vless|vmess|trojan|ss)://\S+", blob))
-    return links
+    return filter_supported_links(links)
 
 
 def fetch_flyt_links() -> list[str]:
@@ -928,7 +992,7 @@ def extract_exo_share_links(payload: dict) -> list[str]:
                     EXO_SHARE_PREFIXES
                 ):
                     links.append(content.strip())
-    return links
+    return filter_supported_links(links)
 
 
 def exo_doh_a_records(host: str) -> list[str]:
@@ -1206,7 +1270,7 @@ def main() -> int:
     except Exception as exc:
         errors.append(f"FlyG · GitiVPN: {exc}")
         print(f"FlyG failed: {exc}", file=sys.stderr)
-    links = flyb + flyv + flyf + flyt + flyexo + flyd + flyg
+    links = filter_supported_links(flyb + flyv + flyf + flyt + flyexo + flyd + flyg)
     if not links:
         raise RuntimeError("; ".join(errors) if errors else "no links")
     OUT.parent.mkdir(parents=True, exist_ok=True)

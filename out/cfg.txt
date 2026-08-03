@@ -206,13 +206,9 @@ vless://899c1806-3172-408f-846c-87f0c899aacb@s104.dubaismoke.com:443?path=/shop&
 
 vmess://eyJhZGQiOiJmYW1pbHkuYnVja2V0Lng5LmtmYy01MjAuY29tIiwiYWlkIjoiMCIsImhvc3QiOiJmYW1pbHkuYnVja2V0Lng5LmtmYy01MjAuY29tIiwiaWQiOiIxZGM3MzUyOS1mMDMwLTNhYzUtYWQ2NC1mNzY2NmI5YTUxYmMiLCJuZXQiOiJ0Y3AiLCJwYXRoIjoiLyIsInBvcnQiOiIxMDA0NyIsInBzIjoiRmx5Ri05MiIsInNjeSI6ImF1dG8iLCJzbmkiOiIiLCJ0bHMiOiIiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=#FlyF-92
 
-vless://f631423a-d7c0-495d-9163-899711f797fa@75.119.151.16:80?encryption=none&type=xhttp&path=/?ed=2048&host=de.samanehha.io&mode=stream-one&security=none#FlyF-93
+vless://a19a8287-b57f-4991-bb10-0d9246bdfe92@23.160.56.194:443?flow=xtls-rprx-vision&fp=chrome&pbk=nilJ07r1KZ0-KhmRNYeICXGhM9HeG9uxnRaqjYz3fWg&security=reality&sid=e66ba6fa6c81c875&sni=us.janusgate.org#FlyF-93
 
-vless://a19a8287-b57f-4991-bb10-0d9246bdfe92@23.160.56.194:443?flow=xtls-rprx-vision&fp=chrome&pbk=nilJ07r1KZ0-KhmRNYeICXGhM9HeG9uxnRaqjYz3fWg&security=reality&sid=e66ba6fa6c81c875&sni=us.janusgate.org#FlyF-94
-
-vless://2860e569-4c06-4950-af3e-3b72d892cdf2@faranse.duravex.net:8443?path=/&security=&encryption=none&host=faranse.duravex.net&type=ws#FlyF-95
-
-vless://a4548d7f-8e0f-4780-9f5a-30cbd2754550@suolar.yellowsky.ir:2053?mode=auto&path=?ed=2560&security=tls&alpn=h2,http/1.1&encryption=none&insecure=0&host=nuren1.aPPleseraj.IR.&fp=chrome&type=xhttp&allowInsecure=0&sni=nuren1.aPPleseraj.IR.#FlyF-96
+vless://2860e569-4c06-4950-af3e-3b72d892cdf2@faranse.duravex.net:8443?path=/&security=&encryption=none&host=faranse.duravex.net&type=ws#FlyF-94
 
 vless://eb4d9888-b3fc-470b-aba3-57fdf39925ba@www.zula.ir:80?type=ws&path=%2F%3Fed%3D2048&host=bloger4.trustdevlo.COM.&security=none#FlyT-1
 
@@ -618,36 +614,10 @@ vless://a3d24b02-6703-49f0-8a60-526044edc49d@104.17.108.69:443?type=ws&security=
 
 vless://eb78e1f0-d921-4ca9-a889-261fcc5a0547@78.159.250.214:443?security=reality&encryption=none&pbk=drY21DHNOr6ezJLA2B10mzTExeJ9-gVBfTBNLwVBtWI&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=qq.utiltools.ru#FlyG-11
 
-vless://b91abe1a-80ca-417b-998b-2b542661c16f@ip.feywebsite.ir:2083?path=%2Fapi%2Fv1%2Fstream&security=tls&alpn=h2&encryption=none&insecure=0&fp=chrome&type=xhttp&allowInsecure=0&sni=tr.feyland.ir#FlyG-12
+vless://7d74eae4-8a06-4306-a923-ad686f30bf26@ov-germany1.09vpn.com:80?encryption=none&host=OV-Germany1.09vpn.com&path=/vless/&security=none&type=ws#FlyG-12
 
-vless://7d74eae4-8a06-4306-a923-ad686f30bf26@ov-germany1.09vpn.com:80?encryption=none&host=OV-Germany1.09vpn.com&path=/vless/&security=none&type=ws#FlyG-13
+vless://753dd705-f4ae-4f76-9b78-0362a3039035@159.195.12.98:16923?encryption=none&type=grpc&serviceName=neurex&security=reality&sni=api-maps.yandex.ru&fp=firefox&pbk=_QeslG3rHGM7DoM99pYC8-jpc16pM2MbNZ6NRMoxmHA&sid=10ffb85da1c2d986#FlyG-13
 
-vless://753dd705-f4ae-4f76-9b78-0362a3039035@159.195.12.98:16923?encryption=none&type=grpc&serviceName=neurex&security=reality&sni=api-maps.yandex.ru&fp=firefox&pbk=_QeslG3rHGM7DoM99pYC8-jpc16pM2MbNZ6NRMoxmHA&sid=10ffb85da1c2d986#FlyG-14
+vless://9047efd2-5aa4-4c9c-a58f-a5791b06c79e@104.21.40.208:8443?path=%2F%3FTELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI%3Fed%3D2560&security=tls&encryption=none&insecure=0&host=ad-010.vector2llqn.info&type=ws&allowInsecure=0&sni=ad-010.vector2llqn.info#FlyG-14
 
-vless://9047efd2-5aa4-4c9c-a58f-a5791b06c79e@104.21.40.208:8443?path=%2F%3FTELEGRAM-MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI_MARAMBASHI%3Fed%3D2560&security=tls&encryption=none&insecure=0&host=ad-010.vector2llqn.info&type=ws&allowInsecure=0&sni=ad-010.vector2llqn.info#FlyG-15
-
-vless://03707fb7-0990-440f-88f6-b0e0f7242a38@104.16.75.99:443?security=tls&type=ws&path=/&host=germany-2.ariyuz.org&packetEncoding=xudp&alpn=http/1.1&sni=germany-2.ariyuz.org&fp=chrome#FlyG-16
-
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=d4lfcxdy.nettnamaa.ir&fp=firefox#FlyG-17
-
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=e8k56w7h.nettnamaa.ir&fp=firefox#FlyG-18
-
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=bzqqiiyy.nettnamaa.ir&fp=firefox#FlyG-19
-
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=068qnkd4.webbnamaa.ir&fp=firefox#FlyG-20
-
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=klayjvnj.webbnamaa.ir&fp=firefox#FlyG-21
-
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=a3df725r.webbnamaa.ir&fp=firefox#FlyG-22
-
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=j2h3x6k0.raaahkaraan.ir&fp=firefox#FlyG-23
-
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=7xepu3nu.raaahkaraan.ir&fp=firefox#FlyG-24
-
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=burz95i7.raaahkaraan.ir&fp=firefox#FlyG-25
-
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=csbwzg2h.roshdiinoo.ir&fp=firefox#FlyG-26
-
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=96bsovfh.roshdiinoo.ir&fp=firefox#FlyG-27
-
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=zpg10s86.roshdiinoo.ir&fp=firefox#FlyG-28
+vless://03707fb7-0990-440f-88f6-b0e0f7242a38@104.16.75.99:443?security=tls&type=ws&path=/&host=germany-2.ariyuz.org&packetEncoding=xudp&alpn=http/1.1&sni=germany-2.ariyuz.org&fp=chrome#FlyG-15
