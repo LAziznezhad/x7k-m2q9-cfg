@@ -614,26 +614,26 @@ vless://21c25bef-eb3b-44a8-9b26-fa7f674e5bfc@51.195.116.82:443?security=reality&
 
 vless://03707fb7-0990-440f-88f6-b0e0f7242a38@104.16.75.99:443?security=tls&type=ws&path=/&host=germany-2.ariyuz.org&packetEncoding=xudp&alpn=http/1.1&sni=germany-2.ariyuz.org&fp=chrome#FlyG-16
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=3vwy7nn2.nettnamaa.ir&fp=firefox#FlyG-17
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=g8619f4l.nettnamaa.ir&fp=firefox#FlyG-17
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=ymmtz7hn.nettnamaa.ir&fp=firefox#FlyG-18
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=5itwnalt.nettnamaa.ir&fp=firefox#FlyG-18
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=zd83v572.nettnamaa.ir&fp=firefox#FlyG-19
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=z5n422i5.nettnamaa.ir&fp=firefox#FlyG-19
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=jasmqi9y.webbnamaa.ir&fp=firefox#FlyG-20
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=mbzx0l70.webbnamaa.ir&fp=firefox#FlyG-20
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=8uf0vdmz.webbnamaa.ir&fp=firefox#FlyG-21
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=abh4yult.webbnamaa.ir&fp=firefox#FlyG-21
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=dnvy44ca.webbnamaa.ir&fp=firefox#FlyG-22
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=4cy65pty.webbnamaa.ir&fp=firefox#FlyG-22
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=zczvu6yn.raaahkaraan.ir&fp=firefox#FlyG-23
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=i2z6vja7.raaahkaraan.ir&fp=firefox#FlyG-23
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=klufk7fa.raaahkaraan.ir&fp=firefox#FlyG-24
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=3zvaa8s9.raaahkaraan.ir&fp=firefox#FlyG-24
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=2r2im93f.raaahkaraan.ir&fp=firefox#FlyG-25
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=346chali.raaahkaraan.ir&fp=firefox#FlyG-25
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=xnirp6a1.roshdiinoo.ir&fp=firefox#FlyG-26
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=nhl7up3l.roshdiinoo.ir&fp=firefox#FlyG-26
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=jv2un3ru.roshdiinoo.ir&fp=firefox#FlyG-27
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:443?encryption=none&security=tls&type=xhttp&path=&host=&sni=4qkm7175.roshdiinoo.ir&fp=firefox#FlyG-27
 
-vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:8443?encryption=none&security=tls&type=xhttp&path=&host=&sni=mavozxlu.roshdiinoo.ir&fp=firefox#FlyG-28
+vless://0fc0e114-8ed6-4c8e-931e-7e3674929750@104.17.108.69:2096?encryption=none&security=tls&type=xhttp&path=&host=&sni=s3ogwogv.roshdiinoo.ir&fp=firefox#FlyG-28
