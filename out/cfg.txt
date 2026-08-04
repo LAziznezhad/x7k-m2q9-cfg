@@ -112,15 +112,15 @@ vmess://eyJhZGQiOiI1Ny4xMjkuMTMyLjIyMyIsImFpZCI6IjAiLCJob3N0IjoiZ29vZ2xlLmNvbSIs
 
 vmess://eyJhZGQiOiI2Ny4yMjAuODUuNDYiLCJhaWQiOiIwIiwiYWxwbiI6bnVsbCwiZnAiOm51bGwsImhvc3QiOiIiLCJpZCI6ImY4YzhkYzNkLTBkMzctNDZiMC04YjM0LWE3MjMyODgyZmNmZSIsIm5ldCI6InRjcCIsInBhdGgiOiIvIiwicG9ydCI6MTgwMDAsInBzIjoiRmx5Ri00NSIsInNjeSI6bnVsbCwic25pIjpudWxsLCJ0bHMiOiIiLCJ0eXBlIjpudWxsLCJ2IjpudWxsfQ==#FlyF-45
 
-vless://28926c34-865c-447e-8d42-a17240af743b@91.124.209.138:8880?Telegram=@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad,@GozargahAzad&path=/&security=none&encryption=none&host=cdn-cloudflare91.korvexe.ir&type=ws#FlyF-46
+vless://27c3370e-581f-eab2-4ef5-30b0d6aa4e64@forallpanel.srtongston.ir:8880?encryption=none&security=none&type=httpupgrade&host=wwwuk.mobilex55.com.&path=/?ed=2082#FlyF-46
 
-trojan://JT80563429@inspired-hound.rooster465.autos:443?allowInsecure=0&sni=inspired-hound.rooster465.autos#FlyF-47
+vless://93b99881-df03-4597-9146-0c11e46387f7@132.226.22.106:34237?security=tls&sni=cfv.cscfwoker.fun&type=ws&path=/?ed&fp=chrome#FlyF-47
 
-vless://57d68ec3-6cc5-10e9-2bca-5ba3994aa783@ctcc.cloudflare.seeck.cn:443?path=/glasspanel/0038ba35_0_1bdabe931208/&security=tls&encryption=none&insecure=0&host=2.r.y.a.j.7.c.z.d.z.8.f.f.r.us.art-us.kdns.fr&fp=chrome&type=ws&allowInsecure=0&sni=2.r.y.a.j.7.c.z.d.z.8.f.f.r.us.art-us.kdns.fr#FlyF-48
+trojan://telegram-id-privatevpns@52.19.173.143:22222?security=tls&alpn=http/1.1&headerType=none&type=tcp&sni=trojan.burgerip.co.uk#FlyF-48
 
-vless://28926c34-865c-447e-8d42-a17240af743b@91panel-axiora-vpn.korvexe.ir:57820?path=/&security=tls&encryption=none&insecure=0&host=cdn-xui911.korvexe.ir&fp=chrome&type=ws&allowInsecure=0&sni=91panel-axiora-vpn.korvexe.ir#FlyF-49
+vless://28926c34-865c-447e-8d42-a17240af743b@91panel-axiora-vpn.korvexe.ir:52225?path=/&security=tls&encryption=none&insecure=0&host=cdn-xui911.korvexe.ir&fp=chrome&type=ws&allowInsecure=0&sni=#FlyF-49
 
-vless://Join:Telegram:TurboConfigs@82.22.40.176:443?encryption=none&fp=chrome&pbk=jBtP_3q6IXzoH6RfFjqYEXepfPMgk7D-Q136bluxFUU&security=reality&sid=19e5&sni=adn-stg.yourservice.samsung.com&spx=/vQSqF1j0bngkTqw&type=tcp#FlyF-50
+vless://89388004-24b2-4c93-9c95-034074b732b2@104.17.148.22:8880?security=none&type=ws&host=www.speedtest.net.B.lightning-6.LiVE.&path=/-LiV2ry@VPNine1-TEL--@VPNine1-TEL--@VPNine1-TEL--@VPNine1-JOIN-@VPNine1-TEL--@VPNine1-JOIN-@VPNine1-TEL-@VPNine1-TEL--@VPNine1-JOIN-@VPNine1-TEL--@VPNine1?ed=8880#FlyF-50
 
 vless://89049f79-320b-48a0-b1cf-110165cae30c@83.228.250.119:2083?security=reality&encryption=none&pbk=l1Ekgk-8T5rB-yolp5OIpc0XZTcd2gBeqmIR2bytKXY&headerType=none&fp=chrome&spx=/&type=tcp&flow=xtls-rprx-vision&sni=www.yahoo.com&sid=4e590fdc#FlyF-51
 
@@ -163,6 +163,54 @@ vmess://eyJhZGQiOiJmYW1pbHkuYnVja2V0Lng5LmtmYy01MjAuY29tIiwiYWlkIjoiMCIsImhvc3Qi
 vless://a19a8287-b57f-4991-bb10-0d9246bdfe92@23.160.56.194:443?flow=xtls-rprx-vision&fp=chrome&pbk=nilJ07r1KZ0-KhmRNYeICXGhM9HeG9uxnRaqjYz3fWg&security=reality&sid=e66ba6fa6c81c875&sni=us.janusgate.org#FlyF-70
 
 vless://2860e569-4c06-4950-af3e-3b72d892cdf2@faranse.duravex.net:8443?path=/&security=&encryption=none&host=faranse.duravex.net&type=ws#FlyF-71
+
+vless://eb4d9888-b3fc-470b-aba3-57fdf39925ba@www.zula.ir:80?type=ws&path=%2F%3Fed%3D2048&host=bloger4.trustdevlo.COM.&security=none#FlyT-1
+
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp3VmRSQjNhYlR0Z3NXelZUcG9HckwzTnJTa2hSNVNkMA==@91.107.128.238:23786#FlyT-2
+
+vless://43d3f90b-da93-4ae4-bc64-149988acdb30@shop.horqen.ir:21289?security=&encryption=none&headerType=none&type=tcp#FlyT-3
+
+vless://159bc342-4e24-4d11-bc00-2e71058d8836@199.232.78.159:443?path=/&security=tls&encryption=none&host=lsjaoijji.global.ssl.fastly.neT&type=ws&sni=ssl.fastly.com#FlyT-4
+
+vless://aef9312c-6d37-49b6-8ba7-1c179823d504@2.189.163.217:54876?type=tcp&encryption=none&path=%2F&host=alibaba.ir&headerType=http&security=none#FlyT-5
+
+vless://159bc342-4e24-4d11-bc00-2e71058d8836@199.232.78.159:443?path=/&security=tls&encryption=none&host=towndtime.global.ssl.fastly.neT.&type=ws&sni=ssl.fastly.com#FlyT-6
+
+vless://269d1a75-2a7f-47a4-8c9c-8fdb8dc964cc@194.59.170.127:443?type=tcp&security=none#FlyT-7
+
+trojan://EDhBW19Hf2@91.107.173.147:8080?type=tcp&security=none#FlyT-8
+
+vless://159bc342-4e24-4d11-bc00-2e71058d8836@199.232.78.159:443?path=/&security=tls&encryption=none&host=terkyi.global.ssl.fastly.neT.&type=ws&sni=ssl.fastly.com#FlyT-9
+
+vless://5ceb8ba3-1b86-4577-9cac-bc110295e694@5.160.144.31:15467?type=tcp&encryption=none&security=none#FlyT-10
+
+vless://159bc342-4e24-4d11-bc00-2e71058d8836@199.232.78.159:443?path=/&security=tls&encryption=none&host=Swemsdenman.global.ssl.fastly.neT.&type=ws&sni=ssl.fastly.com#FlyT-11
+
+vless://63fa3c11-5a02-4366-f749-9a2e758e6b8c@194.59.170.127:8081?type=ws&path=%2F&host=&security=none#FlyT-12
+
+vless://159bc342-4e24-4d11-bc00-2e71058d8836@199.232.78.159:443?path=/&security=tls&encryption=none&host=indiana.global.ssl.fastly.net.&type=ws&sni=ssl.fastly.com#FlyT-13
+
+vless://fdb3d0b9-b0df-442c-addf-0af24dc80d05@snapp.ir:80?path=%2F&security=none&encryption=none&host=bb.cafeazin.ir&type=ws#FlyT-14
+
+vless://906e79e6-5d08-4fa7-9de7-b0003aad6bcf@www.zula.ir:80?type=ws&path=%2F%3Fed%3D2048&host=bloger9.trustdevlo.COM.&security=none#FlyT-15
+
+vless://159bc342-4e24-4d11-bc00-2e71058d8836@199.232.78.159:443?path=/&security=tls&encryption=none&host=frenchji.global.ssl.fastly.net.&type=ws&sni=ssl.fastly.com#FlyT-16
+
+vless://f63d1eb4-1cab-471e-8d42-df00d0a44bc1@91.107.173.147:443?type=tcp&security=none#FlyT-17
+
+vless://159bc342-4e24-4d11-bc00-2e71058d8836@199.232.78.159:443?path=/&security=tls&encryption=none&host=uaenewi.global.ssl.fastly.neT.&type=ws&sni=ssl.fastly.com#FlyT-18
+
+vless://b253d10f-b407-4051-ba60-964292b14220@www.zula.ir:80?type=ws&path=%2F%3Fed%3D2048&host=bloger10.trustdevlo.COM.&security=none#FlyT-19
+
+vless://d41d8cd9-8f00-b204-e980-0998ecf8427e@199.232.78.159:443?path=/&security=tls&encryption=none&host=netheroijji.global.ssl.fastly.net&type=ws&sni=ssl.fastly.com#FlyT-20
+
+vless://d41d8cd9-8f00-b204-e980-0998ecf8427e@www.zula.ir:80?type=ws&path=%2F%3Fed%3D2048&host=bloger11.trustdevlo.COM.&security=none#FlyT-21
+
+vless://159bc342-4e24-4d11-bc00-2e71058d8836@199.232.78.159:443?path=/&security=tls&encryption=none&host=austriai.global.ssl.fastly.net.&type=ws&sni=ssl.fastly.com#FlyT-22
+
+vless://c3d5bfcf-02ed-409c-a3f6-6ee4be0d6909@www.zula.ir:80?type=ws&path=%2F%3Fed%3D2048&host=bloger12.trustdevlo.COM.&security=none#FlyT-23
+
+vless://2c957a1b-4832-4653-9967-e5d85ea4014a@www.zula.ir:80?type=ws&path=%2F%3Fed%3D2048&host=bloger13.trustdevlo.COM.&security=none#FlyT-24
 
 vless://d98e06d3-7f42-41e8-8dad-e9f35517a992@104.16.174.44:8443?encryption=none&type=ws&host=uk-3.psntbt.com.&headerType=none&path=%2F&security=tls&fp=chrome&sni=ssl.psntbt.com.#FlyExo-1
 
