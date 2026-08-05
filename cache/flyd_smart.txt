@@ -1,10 +1,10 @@
-vless://0f478e39-3809-4a04-af95-cc1c92704afc@164.92.139.112:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-1
-vless://0f478e39-3809-4a04-af95-cc1c92704afc@159.89.103.46:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-2
+vless://0f478e39-3809-4a04-af95-cc1c92704afc@159.89.103.46:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-1
+vless://0f478e39-3809-4a04-af95-cc1c92704afc@104.248.250.100:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-2
 vless://0f478e39-3809-4a04-af95-cc1c92704afc@142.93.110.118:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-3
-vless://0f478e39-3809-4a04-af95-cc1c92704afc@165.227.171.60:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-4
+vless://0f478e39-3809-4a04-af95-cc1c92704afc@157.230.121.29:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-4
 vless://0f478e39-3809-4a04-af95-cc1c92704afc@134.122.74.30:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-5
-vless://0f478e39-3809-4a04-af95-cc1c92704afc@157.230.121.29:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-6
-vless://0f478e39-3809-4a04-af95-cc1c92704afc@104.248.250.100:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-7
+vless://0f478e39-3809-4a04-af95-cc1c92704afc@46.101.143.104:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-6
+vless://0f478e39-3809-4a04-af95-cc1c92704afc@139.59.128.72:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-7
 vless://0f478e39-3809-4a04-af95-cc1c92704afc@64.226.122.105:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-8
-vless://0f478e39-3809-4a04-af95-cc1c92704afc@46.101.143.104:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-9
-vless://0f478e39-3809-4a04-af95-cc1c92704afc@139.59.128.72:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-10
+vless://0f478e39-3809-4a04-af95-cc1c92704afc@164.92.139.112:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-9
+vless://0f478e39-3809-4a04-af95-cc1c92704afc@165.227.171.60:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-Ad-10
