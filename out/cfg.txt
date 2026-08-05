@@ -158,17 +158,17 @@ vless://43d3f90b-da93-4ae4-bc64-149988acdb30@shop.horqen.ir:21289?security=&encr
 
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp3VmRSQjNhYlR0Z3NXelZUcG9HckwzTnJTa2hSNVNkMA==@91.107.128.238:23786#FlyT-3
 
-vless://159bc342-4e24-4d11-bc00-2e71058d8836@199.232.78.159:443?path=/&security=tls&encryption=none&host=lsjaoijji.global.ssl.fastly.neT&type=ws&sni=ssl.fastly.com#FlyT-4
+vless://19b8198f-9a3e-488e-98bb-43a4e4f9fe4b@199.232.78.159:443?path=/&security=tls&encryption=none&host=lsjaoijji.global.ssl.fastly.neT&type=ws&sni=ssl.fastly.com#FlyT-4
 
 vless://aef9312c-6d37-49b6-8ba7-1c179823d504@2.189.163.217:54876?type=tcp&encryption=none&path=%2F&host=alibaba.ir&headerType=http&security=none#FlyT-5
 
-vless://159bc342-4e24-4d11-bc00-2e71058d8836@199.232.78.159:443?path=/&security=tls&encryption=none&host=towndtime.global.ssl.fastly.neT.&type=ws&sni=ssl.fastly.com#FlyT-6
+vless://19b8198f-9a3e-488e-98bb-43a4e4f9fe4b@199.232.78.159:443?path=/&security=tls&encryption=none&host=towndtime.global.ssl.fastly.neT.&type=ws&sni=ssl.fastly.com#FlyT-6
 
 vless://269d1a75-2a7f-47a4-8c9c-8fdb8dc964cc@194.59.170.127:443?type=tcp&security=none#FlyT-7
 
 trojan://EDhBW19Hf2@91.107.173.147:8080?type=tcp&security=none#FlyT-8
 
-vless://159bc342-4e24-4d11-bc00-2e71058d8836@199.232.78.159:443?path=/&security=tls&encryption=none&host=terkyi.global.ssl.fastly.neT.&type=ws&sni=ssl.fastly.com#FlyT-9
+vless://19b8198f-9a3e-488e-98bb-43a4e4f9fe4b@199.232.78.159:443?path=/&security=tls&encryption=none&host=Swemsdenman.global.ssl.fastly.neT.&type=ws&sni=ssl.fastly.com#FlyT-9
 
 vless://5ceb8ba3-1b86-4577-9cac-bc110295e694@5.160.144.31:15467?type=tcp&encryption=none&security=none#FlyT-10
 
@@ -198,7 +198,9 @@ vless://159bc342-4e24-4d11-bc00-2e71058d8836@199.232.78.159:443?path=/&security=
 
 vless://c3d5bfcf-02ed-409c-a3f6-6ee4be0d6909@www.zula.ir:80?type=ws&path=%2F%3Fed%3D2048&host=bloger12.trustdevlo.COM.&security=none#FlyT-23
 
-vless://2c957a1b-4832-4653-9967-e5d85ea4014a@www.zula.ir:80?type=ws&path=%2F%3Fed%3D2048&host=bloger13.trustdevlo.COM.&security=none#FlyT-24
+vless://159bc342-4e24-4d11-bc00-2e71058d8836@199.232.78.159:443?path=/&security=tls&encryption=none&host=towndtime.global.ssl.fastly.neT.&type=ws&sni=ssl.fastly.com#FlyT-24
+
+vless://2c957a1b-4832-4653-9967-e5d85ea4014a@www.zula.ir:80?type=ws&path=%2F%3Fed%3D2048&host=bloger13.trustdevlo.COM.&security=none#FlyT-25
 
 vless://d98e06d3-7f42-41e8-8dad-e9f35517a992@104.16.174.44:8443?encryption=none&type=ws&host=uk-3.psntbt.com.&headerType=none&path=%2F&security=tls&fp=chrome&sni=ssl.psntbt.com.#FlyExo-1
 
