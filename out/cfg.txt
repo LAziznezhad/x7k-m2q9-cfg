@@ -1,18 +1,6 @@
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@meshbuzz.bond:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=YbFkYuPl1.ChEcKdEcK.Ir&sni=YbFkYuPl1.ChEcKdEcK.Ir&fp=firefox&alpn=h2#FlyV-1
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@meshbuzz.bond:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=BsJuGbJg.uLtImAtE24.Ir&sni=BsJuGbJg.uLtImAtE24.Ir&fp=firefox&alpn=h2#FlyV-1
 
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@meshbuzz.bond:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=YbFkYuPl2.ChEcKdEcK.Ir&sni=YbFkYuPl2.ChEcKdEcK.Ir&fp=firefox&alpn=h2#FlyV-2
-
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@meshbuzz.bond:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=YbFkYuPl.cHeCkDeCk.iR&sni=YbFkYuPl.cHeCkDeCk.iR&fp=firefox&alpn=h2#FlyV-3
-
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@meshbuzz.bond:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=LaZcWnWf.cHeCkDeCk.iR&sni=LaZcWnWf.cHeCkDeCk.iR&fp=firefox&alpn=h2#FlyV-4
-
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@meshbuzz.bond:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=LaZcWnWf1.ChEcKdEcK.Ir&sni=LaZcWnWf1.ChEcKdEcK.Ir&fp=firefox&alpn=h2#FlyV-5
-
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@meshbuzz.bond:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=LaZcWnWf2.ChEcKdEcK.Ir&sni=LaZcWnWf2.ChEcKdEcK.Ir&fp=firefox&alpn=h2#FlyV-6
-
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@meshbuzz.bond:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=BsJuGbJg.uLtImAtE24.Ir&sni=BsJuGbJg.uLtImAtE24.Ir&fp=firefox&alpn=h2#FlyV-7
-
-vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@meshbuzz.bond:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=XiLxPxSs.uLtImAtE24.Ir&sni=XiLxPxSs.uLtImAtE24.Ir&fp=firefox&alpn=h2#FlyV-8
+vless://8a6729c4-81d4-4b05-8747-3fffc17b6a64@meshbuzz.bond:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=XiLxPxSs.uLtImAtE24.Ir&sni=XiLxPxSs.uLtImAtE24.Ir&fp=firefox&alpn=h2#FlyV-2
 
 vmess://eyJhZGQiOiJmYW1pbHkuYnVja2V0Lng5LmtmYy01MjAuY29tIiwiYWlkIjowLCJhbHBuIjoiIiwiZnAiOiJjaHJvbWUiLCJob3N0IjoiIiwiaWQiOiIxZGM3MzUyOS1mMDMwLTNhYzUtYWQ2NC1mNzY2NmI5YTUxYmMiLCJuZXQiOiJyYXciLCJwYXRoIjoiIiwicG9ydCI6MTAwNDksInBzIjoiRmx5Ri0xIiwic2N5IjoiYXV0byIsInNuaSI6IiIsInRscyI6ImF1dG8iLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=#FlyF-1
 
