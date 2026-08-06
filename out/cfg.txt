@@ -490,19 +490,19 @@ vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@161.35.75.142:440?type=tcp&encrypti
 
 vless://23590578-f902-40af-b90c-3825c54298d3@138.68.88.56:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-16
 
-vless://23590578-f902-40af-b90c-3825c54298d3@167.172.110.82:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-17
+vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@167.172.98.81:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-17
 
-vless://23590578-f902-40af-b90c-3825c54298d3@46.101.171.133:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-18
+vless://23590578-f902-40af-b90c-3825c54298d3@164.90.169.229:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-18
 
-vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@138.68.92.28:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-19
+vless://23590578-f902-40af-b90c-3825c54298d3@134.122.94.3:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-19
 
-vless://23590578-f902-40af-b90c-3825c54298d3@134.122.94.3:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-20
+vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@139.59.144.212:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-20
 
-vless://23590578-f902-40af-b90c-3825c54298d3@164.90.169.229:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-21
+vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@138.68.92.28:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-21
 
-vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@139.59.144.212:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-22
+vless://23590578-f902-40af-b90c-3825c54298d3@46.101.171.133:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-22
 
-vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@167.172.98.81:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-23
+vless://23590578-f902-40af-b90c-3825c54298d3@167.172.110.82:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-23
 
 vless://23590578-f902-40af-b90c-3825c54298d3@207.154.195.48:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-24
 
