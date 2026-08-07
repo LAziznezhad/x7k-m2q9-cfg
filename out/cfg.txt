@@ -140,15 +140,17 @@ vless://b1ede247-63d4-4397-a0b8-865e87af8444@199.232.78.159:443?path=/&security=
 
 vless://2c957a1b-4832-4653-9967-e5d85ea4014a@www.zula.ir:80?type=ws&path=%2F%3Fed%3D2048&host=bloger13.trustdevlo.COM.&security=none#FlyT-18
 
-vless://b1ede247-63d4-4397-a0b8-865e87af8444@199.232.78.159:443?path=/&security=tls&encryption=none&host=towndtime.global.ssl.fastly.neT.&type=ws&sni=ssl.fastly.com#FlyT-19
+vless://b1ede247-63d4-4397-a0b8-865e87af8444@199.232.78.159:443?path=/&security=tls&encryption=none&host=lsjaoijji.global.ssl.fastly.neT&type=ws&sni=ssl.fastly.com#FlyT-19
 
-vless://269d1a75-2a7f-47a4-8c9c-8fdb8dc964cc@194.59.170.127:443?type=tcp&security=none#FlyT-20
+vless://aef9312c-6d37-49b6-8ba7-1c179823d504@2.189.163.217:54876?type=tcp&encryption=none&path=%2F&host=alibaba.ir&headerType=http&security=none#FlyT-20
 
-trojan://EDhBW19Hf2@91.107.173.147:8080?type=tcp&security=none#FlyT-21
+vless://b1ede247-63d4-4397-a0b8-865e87af8444@199.232.78.159:443?path=/&security=tls&encryption=none&host=towndtime.global.ssl.fastly.neT.&type=ws&sni=ssl.fastly.com#FlyT-21
 
-vless://5ceb8ba3-1b86-4577-9cac-bc110295e694@5.160.144.31:15467?type=tcp&encryption=none&security=none#FlyT-22
+vless://269d1a75-2a7f-47a4-8c9c-8fdb8dc964cc@194.59.170.127:443?type=tcp&security=none#FlyT-22
 
-vless://aef9312c-6d37-49b6-8ba7-1c179823d504@2.189.163.217:54876?type=tcp&encryption=none&path=%2F&host=alibaba.ir&headerType=http&security=none#FlyT-23
+trojan://EDhBW19Hf2@91.107.173.147:8080?type=tcp&security=none#FlyT-23
+
+vless://5ceb8ba3-1b86-4577-9cac-bc110295e694@5.160.144.31:15467?type=tcp&encryption=none&security=none#FlyT-24
 
 vless://d98e06d3-7f42-41e8-8dad-e9f35517a992@104.16.174.44:8443?encryption=none&type=ws&host=uk-3.psntbt.com.&headerType=none&path=%2F&security=tls&fp=chrome&sni=ssl.psntbt.com.#FlyExo-1
 
