@@ -120,9 +120,9 @@ vless://35aead44-22e1-d2ef-01a8-ab8c508222ec@ez-5bde8e.ezaccess1a1d7a3.workers.d
 
 vless://eb4d9888-b3fc-470b-aba3-57fdf39925ba@www.zula.ir:80?type=ws&path=%2F%3Fed%3D2048&host=bloger4.trustdevlo.COM.&security=none#FlyT-1
 
-vless://a74599e8-383a-4464-a04b-7a809a27b4ff@199.232.78.159:443?path=/&security=tls&encryption=none&insecure=0&host=lsjaoijji.global.ssl.fastly.neT&type=ws&allowInsecure=0&sni=ssl.fastly.com#FlyT-2
+vless://43d3f90b-da93-4ae4-bc64-149988acdb30@shop.horqen.ir:21289?security=&encryption=none&headerType=none&type=tcp#FlyT-2
 
-vless://43d3f90b-da93-4ae4-bc64-149988acdb30@shop.horqen.ir:21289?security=&encryption=none&headerType=none&type=tcp#FlyT-3
+vless://a74599e8-383a-4464-a04b-7a809a27b4ff@199.232.78.159:443?path=/&security=tls&encryption=none&insecure=0&host=lsjaoijji.global.ssl.fastly.neT&type=ws&allowInsecure=0&sni=ssl.fastly.com#FlyT-3
 
 vless://b1ede247-63d4-4397-a0b8-865e87af8444@199.232.78.159:443?path=/&security=tls&encryption=none&host=indiana.global.ssl.fastly.net.&type=ws&sni=ssl.fastly.com#FlyT-4
 
