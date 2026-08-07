@@ -118,9 +118,9 @@ vless://89049f79-320b-48a0-b1cf-110165cae30c@83.228.250.119:2083?security=realit
 
 vless://eb4d9888-b3fc-470b-aba3-57fdf39925ba@www.zula.ir:80?type=ws&path=%2F%3Fed%3D2048&host=bloger4.trustdevlo.COM.&security=none#FlyT-1
 
-vless://a74599e8-383a-4464-a04b-7a809a27b4ff@199.232.78.159:443?path=/&security=tls&encryption=none&insecure=0&host=lsjaoijji.global.ssl.fastly.neT&type=ws&allowInsecure=0&sni=ssl.fastly.com#FlyT-2
+vless://43d3f90b-da93-4ae4-bc64-149988acdb30@shop.horqen.ir:21289?security=&encryption=none&headerType=none&type=tcp#FlyT-2
 
-vless://43d3f90b-da93-4ae4-bc64-149988acdb30@shop.horqen.ir:21289?security=&encryption=none&headerType=none&type=tcp#FlyT-3
+vless://a74599e8-383a-4464-a04b-7a809a27b4ff@199.232.78.159:443?path=/&security=tls&encryption=none&insecure=0&host=lsjaoijji.global.ssl.fastly.neT&type=ws&allowInsecure=0&sni=ssl.fastly.com#FlyT-3
 
 vless://b1ede247-63d4-4397-a0b8-865e87af8444@199.232.78.159:443?path=/&security=tls&encryption=none&host=indiana.global.ssl.fastly.net.&type=ws&sni=ssl.fastly.com#FlyT-4
 
@@ -462,48 +462,48 @@ vless://d98e06d3-7f42-41e8-8dad-e9f35517a992@104.16.92.229:8443?encryption=none&
 
 vless://d98e06d3-7f42-41e8-8dad-e9f35517a992@104.17.108.69:8443?encryption=none&type=ws&host=usa-7.psntbt.com.&headerType=none&path=%2F&security=tls&fp=chrome&sni=ssl.psntbt.com.#FlyExo-149
 
-vless://23590578-f902-40af-b90c-3825c54298d3@164.92.243.198:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-1
+vless://23590578-f902-40af-b90c-3825c54298d3@161.35.18.61:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-1
 
-vless://23590578-f902-40af-b90c-3825c54298d3@161.35.207.115:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-2
+vless://23590578-f902-40af-b90c-3825c54298d3@139.59.145.207:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-2
 
-vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@46.101.184.39:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-3
+vless://23590578-f902-40af-b90c-3825c54298d3@104.248.253.25:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-3
 
-vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@159.89.110.189:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-4
+vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@167.71.45.249:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-4
 
-vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@167.71.37.93:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-5
+vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@165.22.20.90:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-5
 
-vless://23590578-f902-40af-b90c-3825c54298d3@139.59.145.207:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-6
+vless://23590578-f902-40af-b90c-3825c54298d3@64.226.125.5:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-6
 
-vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@104.248.34.51:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-7
+vless://23590578-f902-40af-b90c-3825c54298d3@165.22.27.80:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-7
 
-vless://23590578-f902-40af-b90c-3825c54298d3@161.35.18.61:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-8
+vless://23590578-f902-40af-b90c-3825c54298d3@209.38.219.242:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-8
 
-vless://23590578-f902-40af-b90c-3825c54298d3@104.248.253.25:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-9
+vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@159.89.110.189:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-9
 
-vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@68.183.71.111:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-10
+vless://23590578-f902-40af-b90c-3825c54298d3@161.35.207.115:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-10
 
-vless://23590578-f902-40af-b90c-3825c54298d3@64.226.125.5:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-11
+vless://23590578-f902-40af-b90c-3825c54298d3@161.35.208.226:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-11
 
-vless://23590578-f902-40af-b90c-3825c54298d3@64.226.85.163:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-12
+vless://41325c58-46bc-43e9-a700-02d162fb0939@159.223.25.180:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-12
 
-vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@139.59.129.27:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-13
+vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@167.71.37.93:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-13
 
 vless://41325c58-46bc-43e9-a700-02d162fb0939@165.245.244.233:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-14
 
-vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@104.248.43.178:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-15
+vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@134.209.237.198:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-15
 
-vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@134.209.237.198:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-16
+vless://23590578-f902-40af-b90c-3825c54298d3@164.92.243.198:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-16
 
-vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@165.22.20.90:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-17
+vless://23590578-f902-40af-b90c-3825c54298d3@64.226.85.163:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-17
 
-vless://23590578-f902-40af-b90c-3825c54298d3@161.35.208.226:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-18
+vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@68.183.71.111:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-18
 
-vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@167.71.45.249:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-19
+vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@104.248.43.178:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-19
 
-vless://41325c58-46bc-43e9-a700-02d162fb0939@159.223.25.180:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-20
+vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@104.248.34.51:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-20
 
-vless://23590578-f902-40af-b90c-3825c54298d3@209.38.219.242:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-21
+vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@139.59.129.27:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-21
 
-vless://23590578-f902-40af-b90c-3825c54298d3@165.22.27.80:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-22
+vless://9ba1e70a-49cf-43a0-94ce-44e17da958ce@46.101.184.39:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-22
 
 vless://32d168c1-cf92-4528-99c5-ac80b8f1c8eb@movie.tehronrest.ir:4433?encryption=none&flow=xtls-rprx-vision&security=reality&sni=play.google.com&fp=chrome&pbk=QAoJHZT6_DZsBu-jH74uYZUTpGgxmvN2tXpRKj4CygE&sid=cf4e6f8338&spx=%2F&type=tcp&headerType=none#FlyG-1
