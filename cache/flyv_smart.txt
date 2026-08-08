@@ -1,2 +1,2 @@
-vless://6c9a0ad7-b1c8-42e7-9603-d88119f91c16@meshbuzz.bond:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=RcGbOpCp.sUkArIo.iR&sni=RcGbOpCp.sUkArIo.iR&fp=firefox&alpn=h2#FlyV-Ad-1
-vless://6c9a0ad7-b1c8-42e7-9603-d88119f91c16@meshbuzz.bond:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=QtWjFrBv.sUkArIo.iR&sni=QtWjFrBv.sUkArIo.iR&fp=firefox&alpn=h2#FlyV-Ad-2
+vless://6c9a0ad7-b1c8-42e7-9603-d88119f91c16@meshbuzz.bond:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=QcDzQdDm.sUkArIo.iR&sni=QcDzQdDm.sUkArIo.iR&fp=firefox&alpn=h2#FlyV-Ad-1
+vless://6c9a0ad7-b1c8-42e7-9603-d88119f91c16@meshbuzz.bond:443?encryption=none&security=tls&type=ws&path=%2Fmashdi&host=ZtItLnEw.sUkArIo.iR&sni=ZtItLnEw.sUkArIo.iR&fp=firefox&alpn=h2#FlyV-Ad-2
