@@ -477,3 +477,5 @@ vless://72076ea4-5337-451f-9173-9fa4ccda160c@165.232.124.68:440?type=tcp&encrypt
 vless://eb2ac41d-5bf9-44a2-bff7-310add50810d@104.248.242.140:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-19
 
 vless://72076ea4-5337-451f-9173-9fa4ccda160c@64.225.103.185:440?type=tcp&encryption=none&path=%2F&host=play.google.com&headerType=http&security=none#FlyD-20
+
+vless://32d168c1-cf92-4528-99c5-ac80b8f1c8eb@ir.tehronrest.ir:4433?encryption=none&flow=xtls-rprx-vision&security=reality&sni=play.google.com&fp=chrome&pbk=QAoJHZT6_DZsBu-jH74uYZUTpGgxmvN2tXpRKj4CygE&sid=cf4e6f8338&spx=%2F&type=tcp&headerType=none#FlyG-1
